@@ -11,7 +11,7 @@ This pipeline systematically evaluates the "Gravitational Relic Hypothesis" agai
 
 ## Repository Contents
 
-- `lrd_fitting_pipeline.py`: The core Python script performing the 5-parameter phenomenological SED fitting. This script compares both standard chromatic dust pathways ($A_V$) and the achromatic gravitational relic displacement ($z_{dist}$).
+- `acquire_missing_data.py`: The core Python script performing the 5-parameter phenomenological SED fitting. This script compares both standard chromatic dust pathways ($A_V$) and the achromatic gravitational relic displacement ($z_{dist}$).
 - `Bulletproof_Results.csv`: The complete statistical catalog containing best-fit parameters ($A_V$, $z_{dist}$, $\alpha_{\rm AGN}$, $\Delta$BIC, $\Delta \chi^2_\nu$) for all 260 LRDs analyzed in this study.
 - `Table1_Representative_Sources.csv`: A subset of 20 highly representative sources showcasing the statistical dichotomy between relic supporters and conventional starbursts.
 
