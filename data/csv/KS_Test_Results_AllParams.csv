@@ -1,0 +1,11 @@
+parameter,label,ks_stat,p_value,significance,cohens_d,effect_size,ns_sup,ns_null,mean_sup,std_sup,mean_null,std_null
+z_phot,Redshift $z_{phot}$,0.494,1.93e-07,***,-1.52,LARGE,111,43,5.212,0.826,6.629,1.159
+Av_null,Dust extinction $A_V$ (Null),0.461,1.71e-06,***,-1.19,LARGE,111,43,1.073,1.194,2.63,1.565
+C_AGN,AGN fraction $C_{\rm AGN}$,0.523,2.48e-08,***,-1.31,LARGE,111,43,0.177,0.138,0.38,0.19
+delta_chi2nu,$\Delta\chi^2_\nu$,1.0,6.89e-39,***,0.89,LARGE,111,43,182.034,346.369,-88.611,145.08
+alpha_AGN,$\alpha_{\rm AGN}$,0.68,2.69e-14,***,0.71,medium,111,43,0.702,0.729,0.199,0.641
+ir_excess,IR excess,0.315,3.15e-03,**,-0.62,medium,111,43,6.835,4.794,10.257,7.14
+fxb_full_05_7keV,X-ray flux upper limit (0.5-7 keV),0.237,4.99e-02,*,0.44,small,111,43,0.0,0.0,0.0,0.0
+logMstar_best,Stellar mass $\log(M_*/M_\odot)$,0.342,9.88e-04,***,0.12,negligible,111,43,10.542,5.662,9.959,0.411
+r_eff_50_phys,Half-light radius $r_{\rm eff}$ (pc),0.366,3.24e-04,***,0.76,medium,111,43,104.882,32.338,82.139,23.195
+muv,UV magnitude $m_{\rm UV}$,0.162,3.48e-01,ns,-0.18,negligible,111,43,-20.725,13.141,-18.744,0.789
