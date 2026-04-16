@@ -1,6 +1,6 @@
 # LRD Relic Gravity Fitting
 
-**Two complementary papers on JWST Little Red Dots (LRDs) by Xin Tan (Independent Researcher, IAIP)**
+**Two complementary papers on JWST Little Red Dots (LRDs) by Tan Xin (Independent Researcher, IAIP)**
 
 ---
 
