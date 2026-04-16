@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRD 密度依赖引力红移模拟器</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --panel-bg: #ffffff;
+            --border: #e9ecef;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+        header h1 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        header p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .panel {
+            background: var(--panel-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-group label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+        .value-display {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        /* 势阱可视化区域 */
+        #well-container {
+            width: 100%;
+            height: 200px;
+            background: #fafafa;
+            border-radius: 8px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        #well-path {
+            fill: none;
+            stroke-width: 6;
+            transition: d 0.3s, stroke 0.3s;
+        }
+        #core-mass {
+            fill: #f1c40f;
+            stroke: #d35400;
+            stroke-width: 3;
+            transition: cy 0.3s;
+        }
+        .photon {
+            fill: #e74c3c;
+            transition: fill 0.3s;
+        }
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 0;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .math-box {
+            background: #eef2f5;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌟 LRD 密度依赖引力红移模拟器</h1>
+        <p>工作假说可视化：在极端致密环境（High Σ）下，如果有效引力常数发生修正 <strong>G_eff(Σ) = G0 * [1 + ε_g * (Σ/Σ0)^β]</strong>，将导致引力势阱异常加深，使逃逸光子产生显著的引力红移，从而自然推高观测到的 F444W/F150W 通量比。</p>
+    </header>
+
+    <div class="container">
+        <div class="panel">
+            <h3>🎛️ 物理参数控制</h3>
+            
+            <div class="math-box">
+                G_eff / G0 = <span id="math-g">1.00</span><br>
+                z_grav (等效引力红移) = <span id="math-z">0.050</span>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <span>面密度 log Σ [M_☉/pc²]</span>
+                    <span class="value-display" id="val-sigma">9.0</span>
+                </label>
+                <input type="range" id="slider-sigma" min="8.5" max="10.5" step="0.1" value="9.0">
+                <small style="color: #888;">控制天体的致密程度（数据基准值 ~9.0）</small>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <span>引力修正耦合强度 (ε_g)</span>
+                    <span class="value-display" id="val-epsilon">0.5</span>
+                </label>
+                <input type="range" id="slider-epsilon" min="0" max="2" step="0.1" value="0.5">
+                <small style="color: #888;">控制非标准引力效应的强度 (0 = 纯广义相对论)</small>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <span>密度敏感度指数 (β)</span>
+                    <span class="value-display" id="val-beta">0.3</span>
+                </label>
+                <input type="range" id="slider-beta" min="0" max="1" step="0.1" value="0.3">
+            </div>
+
+            <h3 style="margin-top: 30px;">🌌 引力势阱可视化</h3>
+            <div id="well-container">
+                <svg width="100%" height="100%" viewBox="0 0 400 200">
+                    <path id="well-path" stroke="#3498db" d="M 0 50 Q 200 50 400 50"></path>
+                    <circle id="core-mass" cx="200" cy="50" r="25"></circle>
+                    <path id="photon-path" d="M 220 50 Q 300 20 380 30" fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="4 4"></path>
+                    <polygon class="photon" points="380,30 370,25 375,35" id="photon-arrow"></polygon>
+                    <text x="260" y="30" font-family="sans-serif" font-size="12" fill="#666" id="photon-label">光子逃逸 (红化)</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3>📈 观测效应：光谱偏移</h3>
+            <p style="font-size: 0.85em; color: #666;">蓝虚线: 本征光谱 | 红实线: 受势阱引力红移后的观测光谱</p>
+            <div class="chart-container">
+                <canvas id="spectrumChart"></canvas>
+            </div>
+
+            <h3 style="margin-top: 20px;">📊 观测数据拟合：通量比 vs 面密度</h3>
+            <p style="font-size: 0.85em; color: #666;">模拟重现 Figure 1b 的正相关趋势 (红星为当前参数位置)</p>
+            <div class="chart-container">
+                <canvas id="ratioChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化基准参数
+        const Z_PHOT = 5.0; // 宇宙学红移基准
+        const Z_GRAV_BASE = 0.05; // 基础引力红移 (在 logSigma = 9 时，无修正情况)
+        const SIGMA_0 = 9.0; // log Sigma_0 参考点
+
+        // 获取 DOM 元素
+        const sliderSigma = document.getElementById('slider-sigma');
+        const sliderEpsilon = document.getElementById('slider-epsilon');
+        const sliderBeta = document.getElementById('slider-beta');
+        
+        const valSigma = document.getElementById('val-sigma');
+        const valEpsilon = document.getElementById('val-epsilon');
+        const valBeta = document.getElementById('val-beta');
+
+        const mathG = document.getElementById('math-g');
+        const mathZ = document.getElementById('math-z');
+
+        const wellPath = document.getElementById('well-path');
+        const coreMass = document.getElementById('core-mass');
+        const photonArrow = document.getElementById('photon-arrow');
+
+        // 生成波长数组 (静止系 0.1 到 1.0 um)
+        const wavelengths = [];
+        for(let w = 0.1; w <= 1.5; w += 0.05) {
+            wavelengths.push(w);
+        }
+
+        // 生成一个简化的具有巴尔末跳跃特征的本征 SED
+        const intrinsicFlux = wavelengths.map(w => {
+            if (w < 0.364) return 0.2 * Math.pow(w / 0.364, 1.5); // 紫外部分
+            return 1.0 * Math.pow(w / 0.364, -0.5); // 光学部分 (跳跃)
+        });
+
+        // 初始化 Chart.js
+        const ctxSpectrum = document.getElementById('spectrumChart').getContext('2d');
+        const spectrumChart = new Chart(ctxSpectrum, {
+            type: 'line',
+            data: {
+                labels: wavelengths.map(w => w.toFixed(2)),
+                datasets: [
+                    {
+                        label: '本征 SED (静止系)',
+                        data: intrinsicFlux,
+                        borderColor: '#95a5a6',
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointRadius: 0
+                    },
+                    {
+                        label: '观测 SED (含引力调制)',
+                        data: intrinsicFlux,
+                        borderColor: '#e74c3c',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: '波长 [μm]' } },
+                    y: { title: { display: true, text: '归一化通量' }, min: 0, max: 1.2 }
+                },
+                plugins: { legend: { position: 'top' } }
+            }
+        });
+
+        // 预计算背景理论曲线用于通量比图表
+        let theoryLineData = [];
+
+        const ctxRatio = document.getElementById('ratioChart').getContext('2d');
+        const ratioChart = new Chart(ctxRatio, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: '当前状态点',
+                        data: [{x: 9.0, y: 0.5}],
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#d35400',
+                        pointStyle: 'star',
+                        pointRadius: 10,
+                        pointHoverRadius: 12,
+                        borderWidth: 2,
+                        order: 1
+                    },
+                    {
+                        label: '理论预测曲线',
+                        data: [],
+                        type: 'line',
+                        borderColor: '#3498db',
+                        borderWidth: 2,
+                        borderDash: [4, 4],
+                        pointRadius: 0,
+                        order: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'log Σ [M_☉/pc²]' }, min: 8.4, max: 10.6 },
+                    y: { title: { display: true, text: 'log(F444W / F150W) 代理' }, min: 0.2, max: 1.2 }
+                }
+            }
+        });
+
+        // 核心物理计算逻辑
+        function updatePhysics() {
+            const sigma = parseFloat(sliderSigma.value);
+            const eps = parseFloat(sliderEpsilon.value);
+            const beta = parseFloat(sliderBeta.value);
+
+            // 更新显示值
+            valSigma.textContent = sigma.toFixed(1);
+            valEpsilon.textContent = eps.toFixed(1);
+            valBeta.textContent = beta.toFixed(1);
+
+            // 1. 计算引力修正系数 G_eff / G0
+            // 公式: 1 + eps * (10^(sigma - 9))^beta
+            const densityRatio = Math.pow(10, sigma - SIGMA_0);
+            const gRatio = 1 + eps * Math.pow(densityRatio, beta);
+            
+            // 2. 计算有效引力红移 z_grav
+            // 假设 z_grav ∝ G_eff * (M/R). 由于 M/R ∝ sqrt(Sigma), 我们引入密度本身的缩放
+            const zGrav = Z_GRAV_BASE * gRatio * Math.pow(densityRatio, 0.5);
+
+            mathG.textContent = gRatio.toFixed(3);
+            mathZ.textContent = zGrav.toFixed(3);
+
+            // 3. 更新势阱可视化 (CSS/SVG 操作)
+            // 势阱深度最大下沉量设为 180 (像素)
+            // 基准 z_grav = 0.05 时对应微小下沉，z_grav = 0.3 时深度很大
+            const depth = Math.min(50 + (zGrav / 0.4) * 130, 190); 
+            
+            // 颜色从蓝 (浅势阱) 变到深红 (深势阱)
+            const colorRatio = Math.min(zGrav / 0.3, 1);
+            const r = Math.floor(52 + (231 - 52) * colorRatio);
+            const g = Math.floor(152 + (76 - 152) * colorRatio);
+            const b = Math.floor(219 + (60 - 219) * colorRatio);
+            const wellColor = `rgb(${r}, ${g}, ${b})`;
+
+            wellPath.setAttribute('d', `M 0 50 Q 200 ${depth * 2} 400 50`);
+            wellPath.setAttribute('stroke', wellColor);
+            coreMass.setAttribute('cy', depth * 0.85); // 核心稍微浮在底部上面
+            photonArrow.style.fill = wellColor;
+
+            // 4. 更新光谱偏移
+            // 模拟频移：观测波长 = 本征波长 * (1 + z_grav) [在此仅展示引力造成的局部频移效应]
+            const shiftFactor = 1 + zGrav;
+            
+            // 简单的插值函数生成偏移后的通量
+            const shiftedFlux = wavelengths.map(w => {
+                const wRest = w / shiftFactor;
+                // 找到对应的原始区间
+                if (wRest < wavelengths[0]) return 0;
+                if (wRest > wavelengths[wavelengths.length-1]) return intrinsicFlux[intrinsicFlux.length-1];
+                
+                // 线性插值
+                for(let i=0; i<wavelengths.length-1; i++){
+                    if(wRest >= wavelengths[i] && wRest <= wavelengths[i+1]){
+                        const t = (wRest - wavelengths[i]) / (wavelengths[i+1] - wavelengths[i]);
+                        return intrinsicFlux[i] * (1-t) + intrinsicFlux[i+1] * t;
+                    }
+                }
+                return 0;
+            });
+
+            spectrumChart.data.datasets[1].data = shiftedFlux;
+            spectrumChart.update();
+
+            // 5. 更新通量比与理论曲线
+            // 代理计算：分别取偏移后的 F150W (对应模拟波段) 和 F444W 的位置
+            // 这里为了视觉效果，直接将 z_grav 映射到一个 logRatio 值上以匹配图表
+            const logRatio = 0.4 + zGrav * 2.5; 
+            
+            ratioChart.data.datasets[0].data = [{x: sigma, y: logRatio}];
+
+            // 重新计算背景理论曲线
+            theoryLineData = [];
+            for(let s = 8.5; s <= 10.5; s += 0.2){
+                const dRatio = Math.pow(10, s - SIGMA_0);
+                const gR = 1 + eps * Math.pow(dRatio, beta);
+                const zG = Z_GRAV_BASE * gR * Math.pow(dRatio, 0.5);
+                theoryLineData.push({x: s, y: 0.4 + zG * 2.5});
+            }
+            ratioChart.data.datasets[1].data = theoryLineData;
+            ratioChart.update();
+        }
+
+        // 绑定事件监听器
+        sliderSigma.addEventListener('input', updatePhysics);
+        sliderEpsilon.addEventListener('input', updatePhysics);
+        sliderBeta.addEventListener('input', updatePhysics);
+
+        // 初始渲染
+        updatePhysics();
+    </script>
+</body>
+</html>

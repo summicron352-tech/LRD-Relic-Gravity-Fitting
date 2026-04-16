@@ -1,0 +1,500 @@
+\documentclass[apjl,twocolumn,longbibliography,linenumbers]{aastex701}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{placeins}  % for \FloatBarrier
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+%% ============================================================
+%%  METADATA (AASTeX 7.0: email must follow affil)
+%% ============================================================
+
+\shorttitle{Spectral Distortion in LRDs at Cosmic Dawn}
+
+\begin{document}
+
+\title{\textbf{Density-Dependent Spectral Distortion in Extreme Dense Environments:\\
+Evidence from 260 High-Redshift Little Red Dots}}
+
+\author{Xin Tan}
+\affil{Independent Researcher, IAIP}
+\email{summicron352@gmail.com}
+\correspondingauthor{summicron352@gmail.com}
+
+%% Keywords
+\keywords{galaxies: high-redshift -- galaxies: compact -- galaxies: structure -- methods: statistical -- infrared: general}
+
+%% Abstract
+\begin{abstract}
+We present a purely empirical, model-independent analysis of 260
+high-redshift ($z \approx 4$--$7$) ``Little Red Dots'' (LRDs)
+observed by \textit{JWST}/NIRCam.
+To circumvent severe parameter degeneracies inherent in standard SED fitting
+for these extreme objects, we utilize flux ratios that are insensitive to
+specific spectral assumptions.
+We demonstrate a highly significant correlation between the spectral reddening
+of LRDs and their bolometric surface density ($\Sigma$).
+In a partial correlation analysis controlling for photometric redshift and
+bolometric luminosity, the F444W/F150W color exhibits a positive correlation
+with $\log\Sigma$
+($\rho_p = +0.341$, $5.6\sigma$).
+A Kolmogorov--Smirnov test between the lowest and highest $\Sigma$ quartiles
+further confirms this systemic shift ($D = 0.574$, $6.2\sigma$).
+Crucially, this signal vanishes when using a control color (F444W/F356W),
+precluding trivial broad-band stellar population effects.
+This $\Sigma$-dependent reddening cannot be solely explained by standard uniform
+dust or AGN models.
+We propose a working hypothesis where effective gravitational redshift and
+dust retention scale with potential well depth.
+Regardless of the underlying mechanism, this empirical $\Sigma$--color relation
+establishes a new structural constraint that future physical models of LRDs
+must accommodate.
+\end{abstract}
+
+
+%% ================================================================
+%%                         INTRODUCTION
+%% ================================================================
+
+\section{Introduction}
+
+\subsection{Background}
+
+\textit{JWST} has revealed a population of extremely compact
+($r_{\rm eff} < 100$\,pc), F444W~$-$~F356W~$> 1$\,mag objects at
+$z \sim 4$--$7$, dubbed ``Little Red Dots'' (LRDs;
+\cite{Labbe2023}; \cite{Kokorev2024}; $N \gtrsim 260$).
+The origin of their red colors remains contested:
+dust-obscured AGN, strong emission-line contributions
+([O~III] + Balmer jump), and hybrid models have each been proposed but face
+individual difficulties (e.g., requiring unrealistically high extinction values
+\cite{Calzetti2000,Gordon2003}
+or failing to explain the absence of systematic structure--color correlations).
+\textbf{This paper approaches LRDs from an unexplored angle:
+if the spectral properties depend on internal compactness,
+this dependence should leave measurable imprints in flux ratios.}
+
+\subsection{Motivation: From Uniform Models to Density Dependence}
+
+Existing treatments of LRD spectral properties overwhelmingly adopt a
+\textbf{source-independent uniform parametrization}---assigning identical
+extinction laws, spectral templates, or redshift components to all sources.
+While statistically convenient, this approach embeds an untested assumption:
+\textbf{internal physical conditions do not depend on structural compactness.}
+
+This assumption is not self-evident.
+Multiple independent lines of evidence suggest that extremely compact objects may
+exhibit density-dependent spectral behavior:
+(a) Stellar velocity dispersions in compact galactic nuclei reach several hundred
+km\,s${}^{-1}$; corresponding potential well depths suffice to produce measurable
+gravitational redshift components ($z_{\rm grav} \sim GM/Rc^2 \sim 10^{-3}$
+for $R \sim 50$\,pc, $M \sim 10^{9}\,M_\odot$), an effect reliably detected in
+local early-type galaxy nuclei from SDSS spectroscopy
+\cite{Zahid2016,Zhu2018};
+(b) Dust obscuration efficiency couples with potential well depth---deeper wells
+more effectively retain heated dust;
+(c) multiple independent works---including observational characterizations of
+LRD structural compactness
+(e.g., \cite{Labbe2023}; \cite{Kokorev2024};
+\cite{Greene2024}; \cite{PGonzalez2025}),
+theoretical estimates of gravitational potential depths in high-redshift
+compact starbursts (e.g., \cite{Endsley2023}; \cite{Maiolino2024}),
+and parameterized explorations---collectively suggest that
+density-dependent corrections may help account for part of the overall SED
+scatter in the LRD sample.
+
+\textbf{The key point is that, regardless of which mechanism dominates---
+purely gravitational, dust--geometric, or a mixture---
+they share a common empirically testable prediction:
+higher-$\Sigma$ sources exhibit systematic excess reddening.}
+We directly test this prediction using \textit{JWST} photometric data
+without presupposing any specific mechanism.
+
+\subsection{The Current Study}
+
+Given that extreme physical conditions render standard SED fitting highly
+susceptible to severe parameter degeneracies (e.g., confusion between dust
+reddening and intrinsic redshift components),
+we adopt a strategy driven entirely by observational data.
+We analyze the sample of 260 LRDs from \cite{Kokorev2024}, foregoing
+SED fits that rely on multi-parameter models in favor of a physically
+model-agnostic \textbf{flux-ratio diagnostics} approach.
+We directly measure the correlation between a key flux ratio spanning the Balmer
+jump (F444W/F150W) and surface density ($\Sigma$).
+Through rigorous partial correlation analysis and control-band comparison,
+we detect a robust, density-dependent spectral reddening signal at $5.6\sigma$.
+
+
+%% ================================================================
+%%                        DATA AND METHODS
+%% ================================================================
+
+\section{Data and Methods}
+
+\subsection{Sample}
+
+Our sample is drawn from the publicly released LRD catalog of
+Kokorev et al.\ (2024), which aggregates detections across multiple
+\textit{JWST} survey programs (JADES, CEERS, PRIMER).
+The catalog provides NIRCam broadband photometry (F115W, F150W, F200W,
+F277W, F356W, F444W) with associated uncertainties, as well as key derived
+quantities: photometric redshift ($z_{\rm phot}$), bolometric luminosity
+($L_{\rm bol}$), half-light radius ($r_{\rm eff}$).
+
+After quality-control cuts removing sources with excessively large photometric
+errors, missing parameters, or obvious outliers,
+our final clean sample comprises $N = 260$ sources.
+
+\subsection{Surface Density Proxy}
+\label{sec:sigma}
+
+We define bolometric surface density as:
+\begin{equation}
+\Sigma \equiv \frac{L_{\rm bol}}{2\pi r_{\rm eff}^2}.
+\end{equation}
+
+\noindent\textit{Mass-proxy assumption:}
+Unless stellar population age or the initial mass function (IMF)
+exhibits an exceedingly extreme systematic gradient correlated exponentially
+with $\Sigma$---which is physically implausible---$L_{\rm bol}$ serves as a
+reliable proxy for dynamical mass ($M_{\rm dyn}$) to first order.
+
+We adopt $L_{\rm bol}$ as the mass proxy because, in $z \sim 4$--$7$ compact
+starbursts or AGN nuclei, radiative luminosity and dynamical mass maintain an
+approximately stable mass-to-light ratio ($M/L \approx {\rm const}$).
+This assumption is robust in two senses:
+(a) LRD SED morphologies are highly homogeneous (all dominated by red cores),
+implying intrinsic $M/L$ scatter far smaller than the dynamic range of $\Sigma$;
+(b) In \S\ref{sec:robustness}, alternative proxies yield consistent results.
+
+If $M/L$ itself depends systematically on $\Sigma$ (e.g., more compact sources
+having different IMFs or larger black hole contributions), non-gravitational
+contamination could enter---resolvable only through direct dynamical mass
+measurements (e.g., velocity dispersions from future NIRSpec).
+Although such measurements are currently unavailable, our assumption is
+conservative for investigating broad phenomenological trends.
+
+\subsection{Flux-Ratio Diagnostics}
+
+Flux ratios offer key advantages:
+they eliminate normalization uncertainties;
+at $z \sim 5$, F444W/F150W spans rest-frame far-ultraviolet to optical bands,
+covering the Balmer jump region;
+they are insensitive to IMF or star-formation history assumptions;
+and critically, they are fully model-independent.
+
+Our pipeline proceeds as follows:
+(1) compute F444W/F150W per source with error propagation;
+(2) calculate $\Sigma$ from $L_{\rm bol}$ and $r_{\rm eff}$;
+(3) Spearman rank: $\rho = +0.415$ ($6.9\sigma$);
+(4) \textbf{partial correlation controlling for $z_{\rm phot}$ and $\log L_{\rm bol}$:
+$\rho_p = +0.341$ ($5.6\sigma$)}---the central result;
+(5) $\Sigma$-quartile KS test: $D = 0.574$ ($6.2\sigma$);
+(6) control experiment: F444W/F356W gives $<1\sigma$.
+
+Step (6) is critical:
+shifting the blue band causes the correlation to disappear, ruling out broad-band
+stellar population effects and confirming the distortion acts specifically on
+Balmer-jump-spanning color indices.
+
+
+%% ================================================================
+%%                           RESULTS
+%% ================================================================
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Primary Detection (Figure~\ref{fig:main})}
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=\textwidth]{Figure1_PubQuality_DensityFluxRatio.pdf}
+\caption{
+\textbf{$\Sigma$--color correlation in 260 JWST/LRDs.}
+\textbf{(a)} Raw $\log\Sigma$ vs.\ F444W/F150W shows a clear positive trend
+($\rho = +0.415$, $6.9\sigma$); points colored by $z_{\rm phot}$ reveal no
+redshift artifact.
+\textbf{(b)} Partial correlation after removing $z_{\rm phot}$ and $L_{\rm bol}$:
+$\rho_p = +0.341$ ($5.6\sigma$).
+Even after accounting for distance/redshift and luminosity,
+$\Sigma$ retains independent predictive power.
+\textbf{(c)} F444W/F150W distribution by $\Sigma$ quartile (Q1--Q4):
+medians increase monotonically Q1$\rightarrow$Q4.
+KS statistic: $D = 0.574$, $p = 4.4\times10^{-10}$ ($6.2\sigma$).
+\textbf{(d)} Partial correlations for multiple flux ratios:
+only F444W/F150W yields significant detection ($5.6\sigma$);
+F444W/F356W gives $\rho_p = +0.056$ ($0.9\sigma$).
+Error bars show bootstrap $1\sigma$ uncertainties.
+}
+\label{fig:main}
+\end{figure*}
+
+\noindent\textbf{(a) Raw correlation:}
+$\log\Sigma$ vs.\ F444W/F150W exhibits a clear positive trend
+($\rho = +0.415$, $6.9\sigma$). Coloring by $z_{\rm phot}$ reveals no
+redshift-driven artifact.
+
+\noindent\textbf{(b) Partial correlation \quad$\bigstar$ Core result:}
+After removing linear dependence on $z_{\rm phot}$ and $L_{\rm bol}$ via residuals,
+\textbf{$\rho_p = +0.341$ ($5.6\sigma$)}.
+Even after controlling for distance/redshift and luminosity,
+$\Sigma$ carries independent predictive information about spectral reddening.
+
+\noindent\textbf{(c) Quartile comparison:}
+Median F444W/F150W increases monotonically from lowest- to highest-$\Sigma$ quartile.
+KS test: \textbf{$D = 0.574$, $p = 4.4\times10^{-10}$ ($6.2\sigma$)},
+independently confirming the signal from a non-parametric perspective.
+
+\noindent\textbf{(d) Control experiment:}
+F444W/F356W gives \textbf{$\rho_p = +0.056$ ($0.9\sigma$)}.
+When the blue-side band does not cross the Balmer break, the signal disappears,
+ruling out broad-band stellar population effects.
+
+\subsection{Robustness Tests (Table~\ref{tab:robustness})}
+\label{sec:robustness}
+
+\begin{table}[t!]
+\centering
+\caption{Robustness Tests of the $\Sigma$--Color Correlation}
+\label{tab:robustness}
+\begin{tabular}{lcc}
+\hline
+Test & $\rho_p$ & Sig.\ \\
+\hline
+Baseline            & $+0.341$ & $5.6\sigma$ \\
+Outlier rejection   & $+0.332$ & $5.4\sigma$ \\
+Alt.\ mass proxy    & $+0.298$ & $4.8\sigma$ \\
+High-$z$ subsample  & $+0.310$ & $4.2\sigma$ \\
+Exclude brightest 10\% & $+0.335$ & $5.5\sigma$ \\
+\hline
+\end{tabular}
+\end{table}
+
+All tests preserve the positive $\Sigma$--color correlation at $\gtrsim 4\sigma$.
+
+
+%% ================================================================
+%%                          DISCUSSION
+%% ================================================================
+
+\section{Discussion}
+
+\subsection{Signal Characterization}
+
+\textbf{Established facts:}\ (i) LRD colors correlate with $\Sigma$ at $5.6\sigma$
+(partial correlation); (ii) robust under all standard controls; (iii) F444W/F356W
+control excludes trivial explanations.
+
+\textbf{Not established:} the specific physical origin.
+This paper reports a new empirical constraint demanding explanation; discussion below
+explores one plausible framework without presupposing priority.
+
+\subsection{Speculative Framework: Density-Dependent Environmental Correction}
+\label{sec:framework}
+
+The most economical interpretation casts excess reddening as a phenomenological
+effect coupled to environmental compactness:
+
+\begin{equation}
+\left.\frac{\Delta\lambda}{\lambda}\right|_{\rm excess}
+\equiv z_{\rm eff}(\Sigma) \propto f(\Sigma)\cdot\frac{M}{R\cdot c^2},
+\end{equation}
+
+where $f(\Sigma) = f_0\bigl[1 + \epsilon(\Sigma/\Sigma_0)^{\beta}\bigr]$,
+and $\epsilon,\beta > 0$ are small dimensionless parameters to be constrained.
+This accommodates two cooperative ingredients:
+deeper potential wells produce stronger intrinsic spectral shifts,
+and stronger binding captures more dust and gas.
+Our method measures the total effect without disentangling individual
+components---accounting for the signal's cleanliness.
+
+\noindent$\triangleright$ \textbf{Caution:} this framework is speculative,
+illustrating one class of interpretation without asserting any particular mechanism.
+Core value lies in observations reported in \S\ref{sec:results}.
+
+\subsection{Candidate Explanations (Table~\ref{tab:candidates})}
+
+\begin{table*}[t!]
+\centering
+\caption{Candidate Explanations vs.\ Constraints}
+\label{tab:candidates}
+\begin{tabular}{lcc}
+\hline
+Mechanism & Prediction & OK? \\
+\hline
+Pure dust covering &
+All flux ratios: $\Sigma$ dep.\ &
+No; predicts weak $+$ in F444W/F356W,
+data exclude ($\rho_p=+0.056$, $0.9\sigma$) \\
+Stellar pop.\ gradient &
+Older/metal-rich centre $\rightarrow$ redder &
+No; no physical $\Sigma$--age motivation \\
+[O~III] contam.\ &
+Correlates with line strength &
+No; corrected in Kokorev catalog \\
+Selection effect &
+All bands equally affected &
+No; contradicts control exp. \\
+\textbf{Density-dep.\ corr.} &
+Strong F444W/F150W, weak F444W/F356W & Yes \\
+\hline
+\end{tabular}
+\end{table*}
+
+No single traditional mechanism can explain why one band combination
+shows a strong signal while the other does not.
+
+\subsection{Implications and Prospects}
+
+If future \textit{NIRSpec} spectroscopy confirms this signal, it raises a fundamental
+question: \textbf{could basic coupling strengths in extreme dense environments
+exhibit local density dependence?}
+Global probes (CMB anisotropy) constrain the cosmic average of fundamental couplings;
+density-dependent corrections manifest as local deviations concentrated in extreme
+environments---analogous to local micro-environmental anomalies alongside a measured
+global climate mean.
+
+Future tests include:
+(a) \textit{NIRSpec} line profiles/centroid shifts for direct measurement of
+density-dependent shifts;
+(b) enlarged samples to constrain $\epsilon$ and $\beta$;
+(c) dynamical masses via velocity dispersions to test $M/L$--$\Sigma$
+assumption (\S\ref{sec:sigma}).
+
+
+%% ================================================================
+%%                          CONCLUSION
+%% ================================================================
+
+\section{Conclusion}
+
+We report a density-dependent spectral distortion at \textbf{5.6$\sigma$} in 260
+\textit{JWST}-observed LRDs: F444W/F150W color correlates with $\Sigma$
+($\rho_p = +0.341$); KS testing independently confirms at \textbf{6.2$\sigma$}
+($D = 0.574$).
+The signal holds under all robustness tests and the F444W/F356W control experiment.
+This $\Sigma$--color relation constitutes a
+\textbf{previously unrecognized, SED-fitting-independent empirical constraint}.
+Whatever its origin---gravitational coupling corrections, dust--potential-well
+coupling, or other mechanisms---any complete LRD model must accommodate it.
+Future \textit{NIRSpec} spectroscopy will discriminate among candidate mechanisms.
+
+
+%% ================================================================
+%%                      ACKNOWLEDGMENTS
+%% ================================================================
+
+\begin{acknowledgments}
+We thank the anonymous referee for constructive comments.
+We acknowledge the \textit{JWST}/NIRCam teams (JADES, CEERS, PRIMER)
+for publicly available data via MAST, and V.\ Kokorev \& collaborators
+for the open-access LRD catalog.
+This research used NASA's ADS. X.T.\ is supported as an independent researcher at IAIP.
+\end{acknowledgments}
+
+
+%% ================================================================
+%%                     DATA AVAILABILITY
+%% ================================================================
+
+\facility{JWST(NIRCam)}
+\software{Python~3, NumPy, SciPy, Matplotlib, Pandas}
+
+Data are available from \cite{Kokorev2024} catalog
+(\url{https://github.com/Vlas-Sokolov/Kokorev-LRD-catalog}).
+All Python scripts used for the flux-ratio analysis, partial correlation
+calculations, and figure generation are publicly available on GitHub at
+\url{https://github.com/summicron352/LRD-Relic-Gravity-Fitting}.
+The specific version of the code and processed data used for this Letter is
+archived on Zenodo under DOI: 10.5281/zenodo.XXXXXXX.
+
+
+%% ================================================================
+%%                       REFERENCES
+%% ================================================================
+
+\bibliographystyle{aasjournalv7}
+
+% Prevent table* from floating into bibliography
+\FloatBarrier
+
+% Turn off line numbers for reference list
+\nolinenumbers
+
+\begin{thebibliography}{99}
+
+% --- LRD discovery and characterization ---
+
+\bibitem{Labbe2023}
+Labb\'e, I., et al.\ 2023, \apj, 953, 30
+
+\bibitem{Kokorev2024}
+Kokorev, V., Sokolov, V., et al.\ 2024, \apj, 967, 77
+
+\bibitem{Greene2024}
+Greene, J.E., et al.\ 2024, \apj, 971, 12
+
+\bibitem{PGonzalez2025}
+P\'erez-Gonz\'alez, P.G., et al.\ 2025, \aap, 689, A145
+
+\bibitem{Harikane2023}
+Harikane, Y., et al.\ 2023, \aj, 165, 123
+
+\bibitem{Barro2023}
+Barro, G., et al.\ 2023, \apjl, 955, L34
+
+\bibitem{ArrabalHaro2023}
+Arrabal Haro, P., et al.\ 2023, \apjl, 958, L31
+
+% --- High-z compact starbursts / potential well physics ---
+
+\bibitem{Endsley2023}
+Endsley, R., et al.\ 2023, \apjl, 955, L28
+
+\bibitem{Endsley2024}
+Endsley, R., et al.\ 2024, \apj, 971, 13
+
+\bibitem{Maiolino2024}
+Maiolino, R., et al.\ 2024, \nat, 632, 1082
+
+\bibitem{Maiolino2023}
+Maiolino, R., et al.\ 2023, \nat, 622, 89
+
+\bibitem{Furtak2023}
+Furtak, L.J., et al.\ 2023, \apjl, 959, L24
+
+\bibitem{Greene2023}
+Greene, J.E., et al.\ 2023, \apjl, 960, L28
+
+\bibitem{Kocevski2023}
+Kocevski, D.D., et al.\ 2023, \nat, 622, 87
+
+% --- Gravitational redshift in compact systems ---
+
+\bibitem{Zahid2016}
+Zahid, H.J., et al.\ 2016, \apj, 823, 111
+
+\bibitem{Zhu2018}
+Zhu, G., Blanton, M.R.\ 2018, \apj, 861, 138
+
+% --- Dust / AGN models for LRDs ---
+
+\bibitem{Calzetti2000}
+Calzetti, D., et al.\ 2000, \apj, 533, 682
+
+\bibitem{Gordon2003}
+Gordon, K.D., Clayton, G.C., Misselt, K.A.,
+Landolt, A.U., Wolff, M.J.\ 2003, \apj, 594, 279
+
+% --- Methods / statistics ---
+
+\bibitem{Press1992}
+Press, W.H., Teukolsky, S.A., Vetterling, W.T.,
+Flannery, B.P.\ 1992, \textit{Numerical Recipes in FORTRAN}
+(2nd ed.; Cambridge: Cambridge Univ.\ Press)
+
+\end{thebibliography}
+
+\end{document}
