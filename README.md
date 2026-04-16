@@ -99,7 +99,8 @@ All analysis uses the public LRD catalog from **Kokorev et al. (2024)**, via [Gi
 
 ## ⚠️ Disclaimer
 
-This repository is archived on **Zenodo** (see Paper II Data Availability section). If the two repos diverge, the **Zenodo DOI** always points to the canonical snapshot used in the published paper.
+This repository is archived on **Zenodo**:
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.19587085-blue)](https://doi.org/10.5281/zenodo.19587085)
 
 ---
 
