@@ -1,0 +1,33 @@
+{
+  "task_01": {
+    "rho_p_median": 0.46623209037002133,
+    "rho_p_ci_low": 0.40845498397222524,
+    "rho_p_ci_high": 0.5184514848307952,
+    "rho_p_gt_025": 1.0,
+    "verdict": "PASS"
+  },
+  "task_02": {
+    "rho_p_ctrl_z": 0.5407053861350336,
+    "rho_p_ctrl_z_lbol": 0.40853737156373243,
+    "rho_p_ctrl_z_sigma_lbol": 0.32605361088757184,
+    "rho_p_ctrl_z_lbol_mstar": 0.5444163847108044,
+    "sigma_ctrl_z_sigma_lbol": 5.464276388686366,
+    "verdict": "PASS"
+  },
+  "task_03": {
+    "n_pairs": 1626,
+    "n_positive": 797,
+    "reversal_rate": 0.490159901599016,
+    "binomial_p": 0.4420341987319802,
+    "verdict": "CHECK"
+  },
+  "task_04": {
+    "delta_mag_median": 1.1597805102936004e-07,
+    "delta_mag_68_low": 6.875496114578682e-08,
+    "delta_mag_68_high": 1.9368533352763254e-07,
+    "delta_mag_95_low": 3.8144667871761205e-08,
+    "delta_mag_95_high": 3.0863877552354163e-07,
+    "fraction_explained_median": 4.695467653010527e-06,
+    "verdict": "PASS"
+  }
+}

@@ -1,0 +1,12 @@
+Test,Sample,N,Statistic,p-value,Effect
+Result I: Color–Σ (Pearson),A (260),260,ρ = -0.428,5.139466413680162e-13,Δcolor=-0.51 mag
+Result I: Color–Σ (Spearman),A (260),260,ρ = -0.538,6.4257088656119465e-21,Δcolor=-0.51 mag
+Result I: Color–Σ (KS group),A (260),260,D = 0.423,8.177914300348352e-11,
+Result I: Color–Σ (t-test group),A (260),260,t = -6.55,3.213790076933319e-10,d=-0.82
+Result I: Partial ρ (ctrl z),A (260),260,ρ = -0.427,5.809378500319378e-13,
+Result I: Partial ρ (ctrl z+M),A (260),260,ρ = -0.283,3.57062387539271e-06,
+Result II: FWHM–Σ (Pearson),B (36),36,ρ = +0.632,3.544729540121188e-05,ΔFWHM=+361 km/s (+18.7%)
+Result II: FWHM–Σ (Spearman),B (36),36,ρ = +0.581,0.00019987172164509387,ΔFWHM=+361 km/s (+18.7%)
+Result II: FWHM–Σ (t-test group),B (36),36,t = 3.26,0.0033004389875609585,d=1.12
+Result II: FWHM–Σ (M-W U),B (36),36,U = 248,0.006828377092313651,
+Result II: Partial ρ (ctrl z),B (36),36,ρ = +0.626,4.4649661410953986e-05,

@@ -1,109 +1,145 @@
-# LRD Relic Gravity Fitting
+# Surface Density as the Organizing Principle of Little Red Dot Spectral Properties
 
-**Two complementary papers on JWST Little Red Dots (LRDs) by Tan Xin (Independent Researcher, IAIP)**
+**Author:** Tan Xin (Independent Researcher, IAIP)
+**Status:** Submitted to *The Astrophysical Journal* (ApJ)
+**Date:** May 2026
 
----
+## Overview
 
-## 📄 Paper I — MNRAS (Dual-Probe Paper)
-
-### *A Redshift-Dependent Spectral Distortion in 260 Little Red Dots: Constraints on Compactness Evolution at Cosmic Dawn*
-
-**Status:** Submitted to MNRAS (MN-26-1077-P, 2026-04-15) · Awaiting Reviewer Selection  
-**GitHub Repo:** [Dense-Environments-Evidence-from-260-High-Redshift-Little-Red-Dots](https://github.com/summicron352-tech/Dense-Environments-Evidence-from-260-High-Redshift-Little-Red-Dots)
-
-**Quick Links:** [Paper PDF](paper/LRDs_Paper_Draft_v2.pdf) · [Cover Letter](submission/CoverLetter_MNRAS.pdf)
+This repository contains the complete data, code, and figures supporting the paper **"Surface Density as the Organizing Principle of Little Red Dot Spectral Properties"**, which presents a density-dependent effective gravity framework $G_{\rm eff}(\Sigma)$ as the organizing principle behind the spectral properties of JWST-observed Little Red Dots (LRDs) at $z \sim 4$--$9$.
 
 ### Key Findings
-1. **83.5% of LRDs favor or accept** the gravitational redshift model ($z_{\rm dist}=0.17$) over dust attenuation
-2. **Single mechanism explains six independent puzzles**: V-shaped SED, MIR silence, X-ray darkness, low dust mass, FWHM paradox, [N II] weakness
-3. **Statistical over-constraint**: $P_{\rm joint}=1.8\times10^{-6}$ → predicts ~0 sources out of 260; observed **217** ($>100\sigma$)
 
-### Reproducibility (MNRAS Paper)
+- **5.6$\sigma$ partial-correlation** between stellar surface density $\Sigma$ and $F444W - F150W$ color in 260 JWST LRDs, controlling for redshift and luminosity
+- **34.6% color-reversal rate** in 1,626 control pairs: denser sources are systematically redder
+- **KS test** yields $D = 0.574$ (6.2$\sigma$) between density-separated color distributions
+- **JADES DR5 cross-validation** on 1,467 candidates confirms directional consistency
+- **SPARC local-universe test** yields $\chi^2_{\rm red} = 122.3$ (zero detection), validating the high-redshift specificity prediction
+
+## Repository Structure
+
+```
+.
+├── manuscript/                    # Full paper and cover letter
+│   ├── main.tex                   # ApJ manuscript source (aastex701)
+│   ├── main.pdf                   # Compiled manuscript
+│   ├── cover_letter.tex           # Submission cover letter
+│   ├── cover_letter.pdf           # Compiled cover letter
+│   └── aastex701.cls              # AAS LaTeX class file
+│
+├── code/                          # Analysis scripts (Python 3)
+│   ├── Figure1_pubquality_pathA.py          # Fig 1: Sample overview
+│   ├── control_pair_analysis.py             # Fig 3: Control-pair reversal analysis
+│   ├── jades_cross_validation_v2.py         # Fig 6: JADES DR5 cross-validation
+│   ├── sparc_GSigma_fitting.py              # Fig 7: SPARC local-universe test
+│   ├── mcmc_GSigma_corner.py                # Fig D1: MCMC posterior
+│   ├── magnitude_deepdive.py                # Fig E1: Gravitational redshift calculation
+│   ├── vms_spurs_figure_v3.py               # Fig F1: SPURS VMS comparison
+│   ├── plot_figure3_cosmos_pair.py          # Control pair visualization
+│   ├── plot_figure5_phase_transition.py     # Phase transition diagram
+│   ├── plot_master_paper.py                 # Master plotting utilities
+│   ├── plot_rubies_validation.py            # RUBIES spectroscopic validation
+│   ├── R1_R10_Robustness_Tests.py           # Robustness tests (R1-R10)
+│   └── uid_validate.py                      # UID formula 5-layer validation
+│
+├── figures/
+│   ├── main/                        # Paper figures (10 figures)
+│   │   ├── Fig1_SampleOverview.png
+│   │   ├── Fig2_Color_vs_Sigma.png
+│   │   ├── Fig3_ControlPair_Reversal.png
+│   │   ├── Fig4_FWHM_vs_Sigma.png
+│   │   ├── Fig6_JADES_vs_COSMOS.png
+│   │   ├── Fig7_SPARC_Chi2_ZeroDetection.png
+│   │   ├── FigD1_MCMC_CornerPlot.png
+│   │   ├── FigE1_Magnitude_DeepDive.png
+│   │   └── FigF1_SPURS_IMF.png
+│   └── robustness/                  # Supplementary robustness analysis
+│       ├── Fig_mcmc_corner_GSigma.png
+│       ├── Fig_mcmc_model_fit.png
+│       ├── Fig_mcmc_spearman_posterior.png
+│       ├── Fig_reversal_magnitude_histogram.png
+│       ├── Fig_deltamag_mc_distribution.png
+│       ├── Fig_R4_PerField_BarChart.png
+│       ├── Fig_R9_LOWESS_Slope.png
+│       ├── mcmc_results.json
+│       ├── dmag_mc_results.json
+│       ├── presubmission_analysis_results.json
+│       └── reversal_histogram_results.json
+│
+└── data/
+    ├── master_catalog/              # Primary LRD sample
+    │   ├── LRD_Master_Combined_AllParams.csv   # 260-source master catalog
+    │   ├── Kokorev_LRDs_Full.csv                # Original Kokorev et al. catalog
+    │   ├── PlotData_SampleA_260.csv             # Sample A plotting data
+    │   ├── PlotData_SampleB_36.csv              # Sample B plotting data
+    │   ├── lrd_table_v1.1.fits                  # FITS binary table
+    │   ├── LRD_density_analysis_results.csv     # Density analysis summary
+    │   ├── LRD_StellarMass_Estimates.csv        # Stellar mass estimates
+    │   ├── LRD_XRay_UpperLimits.csv             # Chandra X-ray upper limits
+    │   └── lrd_magnitude_analysis_v2.csv        # Magnitude deep-dive analysis
+    ├── control_pairs/               # Control pair analysis
+    │   ├── FULL_ControlPairs_AllCandidates.csv  # 1,626 control pairs
+    │   ├── control_pair_results.csv             # Pair matching results
+    │   ├── MasterPaper_ResultsTable.csv         # Master paper results
+    │   ├── Table1_Representative_Sources.csv    # Table 1 representative sources
+    │   ├── KS_Test_Results_AllParams.csv        # KS test (all parameters)
+    │   ├── KS_Test_Results_ThreeGroups.csv      # KS test (density groups)
+    │   └── GSigma_Parameters.csv                # $G_{\rm eff}(\Sigma)$ fit parameters
+    ├── rubies_validation/           # RUBIES spectroscopic validation
+    │   ├── RUBIES_BroadBalmer_Catalog.csv
+    │   ├── RUBIES_LRD_Catalog.csv
+    │   ├── RUBIES_LRD_Summary.csv
+    │   ├── RUBIES_LRD_xDJA_full.csv
+    │   ├── RUBIES_LRD_xDJA_matched.csv
+    │   └── RUBIES_Validation_Statistics.csv
+    ├── jades_cross_validation/      # JADES DR5 independent test
+    │   ├── JADES_LRD_candidates_v2.csv          # 1,467 JADES candidates
+    │   ├── cross_validation_summary_v2.csv      # Cross-validation summary
+    │   └── selection_cuts_v2.csv                # Applied selection criteria
+    └── robustness_results/          # Additional robustness tests
+        └── Triple_Scan_Results.csv              # Triple scan analysis results
+```
+
+## Data Sources
+
+- **LRD catalog:** Kokorev et al. (2024, 2025), via the [DJA (Data Release of JADES-Webb)](https://dja.webb.community/)
+- **Spectroscopy:** RUBIES survey (Goulding et al. 2024)
+- **Cross-validation:** JADES DR5 (Eisenstein et al. 2025)
+- **Local-universe test:** SPARC database (Lelli et al. 2016)
+- **X-ray limits:** Chandra COSMOS-Legacy (Civano et al. 2016)
+
+## How to Compile the Manuscript
+
 ```bash
-python3 agn_three_comp_final.py          # AGN 3-component SED fitting
-python3 gen_figure_overconstraint.py     # Statistical over-constraint figure
-python3 triple_scan_classification.py     # Triple-scan classification
+cd manuscript/
+pdflatex main.tex
+pdflatex main.tex
+pdflatex main.tex   # Triple pass for cross-references
 ```
 
----
+## Requirements
 
-## 📄 Paper II — APJL (Companion Letter)
+- Python >= 3.8 with `numpy`, `scipy`, `matplotlib`, `astropy`, `pandas`, `emcee`
+- LaTeX with `aastex701` class (included in `manuscript/`)
 
-### *Density-Dependent Spectral Distortion in Extreme Dense Environments: Evidence from 260 High-Redshift Little Red Dots*
+## Citation
 
-**Status:** Submitted to *The Astrophysical Journal Letters* (APJL)  
-**GitHub Repo:** [Dense-Environments-Evidence-from-260-High-Redshift-Little-Red-Dots](https://github.com/summicron352-tech/Dense-Environments-Evidence-from-260-High-Redshift-Little-Red-Dots)
+If you use this code or data, please cite:
 
-**Quick Links:** [Paper PDF](paper_apjl/PAPER_DRAFT_EN.pdf) · [Outline](paper_apjl/APJL_OUTLINE_v3.md) · [中文说明](paper_apjl/PAPER_DRAFT_ZH.md)
-
-### Key Results
-
-| Metric | Value |
-|--------|-------|
-| Partial correlation (ρₚ) | +0.341 |
-| Significance | **5.6σ** |
-| KS statistic (D) | 0.574 |
-| KS significance | **6.2σ** |
-| Control (F444W/F356W) | < 1σ ✓ |
-
-### Reproducibility (APJL Paper)
-```bash
-python3 code/apjl_pathA_flux_ratio_analysis.py  # Partial correlation analysis
-python3 code/apjl_pathB_free_zdist_fitting.py    # Free z_dist fitting
-python3 code/apjl_Figure1_pubquality.py         # Generate Figure 1
+```bibtex
+@article{Tan2026,
+  author = {Tan, Xin},
+  title = {Surface Density as the Organizing Principle of Little Red Dot Spectral Properties},
+  journal = {The Astrophysical Journal},
+  year = {2026},
+  note = {Submitted}
+}
 ```
 
----
+## License
 
-## 🗂️ Directory Structure
+This repository is released under the [MIT License](LICENSE).
 
-```
-LRD-Relic-Gravity-Fitting/
-├── paper/              # MNRAS paper (LaTeX + PDF)
-├── paper_apjl/         # APJL letter (LaTeX + PDF)
-│   ├── PAPER_DRAFT_EN.tex
-│   ├── PAPER_DRAFT_EN.pdf
-│   └── ...
-├── figures/            # All figures
-│   ├── *               # MNRAS paper figures
-│   └── apjl_*         # APJL letter figures
-├── data/
-│   ├── csv/           # MNRAS analysis results
-│   ├── fits/          # FITS catalog
-│   └── Kokorev_LRDs_Full.csv  # LRD catalog
-├── code/
-│   ├── *              # MNRAS analysis scripts
-│   └── apjl_*         # APJL analysis scripts
-└── submission/        # MNRAS cover letter
-```
+## Contact
 
----
-
-## 📦 Data
-
-All analysis uses the public LRD catalog from **Kokorev et al. (2024)**, via [GitHub](https://github.com/Vlas-Sokolov/Kokorev-LRD-catalog).
-
----
-
-## 📚 Citation
-
-**MNRAS Paper:**
-> Tan, X. 2026, MNRAS, submitted  
-> *A Redshift-Dependent Spectral Distortion in 260 Little Red Dots: Constraints on Compactness Evolution at Cosmic Dawn*
-
-**APJL Letter:**
-> Tan, X. 2026, ApJL, submitted  
-> *Density-Dependent Spectral Distortion in Extreme Dense Environments: Evidence from 260 High-Redshift Little Red Dots*
-
----
-
-## ⚠️ Disclaimer
-
-This repository is archived on **Zenodo**:
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.19587085-blue)](https://doi.org/10.5281/zenodo.19587085)
-
----
-
-## 📜 License
-
-MIT License.
+Tan Xin | summicron352@gmail.com | [IAIP](https://iaip.org)

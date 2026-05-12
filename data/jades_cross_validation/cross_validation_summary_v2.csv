@@ -1,0 +1,21 @@
+,value
+N_total,1467
+N_GOODS_S,1074
+N_GOODS_N,393
+Sigma_definition,log10(L_bol_proxy) - 2*log10(R)
+Color_definition,log10(F444W/F150W)
+Method,Partial Spearman ctrl z+Lbol
+partial_rho,0.13641198744056648
+partial_sigma,5.244855867544595
+raw_rho,0.5052894272369138
+raw_sigma,20.77821313565558
+ks_D,0.4312537405533603
+ks_sigma,16.572446727185707
+delta_color,0.3588635732059784
+size_proxy_rho,-0.1994232277575652
+size_proxy_sigma,7.7092464924424
+WRONG_old_rho,-0.5192050934370455
+WRONG_old_sigma,21.44862470382982
+COSMOS_rho,0.341
+COSMOS_sigma,5.6
+lbol_proxy_RMSE,0.43471911733985863

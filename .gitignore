@@ -9,3 +9,6 @@
 __pycache__/
 *.pyc
 compile_out.txt
+*.egg-info/
+dist/
+build/

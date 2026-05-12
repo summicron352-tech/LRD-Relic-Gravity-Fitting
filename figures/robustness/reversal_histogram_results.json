@@ -1,0 +1,17 @@
+{
+  "total_pairs": 1626,
+  "type_I": 648,
+  "type_I_conflict": 234,
+  "type_III_strict": 562,
+  "type_III_weak": 182,
+  "reversal_rate": 0.7441574415744158,
+  "binomial_p": 8.569699061223172e-90,
+  "dc_mean": 0.20996880946339044,
+  "dc_std": 0.34279755294583014,
+  "type3_dc_mean": 0.34489114975963425,
+  "type3_frac_gt_01": 0.8523131672597865,
+  "type3_frac_gt_02": 0.6725978647686833,
+  "type3_frac_gt_03": 0.5177935943060499,
+  "rho_dSigma_dcolor": 0.2361846366491686,
+  "rho_dSigma_dcolor_p": 4.755162012128199e-22
+}
