@@ -1,0 +1,33 @@
+{
+  "A2744-QSO1": {
+    "z": 7.04,
+    "Z_Zsun": 0.013,
+    "Z_flag": "upper_limit",
+    "Mstar_SED_Msun": 4000000000.0,
+    "Mstar_dyn_Msun": 400000000.0,
+    "r_eff_pc": 30,
+    "r_eff_note": "upper limit, unresolved",
+    "logSigma_phys_SED_30pc": 6.15,
+    "logSigma_Mstar_SED_30pc": 6.65,
+    "logSigma_phys_dyn_30pc": 5.15,
+    "logSigma_Mstar_dyn_30pc": 5.65,
+    "percentile_Kokorev260_SED": 90.4,
+    "percentile_Kokorev260_dyn": 45.4,
+    "reference": "Ma+ 2025 (ApJ 981, 191); Maiolino+ 2025 (arXiv:2501.13082); Furtak+ 2023"
+  },
+  "JADES-GDS-W09-2993": {
+    "z": 4.824,
+    "Z_Zsun": 0.0034,
+    "Z_flag": "detection",
+    "Mstar_estimate": "unknown \u2014 needs DJA query or de Graaff+ 2025b catalog",
+    "r_eff_estimate": "unknown \u2014 needs NIRCam imaging",
+    "note": "Extremely metal-poor but no published M*/r_eff. Likely low-mass given faint emission lines."
+  },
+  "Kokorev260_reference": {
+    "N": 260,
+    "logSigma_Mstar_median": 5.73,
+    "logSigma_Mstar_95pct": 7.0,
+    "logSigma_Mstar_max": 40.88
+  },
+  "key_conclusion": "A2744-QSO1 supports the \u03a3-Z coupling hypothesis: the most metal-poor LRD is also the most compact. jades-gds-w09_1212_2993 is the critical follow-up test."
+}

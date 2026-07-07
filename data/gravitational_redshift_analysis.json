@@ -1,0 +1,33 @@
+{
+  "z_grav_A2744_QSO1": {
+    "Mstar_SED": 4000000000.0,
+    "r_eff_30pc": 6.381842372560342e-06,
+    "r_eff_15pc": 1.2763806930493615e-05,
+    "r_eff_10pc": 1.9145893677352532e-05,
+    "delta_v_30pc_kms": 1.9132282114384167,
+    "delta_v_15pc_kms": 3.826493053130116,
+    "delta_v_10pc_kms": 5.739794526140175
+  },
+  "kokorev_zgrav_stats": {
+    "N": 253,
+    "median_zgrav": 2.2589383369789785e-06,
+    "p95_zgrav": 1.7576426770239657e-05,
+    "fraction_above_1e-3": 0.003952569169960474,
+    "fraction_above_2e-3": 0.0,
+    "zgrav_logSigma_spearman_rho": 0.976687696646615,
+    "zgrav_logSigma_spearman_p": 9.638274033977791e-170
+  },
+  "physical_argument": {
+    "mechanism": "Gravitational redshift scales with compactness: z_grav = GM/(rc^2) \u221d \u03a3 \u00d7 r",
+    "degeneracy": "At JWST broadband resolution (R~5), z_grav mimics dust reddening and old stellar age",
+    "consequence": "SED fitting systematically overestimates M* for compact sources by factor ~1.5-3\u00d7",
+    "combined_with_pseudo_photosphere": "Total overestimation factor ~3-10\u00d7 for most extreme sources",
+    "testable_prediction": "High-R spectroscopy (R>3000) will show z_em > z_abs by \u0394z ~ 10^-3 to 10^-2",
+    "resolves": [
+      "M*_SED/M_dyn tension in A2744-QSO1",
+      "\u03a3-color correlation without extreme dust",
+      "Orientation independence of \u03a3-color correlation",
+      "Missing dust problem (high BD, low AV)"
+    ]
+  }
+}

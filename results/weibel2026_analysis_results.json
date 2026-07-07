@@ -1,0 +1,95 @@
+{
+  "description": "Weibel+2026 BH* LRD sample analysis with \u4e09\u8def\u6c47\u805a model",
+  "arxiv": "2606.17271",
+  "weibel_N": 241,
+  "weibel_N_valid": 241,
+  "kokorev_match_N": 62,
+  "path1_match_N": 12,
+  "vshaped_fraction": 0.4605809128630705,
+  "weibel_z_range": [
+    1.557326316833496,
+    9.190579414367676
+  ],
+  "weibel_bb_median": 3.054738078161769,
+  "weibel_bb_range": [
+    1.2893030470247455,
+    19.255443348942677
+  ],
+  "weibel_L5100_range": [
+    6.580968694884732e+41,
+    3.0805938035073685e+44
+  ],
+  "cross_matched": {
+    "N": 62,
+    "SB_vs_logSigma": {
+      "spearman_rho": -0.12805016242350983,
+      "spearman_p": 0.32127588762241444,
+      "slope": 0.029838875680886008,
+      "intercept": 24.54831281269025,
+      "paper_ref_rho": -0.4371366440331957
+    },
+    "balmer_break_vs_logSigma": {
+      "spearman_rho": 0.03956082697489361,
+      "spearman_p": 0.7601510707612933,
+      "pearson_r": -0.04174935265048457,
+      "pearson_p": 0.7473124209763546,
+      "partial_rho_ctrl_z": -0.1535846490896729
+    },
+    "balmer_break_vs_SB": {
+      "spearman_rho": -0.06585077182644607,
+      "spearman_p": 0.6110958556887675
+    },
+    "bhs_contrib_vs_logSigma": {
+      "spearman_rho": -0.06423912769761526,
+      "spearman_p": 0.6198673721177033
+    },
+    "bhs_contrib_vs_balmer_break": {
+      "spearman_rho_raw": 0.45630836777055517,
+      "partial_rho_ctrl_logSigma": 0.47047417592102947,
+      "conclusion": "Mixed"
+    },
+    "vshaped_vs_bhsonly": {
+      "KS_stat": 0.3333333333333333,
+      "KS_p": 0.1410271710173236,
+      "conclusion": "Same distribution"
+    },
+    "color_vs_logSigma": {
+      "spearman_rho": NaN,
+      "spearman_p": NaN
+    }
+  },
+  "full_sample": {
+    "balmer_break_vs_c444w": {
+      "spearman_rho": -0.06617485682932685,
+      "spearman_p": 0.3062649250950356
+    },
+    "balmer_break_vs_logL5100": {
+      "spearman_rho": 0.3135257707211687,
+      "spearman_p": 6.773605895075542e-07
+    },
+    "balmer_break_vs_z": {
+      "spearman_rho": 0.11858303899043246,
+      "spearman_p": 0.06608856807981622
+    },
+    "bhs_contrib_vs_c444w": {
+      "spearman_rho": -0.10521844244024556,
+      "spearman_p": 0.10321500322629365
+    },
+    "color_vs_balmer_break": {
+      "spearman_rho": 0.28162152829164816,
+      "spearman_p": 1.2752799116617285e-05
+    },
+    "bhs_contrib_vs_bb_ctrl_c444w": {
+      "partial_rho": 0.45725420551526813
+    }
+  },
+  "comparison_with_paper": {
+    "paper_SB_Sigma_rho": -0.478,
+    "paper_SB_Sigma_p": 5.3e-18,
+    "paper_SB_Sigma_slope": -1.207,
+    "paper_BD_Sigma_r": 0.351,
+    "paper_BD_Sigma_p": 0.033,
+    "paper_BD_Halpha_rho": 0.62,
+    "paper_COSMOS_z7_9_Sigma_color_rho": 0.516
+  }
+}

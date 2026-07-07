@@ -1,11 +1,23 @@
-*.aux
-*.log
-*.out
-*.blg
-*.bbl
-*.synctex.gz
-*~
+# macOS
 .DS_Store
+
+# Python
 __pycache__/
 *.pyc
-compile_out.txt
+*.pyo
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/missfont.log
+
+# Temp files
+texput.log
+
+# IDE
+.claude/
+.vscode/
+.idea/

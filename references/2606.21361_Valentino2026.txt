@@ -1,0 +1,949 @@
+                                               Astronomy & Astrophysics manuscript no. cii_rubies_z7                                                                                 ©ESO 2026
+                                               June 23, 2026
+
+
+
+
+                                                    Extended [CII] gas emission in and around a massive quiescent
+                                                                           galaxy at z = 7.3
+                                                F. Valentino1, 2 , A. Pensabene1, 2 , A. Weibel3 , A. de Graaff4, 5⋆ , D. J. Setton6⋆⋆ , P. Oesch3, 1, 7 , G. Brammer1, 7 , W. M.
+                                               Baker8 , R. Bezanson9 , J. E. Greene6 , K. E. Heintz1, 2, 7 , K. Ito1, 2 , M. Lee1, 2 , J. Leja10, 11, 12 , J. Matthee13 , B. Wang6⋆⋆⋆ ,
+                                                                           K. E. Whitaker14, 1 , C. C. Williams15, 16 , and P. Zhu (朱芃佩)1, 2, 17
+
+                                                      1
+                                                        Cosmic Dawn Center (DAWN), Denmark
+                                                      2
+
+
+
+
+arXiv:2606.21361v1 [astro-ph.GA] 19 Jun 2026
+                                                        DTU Space, Technical University of Denmark, Elektrovej 327, DK-2800 Kgs. Lyngby, Denmark
+                                                      3
+                                                        Department of Astronomy, University of Geneva, Chemin Pegasi 51, 1290 Versoix, Switzerland
+                                                      4
+                                                        Center for Astrophysics, Harvard & Smithsonian, 60 Garden St, Cambridge, MA 02138, USA
+                                                      5
+                                                        Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany
+                                                      6
+                                                        Department of Astrophysical Sciences, Princeton University, 4 Ivy Lane, Princeton, NJ 08544, USA
+                                                      7
+                                                        Niels Bohr Institute, University of Copenhagen, Jagtvej 128, 2200 Copenhagen N, Denmark
+                                                      8
+                                                        DARK, Niels Bohr Institute, University of Copenhagen, Jagtvej 155A, DK-2200 Copenhagen, Denmark
+                                                      9
+                                                        Department of Physics and Astronomy and PITTPACC, University of Pittsburgh, Pittsburgh, Pennsylvania, USA
+                                                     10
+                                                        Department of Astronomy & Astrophysics, The Pennsylvania State University, University Park, PA 16802, USA
+                                                     11
+                                                        Institute for Computational & Data Sciences, The Pennsylvania State University, University Park, PA 16802, USA
+                                                     12
+                                                        Institute for Gravitation and the Cosmos, The Pennsylvania State University, University Park, PA 16802, USA
+                                                     13
+                                                        Institute of Science and Technology Austria (ISTA), Am Campus 1, 3400 Klosterneuburg, Austria
+                                                     14
+                                                        Department of Astronomy, University of Massachusetts, Amherst, MA 01003, USA
+                                                     15
+                                                        NSF National Optical-Infrared Astronomy Research Laboratory, 950 North Cherry Avenue, Tucson, AZ 85719, USA
+                                                     16
+                                                        Steward Observatory, University of Arizona, 933 North Cherry Avenue, Tucson, AZ 85721, USA
+                                                     17
+                                                        INAF-Osservatorio Astrofisico di Arcetri, Largo Enrico Fermi 5, I-50125 Firenze, Italy
+
+                                                     Received –; accepted –
+
+                                                                                                                  ABSTRACT
+
+                                                     We report the discovery of [C II] 158 µm emission in and around the most distant known massive quiescent galaxy RUBIES-UDS-QG-
+                                                     z7 at z = 7.27. Observed with ALMA in band 6, the [C II] line independently confirms the spectroscopic redshift from JWST/NIRSpec
+                                                     spectra at low and medium resolution. The emission extends over an effective radius Reff, [CII] = 8 ± 3 kpc, well beyond the compact
+                                                     stellar body traced by JWST/NIRCam (Reff = 209+33 −24 pc), with a significant fraction of ≈ 70% of the flux arising from a circumgalactic
+                                                     halo. No dust continuum is detected at rest-frame ∼ 160 µm, setting an upper limit on the infrared luminosity of LIR < 1.4 × 1011 L⊙ ,
+                                                     overall consistent with expectations from rest-frame UV to near-infrared SED modeling under energy balance. Converting the galaxy-
+                                                     scale [C II] emission into cold gas mass, we find log(Mmol /M⊙ ) = 9.53+0.32  −0.31 and log(MHI /M⊙ ) = 9.46–10.34, depending on the
+                                                     assumed calibration and metallicity. Despite being ≈ 10× more gas-poor than typical star-forming galaxies at fixed redshift, stellar
+                                                     mass, and [C II] to gas mass conversion, RUBIES-UDS-QG-z7 retains a substantial cold gas reservoir with fractions fgas ≳ 20%
+                                                     and long depletion timescales across most assumptions. The extended [C II] halo carries approximately twice as much gas as the
+                                                     galaxy alone and shows a blueshifted velocity offset consistent with the tentative gas outflow detected in Mg ii absorption in previous
+                                                     work, suggesting a past episode of AGN-driven gas expulsion possibly linked to the suppression of star formation. The presence of
+                                                     a large gas reservoir in and around a massive quiescent galaxy just 700 Myr after the Big Bang implies that whatever mechanism is
+                                                     suppressing star formation must be remarkably effective at maintaining a low star formation efficiency on ∼ 100 Myr timescales, even
+                                                     in the presence of abundant fuel.
+                                                     Key words. Galaxies: evolution, formation, high-redshift, star formation; Interstellar medium (ISM); Submillimeter: galaxies, ISM.
+
+
+
+                                               1. Introduction                                                             2025; Stevenson et al. 2026; Ji et al. 2026; Zhang et al. 2026).
+                                                                                                                           The physical mechanisms responsible for shutting down star for-
+                                               The discovery of a surprisingly large number of massive quies-              mation remain poorly understood, and constraining the avail-
+                                               cent galaxies in the early universe, cemented by JWST photo-                ability and properties of cold gas, the fuel for star formation,
+                                               metric and spectroscopic observations over the last five years,             is key to distinguishing between competing quenching scenar-
+                                               poses a serious challenge to our understanding of how star for-             ios. It is natural to ask whether quenching is primarily driven by
+                                               mation proceeds and is rapidly suppressed in these systems (e.g.,           the complete exhaustion or expulsion of cold gas, or rather by
+                                               Carnall et al. 2022; Valentino et al. 2023; Nanayakkara et al.              its heating or dynamical stabilization, such that it becomes un-
+                                               2024; Alberts et al. 2024; Baker et al. 2025a,b; Merlin et al.              able to collapse into new stars (see Man & Belli 2018; De Lucia
+                                                ⋆                                                                          et al. 2025; Whitaker & Bezanson 2026 for recent reviews; e.g.,
+                                            Clay Fellow
+                                               ⋆⋆
+                                            Brinson Prize Fellow                                                           Kurinchi-Vendhan et al. 2024; Lagos et al. 2024, 2025; De Lu-
+                                        ⋆⋆⋆
+                                            NHFP Hubble Fellow                                                             cia et al. 2024; Xie et al. 2024; Farcy et al. 2025; Kimmig et al.
+
+                                                                                                                                                                      Article number, page 1 of 12
+                                                 A&A proofs: manuscript no. cii_rubies_z7
+
+2025; Chandro-Gómez et al. 2025; Chaikin et al. 2026 for recent                                                    v (km s 1)
+theoretical efforts). In the local universe, old quiescent galaxies                                3000     2000      1000                0              1000
+retain low but non-negligible amounts of dust and gas, existing in
+                                                                                            1.0 RUBIES-UDS-QG-z7                                 [CII]158 µm
+                                                                                                                                    JWST zspec
+both the molecular phase, traced by low-transition CO lines, and
+the neutral phase, observed directly via the 21 cm H I transition
+
+
+
+
+                                                                       Flux density (mJy)
+(e.g., Davis et al. 2011; Smith et al. 2012; Rowlands et al. 2012;
+Michałowski et al. 2019, 2024). Richer gas reservoirs are found
+in recently quenched, post-starburst systems (e.g., French et al.
+                                                                                            0.5
+2015; Rowlands et al. 2015; Smercina et al. 2018; Baron et al.
+                                                                                            0.0
+2023; Ellison et al. 2025). Even so, the dense molecular phase
+directly associated with star formation remains elusive: the de-
+tected gas appears to reside primarily in a diffuse, low-density
+component traced by CO rather than the dense gas phase needed
+to drive collapse, suggesting that substantial amounts of gas can                           -0.5                                Total            Central beam
+persist a few hundred Myr after quenching without being able to                              0.5
+form stars (French et al. 2018, 2023).                                                       0.0
+                                                                                            -0.5
+    At higher redshifts, powerful interferometers have pushed
+gas constraints on quiescent populations to cosmic noon and be-
+                                                                                                    227.5 228.0 228.5 229.0 229.5 230.0 230.5
+yond. However, results remain mixed, depending primarily on                                               Observed Frequency (GHz)
+sample selection and the choice of gas tracer, and further com-
+plicated by possible episodes of rejuvenation (Woodrum et al.              Fig. 1: ALMA band 6 spectrum of RUBIES-UDS-QG-z7. The
+2022). Dust continuum emission has been detected in individ-               yellow and red colors show the total emission, including the
+ual and stacked samples up to z = 4.5 (e.g., Gobat et al. 2018;            spatially extended component, and the central beam extraction
+Magdis et al. 2021; Whitaker et al. 2021b; Blánquez-Sesé et al.            that we associate with the galaxy, respectively. The black line
+2023; Donevski et al. 2023; Lee et al. 2024; Ji et al. 2024),              and gray shaded area indicate the best-fit Gaussian model to the
+while low- and mid-J CO lines, though rarer, have been detected            total emission and its uncertainties. The residuals are shown in
+especially, but not exclusively, in post-starburst systems (Suess          the bottom inset, with the gray shaded area indicating the noise
+et al. 2017; Spilker et al. 2018; Belli et al. 2021; Williams et al.       RMS. The velocity axis refers to the [C II] line centroid of the to-
+2021; Bezanson et al. 2022; Suzuki et al. 2022; Umehata et al.             tal emission. The dotted gray vertical line indicates the redshift
+2025; Lorenzon et al. 2025; Setton et al. 2025; Zanella et al.             estimate based on JWST grating spectra (Valentino et al. 2025).
+2023, 2026; D’Onofrio et al. 2026). Taken together, quiescent
+galaxies in the distant universe appear to retain gas fractions of
+fgas = Mgas /M⋆ ≳ 1–10%, particularly shortly after quenching,
+possibly declining as they age and the specific star formation rate        tion 4. Throughout this work, we adopt a ΛCDM cosmology
+drops.                                                                     with Ωm = 0.3, ΩΛ = 0.7, and H0 = 70 km s−1 Mpc−1 .
+     Above z ∼ 4, classical cold gas tracers become increas-
+ingly difficult to detect in ever smaller samples. This is where
+the [C II] 158 µm line, one of the brightest coolants of the in-
+terstellar medium (ISM), enters favorable atmospheric windows              2. Data reduction and analysis
+and has become the primary tracer of cold gas in star-forming
+                                                                           2.1. Description of observations
+galaxies and quasars (QSOs) at z = 4 − 8 (e.g., Le Fèvre et al.
+2020; Bouwens et al. 2021; Herrera-Camus et al. 2025; Wang                 In this work, we make use of data collected by ALMA in Cy-
+et al. 2026). Building on earlier upper limits up to z ∼ 4.6               cle 12 (program ID: 2025.1.00092.S, PI: F. Valentino) using
+(D’Eugenio et al. 2023), D’Eugenio et al. (2026) recently re-              band 6 to target the [C II] emission line (rest-frame frequency
+ported the first [C II] detections in a handful of quiescent galax-        νrest = 1900.5369 GHz) and the underlying (observed-frame)
+ies at z = 2 − 3 ( fgas ∼ 1–25%), also investigating the connection        1.3 mm dust continuum of RUBIES-UDS-QG-z7 ((R.A., Dec.)
+with dust emission. Their work finds possible evidence for spa-            = (34.4296173, −5.1122962) deg) at z = 7.27. Observations
+tially extended gas and dust emission (see also Ji et al. 2024),           were taken within the period 17 December 2025 – 12 May 2026
+and highlights several similarities with post-starburst systems at         subdivided in five execution blocks (EBs). EBs were acquired
+lower redshift, including warm dust, merger signatures, and heat-          in multiple array configurations (C-2 to C-5) with a number of
+ing from shocks, older stellar populations, and central nuclear            12-m antennas ranging from 42 to 45 and sampling baselines
+activity.                                                                  within 15 − 984.4 m, yielding a maximum recoverable scale of
+    In this work, we push the search for [C II] emission in qui-           4.′′ 5 − 9.′′ 6 and a reference Briggs-weighted synthesized beam
+escent galaxies to z > 7 and report its discovery on extended,             FWHM of 0.′′ 48 × 0.′′ 43. The frequency setup consists of two
+circumgalactic scales in RUBIES-UDS-QG-z7, the most distant                pairs of 1.875-GHz wide spectral windows (SPWs) tuned for the
+massive (stellar mass M⋆ ≈ 1.6 × 1010 M⊙ ) galaxy with sup-                detection of the continuum and the emission line and placed ad-
+pressed star formation currently known (z = 7.27; Weibel et al.            jacently in the lower- (LSB) and upper-side band (USB), around
+2025). Section 2 presents the ALMA observations and data re-               the central frequency of 215.337 and 228.765 GHz, respectively.
+duction, together with the available JWST ancillary data. Sec-             The native spectral resolution of the observations is ≈ 10.9 and
+tion 3 presents our analysis, starting from the space of observ-           10.2 km s−1 in the LSB and USB, respectively. The achieved
+ables before converting them into physical quantities under dif-           noise RMS is 8 µJy over the aggregate continuum-only band-
+ferent assumptions, whose applicability we also discuss, along             width (5.415 GHz), and 73 µJy at the representative bandwidth
+with prospective tests. We summarize our conclusions in Sec-               of 66.6 km s−1 at 229.64 GHz and reference angular resolution.
+Article number, page 2 of 12
+                       F. Valentino et al.: Extended [CII] gas emission in and around a massive quiescent galaxy at z = 7.3
+
+2.2. Reduction and imaging of ALMA data                                      we note that, at the resolution of the data (FWHM ≈ 3.1−6.3 kpc
+                                                                             depending on the tapering scheme), this is likely an upper limit
+We performed standard calibration of the measurement sets                    on the true galaxy flux, as we may be including some emission
+(MSs) by running the scriptForPI delivered by the obser-                     from more extended scales.
+vatory, using the Common Astronomy Software Application                           Finally, we performed a fit of the total line profile by mini-
+(CASA; McMullin et al. 2007; Hunter et al. 2023) version                     mizing the residuals between the data and a Gaussian+constant
+6.6.6.18. Self-calibration was not performed. We first inspected             model using the MCMC ensemble sampler emcee Python pack-
+the data by Fourier-transforming the calibrated data using the               age (Foreman-Mackey et al. 2013) with 100 walkers and 3000
+CASA task tclean with a natural-weighting scheme of the vis-                 steps, discarding the first 1000 as a burn-in phase. We adopted
+ibilities. We obtained dirty datacubes of the LSB and USB sep-               Gaussian uncertainties in the definition of the likelihood and
+arately and an aggregate LSB+USB continuum map. We set the                   flat priors on the free parameters based on the last fitting it-
+pixel size to 0.′′ 09 to achieve the Nyquist-sampling of the syn-            eration as described above. We derived the line luminosity as
+thesized beam size, and the channel size to 40 km s−1 for the dat-           (Solomon et al. 1997): L[CII] [L⊙ ] = 1.04 × 10−3 F[CII] νobs D2L ,
+acube. The [C II] line emission of RUBIES-UDS-QG-z7 is de-
+tected in the USB cube around the observed-frame frequency of
+                                                                               ′
+                                                                             L[CII] [K km s−1 pc2 ] = 3.25 × 107 F[CII] D2L (1 + z)−3 νobs
+                                                                                                                                         −2
+                                                                                                                                            , where
+229.7 GHz, which is consistent with the expectation based on the             F[CII] is the velocity-integrated line flux in units of Jy km s−1 ,
+spectroscopic redshift derived from the JWST/NIRSpec spectra                 νobs = νrest /(1 + z) is the observed central frequency of the line
+(Section 2.5). The line emission appears extended at the resolu-             in GHz at the redshift z, and DL (z) is the luminosity distance
+tion of the data (0.′′ 64 × 0.′′ 55). No emission is detected in the         in Mpc. The best-fit line centroid corresponds to a source red-
+continuum map at the location of the galaxy, implying a 3σ up-               shift of z[C II] = 7.2749+0.0011
+                                                                                                         −0.0012 for the total line flux extraction
+per limit on the 1.3 mm flux density of F1.3 mm (3σ) < 18 µJy.               and z[C II] = 7.2774+0.0005
+                                                                                                   −0.0006 for the central beam. These are over-
+                                                                             all consistent with the spectroscopic redshifts from the PRISM
+      We therefore obtained three sets of cleaned datacubes of               (z = 7.287+0.007              +0.005
+                                                                                           −0.006 − 7.290−0.006 in the range of plausible SED
+the USB by applying different tapering schemes of the base-                  models in Weibel et al. 2025, Section 2.5) and grating spectra
+lines to optimize the recovery of the extended line emission.                (z = 7.2758 ± 0.0011, Valentino et al. 2025).
+We ran tclean down to 1.5σ per channel within 3D circu-                           In Table 1, we report the measurements and derived quanti-
+lar masks of 2′′ -radius. We adopted a natural weighting for                 ties from the modeling of the [C II] emission line. In Figure 1,
+the visibilities to maximize the surface brightness sensitivity              we show the source spectrum extracted from the central beam
+and MultiScale CLEAN (Cornwell 2008) as deconvolution al-                    and integrated over the total line emission, along with the best-
+gorithm with scales=[0,5,15] to optimize the modeling of                     fit model.
+the emission from compact point-like to moderately extended
+sources (up to ∼ 3× the beam size). In addition to the stan-
+dard weighting scheme, we applied a Gaussian tapering in                     2.4. Modeling of the extended [C II] emission
+the u3 plane with FWHM = 0.5′′ and 0.8′′ (corresponding                      The [C II] line emission from RUBIES-UDS-QG-z7 is spatially
+to HWHMu3 ≈ 182 and 114 kλ), thereby downweighting the                       resolved. This is evident from the extraction of line fluxes with
+longest baselines and yielding a synthesized beam FWHM of                    only ≈ 30% of the total line luminosity enclosed in the cen-
+0.′′ 98 × 0.′′ 88 and 1.′′ 33 × 1.′′ 16, respectively. The non-tapered and   tral beam (Table 1). In Figure 2, we inspect the kinematics of
+tapered datacubes were obtained by setting pixel scales of 0.′′ 09           the extended [C II] by superimposing pseudo-narrow-band im-
+and 0.′′ 2, respectively, and a channel width of 40 km s−1 . The re-         ages obtained by integrating channels in the datacube blueward
+sulting noise RMS is 0.09, 0.11, and 0.13 mJy beam−1 channel−1               ([−250, 0] km s−1 ) and redward ([0, 250] km s−1 ) of the total line
+for the untapered, 0.′′ 5-, and 0.′′ 8-tapered datacubes, respectively.      centroid. The peak emission of the blue and red components
+                                                                             appears significantly offset, suggesting the presence of a veloc-
+2.3. Line flux and luminosity measurement                                    ity gradient along the South-West–North-East direction. The red
+                                                                             component is associated with the bulk of the line emission and
+We measured the [C II] line flux of RUBIES-UDS-QG-z7 by                      centered around the peak of the stellar emission. This conclusion
+extracting the galaxy emission line obtained through the 2σ-                 is further supported by the analysis of the position-velocity (PV)
+clipped photometry method (e.g., Béthermin et al. 2020). This                diagram extracted from a pseudo-slit aligned with the observed
+method enables the recovery of the line flux with an optimal                 velocity gradient.
+S/N while preventing significant flux losses. In brief: 1) we per-                We estimated the source size by modeling its morphology
+formed a single-pixel extraction of the spectrum at the source               directly in the visibility (u, v) plane. Given the relatively low
+location1 and fit the line with a Gaussian plus a constant for               S/N of the observations, visibility-domain fitting is preferable
+the continuum; 2) we obtained a moment-0 map by collapsing                   to image-plane analyses because it avoids potential biases in-
+channels within ±2σ of the line centroid; 3) we extracted a new              troduced by the deconvolution and reconstruction of interfero-
+spectrum from the cube by integrating the signal from all pix-               metric images from incompletely sampled u3-data. This is es-
+els above S/N ≥ 2 and we fit the new line profile. We repeated               pecially relevant in our case, as the observations were acquired
+steps 2) and 3) until convergence. This analysis showed that the             in multiple array configurations, resulting in sparse u3-coverage.
+source flux recovery is maximized in the 0.′′ 8-tapered cube and             We combined the calibrated MSs into a single one and split tar-
+we therefore adopted it as our reference dataset. For the rest of            get visibilities corresponding to 20 channels of 40 km s−1 width
+this work, we assume that the single-pixel spectral extraction at            within ±390 km s−1 of the total line systemic redshift using the
+the peak of the stellar light from step 1) (i.e., the "central beam")        concat and mstransform tasks of CASA, respectively. We fit
+is associated with the [C II] line emission of the galaxy. However,          the visibilities in the (u, v) plane using UVMODELFIT (Martí-
+                                                                             Vidal et al. 2014); given the low per-channel S/N, we fit the
+ 1
+   We adopted the peak of the stellar emission in the NIRCam/F444W           moment-0 map of the line emission rather than the full 3D dat-
+image as the source location (Figure 2).                                     acube (u, v, ν).
+                                                                                                                      Article number, page 3 of 12
+                                                                          A&A proofs: manuscript no. cii_rubies_z7
+
+
+
+        4.0" JWST/NIRCam F444W                                                                               6.0
+                ALMA [CII]158 µm
+                [-250;0] [0;250] km/s
+                                                                                                             5.0
+        2.0"
+
+
+
+                                                                                       Offset on slit (00)
+                    700                                                                                      4.0
+DEC.
+                          600
+        0.0"                     500
+                                       400                                                                   3.0
+                                             3   00
+
+
+        2.0"                                            200                                                  2.0
+                                                              100
+                                                                    000
+                                                                                                             1.0
+        4.0"
+                                                          contours: ±[3 + n]σ                                                                            contours: ±[2 + n]σ
+                                                                                                             0.0
+                4.0"            2.0"         0.0"                   2.0"        4.0"                               600    400      200        0        200      400       600
+                                                 R.A.                                                                                    vsys (km s 1)
+ Fig. 2: Extended [C II] emission around RUBIES-UDS-QG-z7. Left panel: the [C II] emission is indicated by sets of contours:
+ thick dashed yellow lines indicate the total moment-0 map within ±2σ ≈ ±390 km s−1 around the total [C II] line centroid, while
+ solid red and blue lines indicate the emission redward ([0, 250] km s−1 ) and blueward ([−250, 0] km s−1 ) of the systemic redshift.
+ The contours are spaced as multiples of the noise level, starting at ±3σ. Negative peaks are marked by dotted lines with the same
+ color scheme. The beam size is shown in the bottom left corner of the cutout. The background image is from JWST/NIRCam with
+ the F444W filter and the green square indicates the center of the stellar emission. The white box marks the pseudoslit used in the
+ position-velocity diagram in the right panel. Right panel: position-velocity diagram. The gray contours are at ±2σ significance. The
+ image was smoothed along the velocity axis using a uniform filter of width equal to 120 km s−1 (i.e., three channels of the datacube
+ as shown in the bottom left corner). Velocity ranges for the red and blue map shown in the left panel are also highlighted.
+
+ Table 1: [C II] line and continuum flux measurements, luminos-                                              we show the results in the image plane after a Fourier trans-
+ ity estimates, and derived quantities of RUBIES-UDS-QG-z7.                                                  form of the data and the model using the tclean task in CASA.
+                                                                                                             The results suggest that the model adequately reproduces the
+   Line property                                      Total               Central beam(†)                    data, with residuals consistent with the noise RMS at the ≲ 2σ
+                                                                                                             level. In particular, the Gaussian model reproduces well the ex-
+   Redshift                              7.2749+0.0011
+                                                −0.0012                    7.2774+0.0005
+                                                                                  −0.0006                    tended structure of the source, which appears at > 1 − 2′′ an-
+   FWHM [km s−1 ]                           465+129
+                                               −103                           189+112
+                                                                                 −49
+                                                                                                             gular scales. The best-fit model returns an effective radius of
+   Flux [Jy km s−1 ]                       0.26+0.06                         0.08+0.02                       Reff = FWHM/2 = 1.7 ± 0.6 arcsec, or 8 ± 3 kpc at the redshift
+                                               −0.05                             −0.02
+                                                                                                             of the galaxy.
+   L[CII] [108 L⊙ ]                         3.4+0.8
+                                               −0.7                           1.1+0.3
+                                                                                 −0.2
+    ′
+   L[CII] [1010 K km s−1 pc2 ]             0.16+0.04
+                                               −0.03                         0.05+0.01
+                                                                                 −0.01
+                                                                                                             2.5. Optical and near-infrared photometry and spectroscopy
+                Observed-frame 1.3-mm continuum
+                                                                                                             RUBIES-UDS-QG-z7 benefits from a wealth of JWST ancillary
+   S 1.3 mm [µJy]                                                   < 18                                     data, including NIRCam and MIRI imaging and NIRSpec spec-
+   LIR, 8−1000 µm [1011 L⊙ ]                                        < 1.4                                    troscopy. In this work, we make use of the data and modeling
+   Mdust [106 M⊙ ]                                                  < 6.3                                    described in Weibel et al. (2025) and Valentino et al. (2025).
+                                                                                                             Briefly, Weibel et al. (2025) modeled the 0.9–18 µm JWST pho-
+ Notes. All quantities are measured from the 0.′′ 8-tapered datacube.                                        tometry collected as part of the Public Release IMaging for Ex-
+ (†)
+     Quantities measured from the spectrum extracted from the peak of                                        tragalactic Research (PRIMER) program (GO-1837, PI: J. Dun-
+ the stellar emission in the JWST/F444W image. LIR and Mdust are de-                                         lop; Donnan et al. 2024) and the PRISM spectrum from the Red
+ rived at fixed T dust = 40 K and βIR = 1.8 (Section 3.1).                                                   Unknowns: Bright Infrared Extragalactic Survey (RUBIES, GO-
+                                                                                                             4233, PIs: A. de Graaff and G. Brammer; de Graaff et al. 2025a)
+                                                                                                             with Prospector (Johnson et al. 2021). The models assume the
+     We employed a single 2D Gaussian component to model the                                                 Flexible Stellar Population Synthesis package (FSPS; Conroy &
+ source emission. There are six free parameters: the coordinates                                             Gunn 2010) with the MILES spectral library (Sánchez-Blázquez
+ of the center, the major axis FWHM, the axis ratio, the position                                            et al. 2006), MIST isochrones (Choi et al. 2016), a Chabrier
+ angle, and the total enclosed flux. We adopted flat priors and                                              (2003) initial mass function, the Kriek & Conroy (2013) dust
+ minimized the residuals between the data and the model using                                                law, and a non-parametric star formation history (SFH) with a
+ standard χ2 statistics. Finally, we extracted the data and best-                                            continuity prior (Leja et al. 2019a). The SFH is split into 8 time
+ fit model visibilities using the export_uv_table task of the                                                bins of 10, 40, and 50 Myr for the most recent 100 Myr of cos-
+ UVPLOT Python package (Tazzari 2017). In Figure 3, we re-                                                   mic time, followed by 5 bins of approximately 125 Myr each.
+ port the binned visibilities with the best-fit model. In Figure 4,                                          The images (v7) and spectra (v4) are available through the Dawn
+ Article number, page 4 of 12
+                            F. Valentino et al.: Extended [CII] gas emission in and around a massive quiescent galaxy at z = 7.3
+
+                                    Angular scale (00)                             Throughout the remainder of this analysis, we adopt the
+                          10                              1                    modeling from Weibel et al. (2025), explicitly quoting parameter
+                                                                               ranges spanned by the low- and high-Z solutions where relevant.
+            0.5                          Data         Model                    For convenience, we report the key parameters in Table 2.
+            0.4
+
+
+(V) (mJy)
+            0.3                                                                3. Results and discussion
+            0.2                                                                3.1. Dust emission
+
+            0.1                                                                We converted the upper limit on the dust continuum emission
+                                                                               at rest-frame ∼ 160 µm into an upper limit on the total in-
+            0.0                                                                frared luminosity, LIR, 8−1000 µm < 1.4 × 1011 L⊙ , using a single
+                                                                               modified blackbody with fixed dust temperature T dust = 40 K
+            0.1 χred = 4.83
+                    2
+                                                                               and emissivity index βIR = 1.8, which we modeled with Mer-
+            2.5 101 Cum. weighted mean          102
+Res. S/N
+                                                                               curius (Witstok et al. 2023) and accounting for the effect of the
+            0.0                                                                cosmic microwave background (CMB; da Cunha et al. 2013).
+            2.5                                                                These values of T dust and βIR are consistent with those typical
+                101                             102                            of star-forming galaxies at z = 7 (Witstok et al. 2023). The
+                                    uv-distance (kλ)                           lower T dust reported for the dusty interstellar medium of lower-
+                                                                               redshift quiescent galaxies (T dust ≈ 20 K; Magdis et al. 2021)
+ Fig. 3: Morphological modeling of RUBIES-UDS-QG-z7 in                         is not physical at this redshift given the temperature floor im-
+ the visibility domain. Top panel: The real part of the visibili-              posed by the CMB (T CMB = 22.6 K). The upper limit on LIR
+ ties (black points) binned to 20 kλ (λ = 1.305 mm). The best-                 is overall consistent with the posterior distributions from the
+ fit Gaussian model is shown in red. The reduced chi-squared                   SED modeling with Prospector under the assumption of en-
+                                                                               ergy balance (log(LIR /L⊙ ) = 10.89+0.12              +0.11
+                                                                                                    pred
+ value is reported in the bottom left corner. Bottom panel: Resid-                                                    −0.12 and 11.05−0.11 for the
+ ual S/N after subtracting the best-fit model ([data−model]/error;             high- and low-Z solutions, respectively). Although insufficient
+ black points). The orange curve shows the cumulative variance-                to tightly constrain the broadband SED models at this stage, the
+ weighted mean of the residuals. Dark and light gray shaded areas              dust continuum upper limit hints at mild tension with the low-Z
+ indicate 1− and 2σ levels.                                                    solution, suggesting that future dust observations at higher fre-
+                                                                               quencies could provide actual LIR constraints and help break the
+                                                                               degeneracies in the models (Section 3.6). Using the frequency-
+ JWST Archive (DJA2 ; de Graaff et al. 2025a; Heintz et al. 2025a;             dependent dust mass absorption coefficient κ = κ0 (ν/ν0 )βIR ,
+ Valentino et al. 2023, 2025).                                                 with κ0 = 8.94 cm2 g−1 at rest-frame 158 µm (Hirashita et al.
+     Weibel et al. (2025) identifies two sets of best-fit parame-              2014), we derived an upper limit on the dust mass of Mdust <
+ ters converging on a low (Z = 0.11+0.02                                       6.3 × 106 M⊙ (3σ). For reference, applying the conversion of
+                                          −0.01 Z⊙ ) and a high (Z =           Kennicutt & Evans (2012) for star-forming galaxies, the limit on
+ 1.19+0.24
+      −0.27 Z⊙ ) stellar metallicity solution,  reflecting unresolved          LIR formally corresponds to SFRIR < 21 M⊙ yr−1 , though this
+ degeneracies and highlighting the limitations of current mod-                 conversion is known to significantly overestimate the true SFR
+ els (de Graaff et al. 2025b), which have until recently lacked                in recently quenched galaxies primarily due to dust heating from
+ consistent α-enhanced isochrones and spectra (Park et al. 2025).              A-type stars (Utomo et al. 2014; Leja et al. 2019b). We therefore
+ The true stellar metallicity of RUBIES-UDS-QG-z7 plausibly                    do not use this estimate in the rest of the analysis. We further
+ lies between these two extremes. Both solutions return consis-                caution that the upper limits on LIR and Mdust depend sensitively
+ tent redshifts (z = 7.287 − 7.290), stellar masses (log(M⋆ /M⊙ ) ≈            on the assumed modified blackbody parameters and should be
+ 10.2), and overall SFH shapes, with an abrupt decline in SFR                  interpreted accordingly.
+ over the last 100 Myr and consistently low SFR estimates of ≈ 1
+ M⊙ yr−1 averaged over 10 or 50 Myr. These values are also con-
+ sistent with the SFR inferred from upper limits on the rest-frame             3.2. The space of observables
+ optical emission lines, probing similar timescales (SFRLines ≲ 6
+ M⊙ yr−1 ). The SFR averaged over 100 Myr is formally consistent               To place the [C II] detection in context, we compare RUBIES-
+ between the two solutions given the large uncertainties, though               UDS-QG-z7 with star-forming galaxies at z = 4 − 8 from the
+ the nominal values differ substantially (SFR100 = 0.84+20.16                  ALMA Large Program to INvestigate [C II] at the Early times
+                                                            −0.78 and          (ALPINE; Le Fèvre et al. 2020; Béthermin et al. 2020; Faisst
+       +21.12         −1
+ 48.89−13.04 M⊙ yr for the low- and high-Z solutions, respec-                  et al. 2020) and the Reionization Era Bright Emission Line Sur-
+ tively).                                                                      vey (REBELS; Bouwens et al. 2021); low-luminosity quasars at
+     Medium-resolution spectra from RUBIES (G395M/F290LP)                      z ∼ 6 from the Subaru High-z Exploration of Low-luminosity
+ and the DeepDive program (G235M/F170LP; GO-3567, PI:                          Quasars (SHELLQs; Izumi et al. 2018, 2019) project, and qui-
+ F. Valentino; Ito et al. 2025) were combined to yield a refined               escent galaxies at z = 2 − 4.6 from D’Eugenio et al. (2026). We
+ redshift of z = 7.2758±0.0011 (Valentino et al. 2025). This value             focus here on purely observed quantities and defer their physical
+ is consistent with that from the [C II] emission (Figure 1), unam-            interpretation to the following Sections.
+ biguously confirming the spectroscopic redshift of the galaxy.                    Figure 5 shows L[CII] and its ratio with the dust continuum
+ Independent SED modeling of the G235M spectrum and pho-                       at 160 µm rest-frame, both as a function of rest-frame UV mag-
+ tometry in Valentino et al. (2025) returns results broadly consis-            nitude at 1500 Å3 . Star-forming galaxies, QSOs, and most qui-
+ tent with those in Weibel et al. (2025).
+                                                                               3
+                                                                                 MUV is evaluated at 1800 Å rest-frame for the [C II]-detected MRG-
+  2
+      https://dawn-cph.github.io/dja/                                          M0138 quiescent galaxy in D’Eugenio et al. (2026), based on an HST
+
+                                                                                                                          Article number, page 5 of 12
+                                                  A&A proofs: manuscript no. cii_rubies_z7
+
+                 data w/o tapering                data w/ tapering                      model                      data     model
+        4.0"    [CII]158 µm                                                     Gaussian
+        2.0"
+DEC.    0.0"
+        2.0"
+        4.0"                                                                                   contours: ±[2 + n]σ
+               4.0" 2.0" 0.0" 2.0" 4.0" 4.0" 2.0" 0.0" 2.0" 4.0" 4.0" 2.0" 0.0" 2.0" 4.0" 4.0" 2.0" 0.0" 2.0" 4.0"
+                                                                         R.A.
+ Fig. 4: Maps of the [C II] emission and best-fit model of RUBIES-UDS-QG-z7 in the image plane. From left to right: untapered and
+ tapered (HWHMuv ≈ 114 kλ) moment-0 dirty maps (±390 km s−1 ), the best-fit Gaussian model, and residuals with data contours
+ superimposed. White contours indicate ±[2 + n]σ levels, where σ is the noise RMS and n ≥ 0 is an integer. The synthesized beam
+ FWHM is shown in the bottom left corner. The green square marks the peak of the stellar emission.
+
+
+ escent galaxies occupy distinct regions of this parameter space.        the emission lines, suggesting that the recent drop in SFR is
+ Star-forming galaxies follow a L[CII] –MUV correlation across the       not accompanied by a complete removal of the cold gas reser-
+ full redshift range, reflecting the unobscured SFR–L[CII] relation.     voir. Star-forming galaxies from ALPINE and REBELS follow a
+ For QSOs, the nuclear emission brightens MUV without signif-            clear correlation, largely reflecting that between L[CII] and MUV .
+ icantly contributing to the [C II] emission of the host galaxy.         The correspondence is not strictly one-to-one, as we show the
+ Among the quiescent galaxies, the lensed galaxy MRG-M1038               total SFR = SFRUV + SFRIR where an estimate of SFRIR is
+ at z = 1.98 (Newman et al. 2018, 2025; Akhshik et al. 2023)             available from far-infrared detections. Low-luminosity quasars
+ lies on the correlation for star-forming galaxies, while QG1–3 at       also broadly follow the relation once the nuclear contribution
+ z = 3.09 (Kubo et al. 2016, 2021, 2022; Umehata et al. 2025,            to MUV is removed. Quiescent galaxies with [C II] detections
+ 2026) are outliers at faint MUV . The z = 4.6 system from Carnall       from D’Eugenio et al. (2026) are broadly consistent with the
+ et al. (2023), undetected in [C II], appears consistent with an ex-     star-forming galaxy locus, though to varying degrees. For MRG-
+ trapolation of the correlation toward the faint end. Considering        M0138, the SFR from optical and near-IR modeling (SFR =
+ only the [C II] emission associated with the galaxy, RUBIES-            31 ± 9 M⊙ yr−1 ; Newman et al. 2018) is fully consistent with
+ UDS-QG-z7 falls in the region of parameter space occupied by            the L[CII] –SFR relation of Schaerer et al. (2020) and with SFRIR ,
+ the MUV -faint, [C II]-detected quiescent galaxies in D’Eugenio         as also noted by D’Eugenio et al. (2026). For QG1–3 in SSA22,
+ et al. (2026). Including the extended [C II] halo places RUBIES-        the upper limit on SFRIR from Kubo et al. (2021) is formally
+ UDS-QG-z7 well outside the correlation for star-forming galax-          consistent with the relation, while SFR values from SED model-
+ ies, at faint MUV and high L[CII] . The L[CII] -to-continuum ra-        ing and optical emission lines are substantially lower; a similar
+ tio in the bottom panel of Figure 5 tells a similar story: even         situation holds for the z = 4.6 quiescent galaxy of Carnall et al.
+ without the halo, the non-detection of the continuum already            (2023). As discussed in D’Eugenio et al. (2026) and in Section
+ pushes RUBIES-UDS-QG-z7 outside the correlation established             3.1, SFRIR based on conversions valid for star-forming galax-
+ for star-forming galaxies at lower and similar redshift, into the       ies tends to overestimate the SFR in quiescent galaxies relative
+ region occupied by other quiescent galaxies, though with a more         to SED- and line-based values due to dust heating by sources
+ extreme and better constrained ratio thanks to the clear [C II] de-     other than young UV-bright stars, such as older stellar popula-
+ tection and stringent upper limit on the dust continuum.                tions (particularly relevant for recently quenched systems, e.g.,
+                                                                         Belli et al. 2021), a central AGN (Ji et al. 2024), and turbulence
+                                                                         or shocks from gravitational interactions with nearby galaxies.
+ 3.3. The L[CII] –SFR relation
+ The observables in Figure 5 can be mapped onto physical prop-
+ erties under different assumptions. Figure 6 shows the classi-          3.4. Substantial gas reservoirs after quenching
+ cal L[CII] –total SFR relation established both locally and at high     To quantify the gas content of RUBIES-UDS-QG-z7, we esti-
+ redshift (e.g., De Looze et al. 2014; Schaerer et al. 2020). Us-        mated Mgas under different assumptions. [C II] emission arises
+ ing the [C II] emission from the central beam that we asso-             from the ionized, neutral, and molecular gas phases, though the
+ ciate with the galaxy, RUBIES-UDS-QG-z7 is broadly consis-              bulk is generally associated with the colder and denser phases
+ tent with the L[CII] –SFR relation when considering SED solu-           (e.g., Vallini et al. 2015; Madden et al. 2020; Vizgan et al.
+ tions averaged over 100 Myr. However, the measured L[CII] lu-           2022a,b; Wolfire et al. 2022; Fudamoto et al. 2025). We adopted
+ minosity is higher than that predicted by the relation assuming         two calibrations: the empirical conversion to the molecular gas
+ SFRs inferred on timescales of 10 Myr from the SED model-               mass from Zanella et al. (2018), Mmol = 31 L[CII] (0.3 dex scat-
+ ing (SFR10 = 0.64+0.83              +1.55
+                      −0.60 and 1.08−0.98 M⊙ yr
+                                                −1
+                                                   for the low- and      ter), calibrated for main-sequence and starburst galaxies over a
+ high-Z solutions, respectively; Table 2) and the upper limit from       wide redshift range, which also allows direct comparison with
+ V-band detection from Akhshik et al. (2023). Values are not corrected   D’Eugenio et al. (2026); and the metallicity-dependent [C II]-
+ for lensing.                                                            to-H I conversion from Heintz et al. (2021), log(MHI /M⊙ ) =
+ Article number, page 6 of 12
+                                     F. Valentino et al.: Extended [CII] gas emission in and around a massive quiescent galaxy at z = 7.3
+
+                                                   Redshift                                                                                                             8.0
+                        4.0    4.5    5.0    5.5     6.0      6.5     7.0    7.5      8.0                          RUBIES-UDS-QG-z7:
+                                                                                                                   SFR100
+                                                                                                                   SFRLines                                             7.5
+                     1010                                                                                 1010     D'Eugenio+26 (QGs)
+                               RUBIES-UDS-QG-z7               SHELLQs (QSOs)
+                               D'Eugenio+26 (QGs)             ALPINE (SFGs)                                        REBELS (SFGs)                                        7.0
+                                                                                                                   SHELLQs (QSOs)
+                               REBELS (SFGs)                  ALPINE (upper limits)                                ALPINE (SFGs)
+                                                                                                                   ALPINE (upper limits)                                6.5
+
+                                                                                            L[CII] [L ]                                                                   Redshift
+                                                                                                          109
+                                                                                                                                                                        6.0
+                      109                                                                                                                                               5.5
+
+ L[CII] [L ]
+                                                                    Total                                 108                                                           5.0
+                                                                                                                       (low-Z)                   (high-Z)
+
+                                                                                                                                                                        4.5
+
+                                                                                                          1010
+                                                                                                             7
+                                                                                                               1         100               101         102        103   4.0
+                      108                                                                                                        SFR [M yr 1]
+                                                                    Galaxy
+                                                                                            Fig. 6: L[CII] –total SFR relation. The gray line and shaded area
+                     10 1                                                                   show the L[CII] –SFR relation and its scatter from Schaerer et al.
+                                                                                            (2020). Large filled symbols indicate the SFR estimates for
+                                                                                            RUBIES-UDS-QG-z7: stars mark the values for SFR100 from
+                                                                                            the low- and high-Z solutions of the spectrophotometric model-
+                                                                                            ing in Weibel et al. (2025); the leftward triangle shows the upper
+                                                                                            limit from rest-frame optical lines emission. L[CII] refers to the
+
+
+
+
+L[CII] / L (160 m)
+                                                                                            galaxy component only, excluding the extended emission. Re-
+                                                                                            maining symbols are as in Figure 5, color-coded by redshift.
+
+                     10 2                                                                   dent of metallicity), and log(MHI /M⊙ ) = 10.34+0.19           +0.18
+                                                                                                                                            −0.17 and 9.46−0.17
+                                                                                            for the low- and high-Z solutions, assuming Zgas = Z⋆ in the ab-
+                                                                                            sence of a direct gas-phase metallicity measurement.
+                                                                                                Converting the upper limit on Mdust via the gas-to-dust ra-
+                                                                                            tio (δGDR ) of Popping et al. (2023), taking its relation with
+                                                                                            metallicity to be unchanged with redshift (Popping & Péroux
+                                                                                            2022; Heintz et al. 2023, but see Heintz et al. 2025b) and
+                                                                                            accounting for the strong assumptions in Section 3.1, yields
+                                                                                            log(Mgas /M⊙ ) < 10.44 and < 9.13 for the low- and high-Z so-
+                     10 3     25     24     23      22     21        20      19       18    lutions, in general agreement with the H I and molecular mass
+                                                     MUV                                    estimates. The gas-to-dust ratio for the high-Z solution is about
+                                                                                            twice as high as the common value of δGDR = 100 (De Vis
+                                                                                            et al. 2019). Adopting δGDR = 100 would thus return a gas mass
+  Fig. 5: [C II], dust, and UV emission of high-redshift galax-                             of log(Mgas /M⊙ ) < 8.8. Reversing the argument, assuming that
+  ies. Top panel: [C II] luminosity as a function of rest-frame UV                          [C II] traces the molecular gas in RUBIES-UDS-QG-z7, we de-
+  magnitude. Bottom panel: ratio of [C II] luminosity to the un-                            rive a molecular gas-to-dust ratio δGDR ≳ 540. Such a high value
+  derlying dust continuum at 160 µm rest-frame, as a function of                            would be consistent with recent observational and theoretical re-
+  rest-frame UV magnitude. In both panels, the filled and empty                             sults suggesting that dust is destroyed on shorter timescales than
+  stars indicate the [C II] emission associated with the RUBIES-                            those on which the gas is expelled or consumed after quench-
+  UDS-QG-z7 galaxy and the total emission including the ex-                                 ing (Whitaker et al. 2021a; Lorenzon et al. 2025; Spilker et al.
+  tended halo, respectively; pentagons the QGs from D’Eugenio                               2025).
+  et al. (2026), circles and squares the SFGs from ALPINE and
+                                                                                                The Mgas estimates are broadly consistent with an estimate
+  REBELS, hexagons the low-luminosity QSOs from SHELLQs,
+                                                                                            of the dynamical mass from the [C II] emission based on the
+  and downward triangles upper limits from ALPINE. Symbols
+                                                                                            virial theorem, even when accounting for the stellar mass
+  are color-coded by redshift.
+                                                                                            (M⋆ ∼ 1.6 × 1010 M⊙ ): Mdyn = 5σ2vel R/G = 2.3+3.5          10
+                                                                                                                                               −1.0 × 10 M⊙ ,
+                                                                                                                            √
+                                                                                            where σvel = FWHM[CII] /(2 2 ln 2) is the velocity dispersion
+                                                                                            of the [C II] line, R is the size of the emission associated with
+  (−0.87 ± 0.09) log(Z/Z⊙ ) + (1.48 ± 0.12) + log(L[CII] /L⊙ ), cali-                       the galaxy, and G is the gravitational constant. We adopted
+  brated against distant, mostly low-metallicity gamma-ray bursts.                          FWHM[CII] = 189+112 −49 km s
+                                                                                                                          −1
+                                                                                                                             from the central beam extraction
+  Considering only the galaxy [C II] emission from the central                              and R = FWHMbeam /2 = 3.0 kpc as half the beam size, which
+  beam for consistency with SFR estimates from JWST imaging                                 we associate with the galaxy emission. We emphasize that this
+  and spectroscopy, we find log(Mmol /M⊙ ) = 9.53+0.32
+                                                    −0.31 (indepen-                         estimate carries significant uncertainties in both directions:
+                                                                                                                                                    Article number, page 7 of 12
+                                                 A&A proofs: manuscript no. cii_rubies_z7
+
+the single Gaussian fit may underestimate the true line width           disturbed and possibly extended [C II] and stellar morphologies
+(Figure 1), while the beam-based size is a conservative upper           in their sample of quiescent galaxies at lower redshift (see also
+limit on the true extent of RUBIES-UDS-QG-z7, whose stellar             Ji et al. 2024 for details on GS-9209 at z = 4.6), suggesting a
+effective radius is far more compact (Reff = 209+34
+                                                 −29 pc; Weibel         role for mergers and tidal interactions in extending and heating
+et al. 2025). We note that different derivations of Mdyn apply          the residual gas.
+depending on the true distribution and geometry of the gas                   Among these possible origins, an outflow scenario is par-
+traced by [C II], currently unknown.                                    ticularly compelling for RUBIES-UDS-QG-z7. The extended
+                                                                        [C II] component is blueshifted with respect to the galaxy by
+    The range of Mgas estimates translates into correspond-             ∆3[CII], ext ≈ −100 km s−1 (Figure 2). This is consistent with the
+ing intervals in gas fraction and depletion timescale τdep =            velocity offset reported by Valentino et al. (2025) for a tenta-
+Mgas /SFR (Table 2). We find fmol = Mmol ([CII], Z18)/M⋆ ≈              tive detection of blueshifted Mg ii absorption in the rest-frame
+20%, fHI = MHI ([CII], H21)/M⋆ = 130–20%, and fgas =                    UV (∆3 = −169 ± 46 km s−1 with respect to the systemic red-
+Mgas (dust, P23)/M⋆ < 163–9%, where each interval spans the             shift determined from JWST spectra), associated with a possible
+low- to high-Z solutions. Using SFR estimates from SED mod-             gas outflow. The Mg ii velocity offset increases to ≈ 230 km s−1
+eling, we derive lower limits on the depletion timescale rang-          with respect to the systemic redshift based on the [C II] emission
+ing from τdep > 56 Myr (for Mmol ([CII], Z18) and the highest           in the central beam (Table 1). Mg ii broadly traces the neutral
+SFR100 ) to τdep > 0.7–1 Gyr (for the highest MHI ([CII], H21)          phase of outflowing gas given its ionization potential of 7.6 eV,
+and SFRs on 10 Myr timescales), the latter being comparable             and under simple geometric assumptions, the inferred energet-
+to or longer than the age of the universe at z = 7.3. With the          ics and mass outflow rates, which appear extreme, are consistent
+exception of the highest SFR100 and lowest Mgas estimates, all          with echoes of past AGN activity, as found more broadly in re-
+solutions point to low star formation efficiencies and long deple-      cently quenched galaxies at high redshift (Davies et al. 2024;
+tion timescales.                                                        Belli et al. 2024; Wu 2025; Zhu et al. 2026; Taylor et al. 2026;
+                                                                        Sun et al. 2026). Applying the same calibrations as in Section 3.4
+     In Figure 7, we place these estimates in context by compar-        to the extended [C II] component only, defined as the residual af-
+ing RUBIES-UDS-QG-z7 with star-forming galaxies at similar              ter subtracting the central galaxy emission from the total, we ob-
+redshift and quiescent galaxies across cosmic time. For a uni-          tain log(Mmol ext
+                                                                                          /M⊙ ) = 9.89+0.33                            +0.21
+                                                                                                       −0.32 and log(MHI /M⊙ ) = 10.70−0.20
+                                                                                                                      ext
+form comparison, we apply the Mmol ([CII], Z18) calibration to
+                                                                        and 9.82+0.20
+                                                                                    −0.20 for the low- and high-Z solutions, approximately
+RUBIES-UDS-QG-z7, the ALPINE sources at z ∼ 5, and those
+                                                                        0.35 dex higher than the gas mass associated with the galaxy
+from REBELS at z ∼ 7, the same conversion as adopted in
+                                                                        alone. The gas mass associated with the tentative Mg ii outflow,
+D’Eugenio et al. (2026) for their quiescent galaxies. As men-
+                                                                        log(Mout /M⊙ ) ≈ 9.1 (Valentino et al. 2025), is of a similar or-
+tioned above, we consider only the [C II] emission extracted in
+                                                                        der of magnitude, further supporting a physical connection and
+the central beam that we associate with the galaxy: including
+                                                                        an origin of the extended [C II] halo through episodes of gas ex-
+the gas emission on circumgalactic scales would increase the
+                                                                        pulsion from RUBIES-UDS-QG-z7. It is therefore tempting to
+ fgas by a factor of ≈ 3. The molecular gas fraction of RUBIES-
+                                                                        associate the extended [C II] emission with past AGN activity
+UDS-QG-z7 is ≈ 10× lower than that of UV-bright star-forming
+                                                                        that expelled and excited part of the gas. We note that the NIR-
+galaxies at the same redshift, and similarly ≈ 10× below the ex-
+                                                                        Spec spectra show no clear evidence for bright, AGN-powered
+pected fgas for a main-sequence galaxy with M⋆ = 1010.2 M⊙
+                                                                        emission lines, though low-level activity cannot be excluded at
+extrapolated from Liu et al. (2019). Therefore, while RUBIES-
+                                                                        the depth and resolution of the available data. However, the mass
+UDS-QG-z7 retains a substantial molecular gas reservoir after
+                                                                        and extreme properties of the possible outflows traced by Mg ii
+quenching, it is significantly more gas-poor than typical star-
+                                                                        and [C II] are difficult to reconcile with any other origin.
+forming galaxies at z ∼ 7. Comparing with quiescent galaxies
+at lower redshift, using the compilation of [C II]-, CO-, and dust-          Alternative scenarios appear less likely. The stellar emis-
+based estimates from D’Eugenio et al. (2026), the molecular gas         sion of RUBIES-UDS-QG-z7 is compact and symmetric, al-
+fraction of RUBIES-UDS-QG-z7 is consistent with [C II]-based            most point-like, with no clear residuals after Sérsic modeling
+results in that work and with CO- and dust-based estimates at           that would indicate a recent merger. The available NIRCam im-
+lower redshift, with the latter declining only below z ≈ 1. Taken       ages, among the deepest in the literature, reveal no significant
+together, these findings suggest that substantial cold gas reser-       emission from putative satellites in the immediate surroundings,
+voirs persist on galaxy scales and timescales of ∼ 100 Myr af-          though very low surface brightness emitters, previously detected
+ter quenching in early massive galaxies, pointing to at least a         around massive quiescent galaxies at lower redshift (Suess et al.
+component of gas heating rather than complete removal as the            2023), cannot be entirely excluded at z > 7.
+mechanism responsible for suppressing star formation.                        Regardless of its precise origin, given the low velocity offset
+                                                                        of the extended emission, the mass of the system, and the depth
+3.5. Gas on circumgalactic scales and the role of outflows              of the potential well at this redshift, the cold gas is unlikely to
+                                                                        escape the galaxy. In the absence of a mechanism able to main-
+So far, we have focused on the [C II] emission from the cen-            tain quiescence, a future reignition of star formation in RUBIES-
+tral beam, which we associate with the galaxy itself. However,          UDS-QG-z7 appears plausible, rejuvenating the galaxy (as pre-
+our analysis in Section 2.4 reveals [C II] emission on extended         dicted by some recent models for distant quenched objects, De
+scales of 8 ± 3 kpc (Figure 2), much larger than the stellar con-       Lucia et al. 2024; Fontanot et al. 2025; Remus & Kimmig 2025;
+tinuum detected by JWST (Reff = 209+33   −24 pc; Weibel et al. 2025).   Lagos et al. 2025; Chandro-Gómez et al. 2025), and bringing
+So-called “[C II] halos” have been reported around star-forming         its properties closer to those of its possible massive descendants
+galaxies at high redshift and attributed to several possible ori-       at lower redshift. And yet at the time of observation, RUBIES-
+gins, including faint satellites, neutral or ionized circumgalactic     UDS-QG-z7 remains quenched despite being immersed in a sub-
+gas, cold streams, outflows, or tidal stripping (Fujimoto et al.        stantial reservoir of cold gas, implying that whatever mecha-
+2020; Rowland et al. 2025). D’Eugenio et al. (2026) also report         nism is suppressing star formation must be remarkably effec-
+Article number, page 8 of 12
+                    F. Valentino et al.: Extended [CII] gas emission in and around a massive quiescent galaxy at z = 7.3
+
+
+               2
+                                                                                             ALPINE (SFGs)                              REBELS (SFGs)
+                                                                                            Mgas = Mmol([CII])                         Mgas = Mmol([CII])
+
+               1
+                                                           M = M RUBIES-QG
+                                                                                                                                                 (Low Z)
+                                                              M   = 1011M
+               0
+
+
+
+log(Mgas/M )
+               1
+                                                                                                                                                 (High Z)
+
+                                                                       [CII]-based              CO-based                  Dust-based
+               2
+                                                                       RUBIES-QG f(H2)          Williams+21               Zavala+19
+                                                                       RUBIES-QG f(HI)          Belli+21                  Whitaker+21
+                                                                       D'Eugenio+23 [CII]       Zanella+23                Caliendo+21
+                                                                       D'Eugenio+26 [CII]       Umehata+25 CO = 4.4       Blánquez-Sesé+21
+               3                                                       Sargent+15
+                                                                       Rudnick+17
+                                                                                                Umehata+25 CO = 0.8
+                                                                                                Suess+25
+                                                                                                                          Magdis+21
+                                                                                                                          Donevski+23
+                                                                       Suess+17                 Setton+25                 Adscheid+25
+                                                                       Hayashi+18               RUBIES-QG (dust)          Liu+19b M = M (RUBIES-QG) MS
+                                                                       Spilker+18               Gobat+18                  Liu+19b M = 1011M MS
+               0         1               2                3                  4                      5                 6                      7
+                                                                   Redshift
+Fig. 7: Gas fractions of quenched systems as a function of redshift. Purple, blue, and orange symbols indicate estimates based on
+[C II], CO, and dust, respectively; symbol shapes indicate the samples of QGs described in the legend. The gray solid line and
+shaded band show the locus of a main-sequence galaxy with stellar mass equal to that of RUBIES-UDS-QG-z7 (M⋆ = 1010.2 M⊙ )
+parameterized as in Liu et al. (2019); the dotted gray line shows the same trend for M⋆ = 1011 M⊙ for a better comparison with
+more massive low-redshift quiescent galaxies. For RUBIES-UDS-QG-z7, the star marks Mgas = Mmol ([CII]) calibrated as in Zanella
+et al. (2018); diamonds mark Mgas = MHI ([CII]) following Heintz et al. (2021) for the two stellar metallicity solutions of Weibel
+et al. (2025); orange circles mark upper limits on Mgas (dust) for the same two solutions. Empty purple circles and hexagons indicate
+ALPINE and REBELS star-forming galaxies assuming Mgas = Mmol ([CII]) as in Zanella et al. (2018). The compilation of molecular
+fgas in the literature for quiescent galaxies is from D’Eugenio et al. (2026) and references therein.
+
+
+tive at maintaining a low star formation efficiency on ∼ 100 Myr        terstellar and circumgalactic scales, including rotation, inflows,
+timescales even in the presence of abundant fuel.                       outflows, and merger signatures.
+                                                                             A second set of caveats concerns the conversion from L[CII]
+3.6. Testable scenarios and assumptions                                 to gas mass. The assumption that [C II] primarily traces the neu-
+                                                                        tral and molecular phases can be challenged if the ionized phase
+Several key assumptions underlie the physical scenarios dis-            contributes substantially. Critically, the relative contributions of
+cussed above. We address the most important ones here and out-          the three phases likely differ between the galaxy and circum-
+line how they can be tested with forthcoming observations.              galactic scales: while a conversion to molecular gas is physi-
+    The first caveat concerns the spatial decomposition of the          cally motivated for the galaxy-scale emission, a neutral gas cal-
+[C II] emission. Throughout this work, we assumed that the              ibration, with a possible significant contribution from the ion-
+emission from the central beam is associated with the galaxy,           ized component, may be more appropriate for the extended halo,
+which is a conservative upper limit given that some flux from the       where no discernible trace of recent star formation is found. The
+extended component is likely included. Conversely, the true flux        metallicity dependence of the calibrations adds a further source
+and size of the extended halo remain limited by the current S/N.        of uncertainty in the absence of a direct gas-phase metallicity
+Both issues can be addressed with deeper observations along two         measurement.
+complementary lines: high-resolution interferometric imaging,               Forthcoming deep JWST/NIRSpec spectra with medium-
+matched to the resolution of the NIRCam stellar emission, will          resolution gratings (GO-7488, PI: A. Weibel; GO-12396, PIs:
+separate the galaxy from its surroundings; deeper low-resolution        R. Naidu & A. de Graaff) hold the promise of addressing sev-
+observations will push the detectability of the extended halo.          eral of these limitations at once. The improved S/N and spectral
+Combining the two — recovering the total flux while resolving it        resolution will allow the detection of rest-frame optical emission
+in multiple independent beams — will also enable a first study of       lines from the ionized phase, constraining their origin (residual
+the gas kinematics and geometry of the system, currently limited        star formation, shocks, or AGN activity) and providing a direct
+to the blue- and redshifted decomposition in Figure 2, and place        measurement of the gas-phase metallicity. Combined modeling
+independent constraints on the origin of the emission across in-        of rest-frame UV and optical emission lines with photoioniza-
+                                                                                                                           Article number, page 9 of 12
+                                                A&A proofs: manuscript no. cii_rubies_z7
+
+tion codes, together with additional fine-structure lines accessi-       the L[CII] -to-Mgas conversion factor. The stellar morphology
+ble with ALMA for this source (e.g., [N ii] 122 and 205 µm),             shows no evidence of recent mergers or satellites at the cur-
+will constrain the contribution from the ionized gas phase. De-          rent depth, and the existing NIRSpec spectra, albeit limited
+tection of ionized gas on extended scales (e.g., [O III] λ5007),         in S/N and resolution, show no clear signs of ongoing strong
+not unusual around AGN (e.g., Pérez-González et al. 2025, for            nuclear activity. Yet, the velocity offset of the extended [C II]
+a massive quiescent galaxy at z = 3.7), would further support            component is consistent with the tentative Mg ii absorption
+a significant ionized contribution to the [C II] emission. Follow-       outflow reported by Valentino et al. (2025), suggesting that
+up of dense neutral gas tracers with ALMA (e.g., [O i] 145 µm)           past AGN activity may have expelled and excited the circum-
+will provide an independent handle on the neutral phase. Deeper          galactic gas.
+spectra around Mg ii will independently test the tentative out-        – Quenching at cosmic dawn: The combination of a compact
+flow detection of Valentino et al. (2025); combined with higher-         stellar structure, suppressed star formation, and a large, pos-
+resolution ALMA observations constraining the co-spatiality              sibly AGN-ejected and heated gas reservoir at z = 7.3 — just
+and geometry of the Mg ii absorption and extended [C II] emis-           700 Myr after the Big Bang — implies that the mechanisms
+sion, this will help corroborate or rule out past AGN activity as        halting star formation act without fully expelling or deplet-
+the origin of the extended [C II] emission.                              ing the cold gas from the system, and are already in place at
+    Finally, multi-wavelength follow-up of the dust continuum            the earliest cosmic epochs probed to date.
+could help lift the assumptions on dust temperature and emis-
+sivity index adopted in Section 3.1. A better-constrained dust            Taken together, these results indicate that RUBIES-UDS-
+mass, coupled with gas mass values, will provide an indepen-          QG-z7 is immersed in a sizeable reservoir of cold gas despite
+dent estimate of the gas-to-dust ratio – a quantity that may dif-     showing no sign of ongoing star formation, a puzzle that future
+fer substantially between star-forming galaxies and quenched or       observations will help to unravel, with implications for our un-
+post-starburst systems (Whitaker et al. 2021a; Lorenzon et al.        derstanding of galaxy quenching in the early Universe.
+2025; Spilker et al. 2025). Additionally, high-frequency obser-       Acknowledgements. We warmly thank Chiara D’Eugenio for kindly providing
+vations of the dust continuum could help constrain the SFH of         the literature compilation shown in Figure 7 and information about her sam-
+the galaxy, as SED models produce slightly different predictions      ple, and Mariko Kubo for sharing the photometry of QG1–3. FV, KI, AP, and
+                                                                      PZ acknowledge support from the Independent Research Fund Denmark (DFF)
+for LIR (Section 3.1).                                                under grant 3120-00043B. AdG acknowledges support from a Clay Fellowship
+                                                                      awarded by the Smithsonian Astrophysical Observatory. This work has received
+                                                                      funding from the Swiss State Secretariat for Education, Research and Innova-
+4. Conclusions                                                        tion (SERI) under contract number MB22.00072, as well as from the Swiss
+                                                                      National Science Foundation (SNSF) through project grants 200020_207349
+We report the detection of [C II] 158 µm emission in and around       and 2000-1-243073. This work is based in part on observations made with the
+RUBIES-UDS-QG-z7 at z = 7.27, the most distant massive                NASA/ESA/CSA James Webb Space Telescope. The data were obtained from
+quenched galaxy known to date (Weibel et al. 2025). The emis-         the Mikulski Archive for Space Telescopes at the Space Telescope Science In-
+                                                                      stitute, which is operated by the Association of Universities for Research in As-
+sion extends over 8±3 kpc, well beyond the compact stellar body,      tronomy, Inc., under NASA contract NAS 5-03127 for JWST. Some of the data
+with a significant fraction of ≈ 70% arising from the gaseous         products presented herein were retrieved from the Dawn JWST Archive (DJA).
+halo on circumgalactic scales. No dust continuum is detected at       DJA is an initiative of the Cosmic Dawn Center, which is funded by the Danish
+1.3 mm. Our main findings are as follows.                             National Research Foundation under grant DNRF140.
+
+ – Cold gas reservoir after quenching: Despite having sup-
+   pressed star formation for ∼ 100 Myr, RUBIES-UDS-QG-               References
+   z7 retains a substantial cold gas reservoir. Depending on
+   the assumed calibration and stellar metallicity solution, we       Akhshik, M., Whitaker, K. E., Leja, J., et al. 2023, ApJ, 943, 179
+   find log(Mmol /M⊙ ) = 9.53+0.32
+                                −0.31 and log(MHI /M⊙ ) = 9.46–
+                                                                      Alberts, S., Williams, C. C., Helton, J. M., et al. 2024, ApJ, 975, 85
+                                                                      Baker, W. M., Lim, S., D’Eugenio, F., et al. 2025a, MNRAS, 539, 557
+   10.34, corresponding to gas fractions of fgas ≈ 20% (molec-        Baker, W. M., Valentino, F., Lagos, C. d. P., et al. 2025b, A&A, 702, A270
+   ular) or ≈ 20–130% (neutral). Using the [C II]-to-molecular        Baron, D., Netzer, H., French, K. D., et al. 2023, MNRAS, 524, 2741
+   gas conversion as a reference, the molecular gas fraction of       Belli, S., Contursi, A., Genzel, R., et al. 2021, ApJ, 909, L11
+                                                                      Belli, S., Park, M., Davies, R. L., et al. 2024, Nature, 630, 54
+   RUBIES-UDS-QG-z7 is ≈ 10× lower than those of UV-                  Béthermin, M., Fudamoto, Y., Ginolfi, M., et al. 2020, A&A, 643, A2
+   bright star-forming galaxies at z ∼ 7 and of main-sequence         Bezanson, R., Labbe, I., Whitaker, K. E., et al. 2022, arXiv e-prints,
+   galaxies of similar mass extrapolated from well-established           arXiv:2212.04026
+   scaling relations, yet consistent with the gas fractions of qui-   Blánquez-Sesé, D., Gómez-Guijarro, C., Magdis, G. E., et al. 2023, A&A, 674,
+                                                                         A166
+   escent galaxies across a wide redshift range down to z ≈ 1.        Bouwens, R. J., Smit, R., Schouws, S., et al. 2021, arXiv e-prints,
+ – Low star formation efficiency: The L[CII] luminosity of               arXiv:2106.13719
+   RUBIES-UDS-QG-z7 is broadly consistent with the L[CII] –           Carnall, A. C., McLeod, D. J., McLure, R. J., et al. 2022, arXiv e-prints,
+   SFR relation when considering SFR estimates from SED                  arXiv:2208.00986
+                                                                      Carnall, A. C., McLure, R. J., Dunlop, J. S., et al. 2023, Nature, 619, 716
+   modeling averaged over 100 Myr, but inconsistent with the          Chabrier, G. 2003, PASP, 115, 763
+   much lower SFRs inferred on 10 Myr timescales. Depletion           Chaikin, E., Schaye, J., Huško, F., et al. 2026, arXiv e-prints, arXiv:2601.15207
+   timescales range from τdep > 56 Myr to τdep > 0.7–1 Gyr, the       Chandro-Gómez, Á., Lagos, C. d. P., Power, C., et al. 2025, arXiv e-prints,
+   latter comparable to or exceeding the age of the universe at          arXiv:2512.16208
+                                                                      Choi, J., Dotter, A., Conroy, C., et al. 2016, ApJ, 823, 102
+   z = 7.3. Based on the shortest-timescale SFR estimates, the        Conroy, C. & Gunn, J. E. 2010, ApJ, 712, 833
+   available gas reservoirs imply a low star formation efficiency     Cornwell, T. J. 2008, IEEE Journal of Selected Topics in Signal Processing, 2,
+   in the system.                                                        793
+ – Gas on circumgalactic scales: The [C II] emission extends          da Cunha, E., Groves, B., Walter, F., et al. 2013, ApJ, 766, 13
+                                                                      Davies, R. L., Belli, S., Park, M., et al. 2024, MNRAS, 528, 4976
+   significantly beyond the stellar body of RUBIES-UDS-QG-            Davis, T. A., Alatalo, K., Sarzi, M., et al. 2011, MNRAS, 417, 882
+   z7, with the extended component carrying twice as much gas         de Graaff, A., Brammer, G., Weibel, A., et al. 2025a, A&A, 697, A189
+   mass as the galaxy alone under the same assumptions on             de Graaff, A., Setton, D. J., Brammer, G., et al. 2025b, Nature Astronomy, 9, 280
+
+Article number, page 10 of 12
+                           F. Valentino et al.: Extended [CII] gas emission in and around a massive quiescent galaxy at z = 7.3
+
+De Looze, I., Cormier, D., Lebouteiller, V., et al. 2014, A&A, 568, A62                Remus, R.-S. & Kimmig, L. C. 2025, ApJ, 982, 30
+De Lucia, G., Fontanot, F., Hirschmann, M., & Xie, L. 2025, arXiv e-prints,            Rowland, L. E., Heintz, K. E., Algera, H., et al. 2025, arXiv e-prints,
+    arXiv:2502.01724                                                                      arXiv:2510.11351
+De Lucia, G., Fontanot, F., Xie, L., & Hirschmann, M. 2024, A&A, 687, A68              Rowlands, K., Dunne, L., Maddox, S., et al. 2012, MNRAS, 419, 2545
+De Vis, P., Jones, A., Viaene, S., et al. 2019, A&A, 623, A5                           Rowlands, K., Wild, V., Nesvadba, N., et al. 2015, MNRAS, 448, 258
+D’Eugenio, C., Daddi, E., Gobat, R., et al. 2026, arXiv e-prints,                      Sánchez-Blázquez, P., Peletier, R. F., Jiménez-Vicente, J., et al. 2006, MNRAS,
+    arXiv:2604.09347                                                                      371, 703
+D’Eugenio, C., Daddi, E., Liu, D., & Gobat, R. 2023, A&A, 678, L9                      Schaerer, D., Ginolfi, M., Béthermin, M., et al. 2020, A&A, 643, A3
+Donevski, D., Damjanov, I., Nanni, A., et al. 2023, A&A, 678, A35                      Setton, D. J., Spilker, J. S., Bezanson, R., et al. 2025, AJ, 170, 351
+Donnan, C. T., McLure, R. J., Dunlop, J. S., et al. 2024, MNRAS, 533, 3222             Smercina, A., Smith, J. D. T., Dale, D. A., et al. 2018, ApJ, 855, 51
+D’Onofrio, V. R., Spilker, J. S., Bezanson, R., et al. 2026, ApJ, 1003, 52             Smith, M. W. L., Gomez, H. L., Eales, S. A., et al. 2012, ApJ, 748, 123
+Ellison, S., Huang, Q., Yang, D., et al. 2025, The Open Journal of Astrophysics,       Solomon, P. M., Downes, D., Radford, S. J. E., & Barrett, J. W. 1997, ApJ, 478,
+    8, 87                                                                                 144
+Faisst, A. L., Fudamoto, Y., Oesch, P. A., et al. 2020, MNRAS, 498, 4192               Spilker, J., Bezanson, R., Barišić, I., et al. 2018, ApJ, 860, 103
+Farcy, M., Hirschmann, M., Somerville, R. S., et al. 2025, MNRAS (submitted),          Spilker, J. S., Whitaker, K. E., Narayanan, D., et al. 2025, ApJ, 993, L40
+    arXiv:2504.08041                                                                   Stevenson, S. D., Carnall, A. C., Leung, H.-H., et al. 2026, MNRAS, 545,
+Fontanot, F., Decarli, R., De Lucia, G., et al. 2025, arXiv e-prints,                     staf2087
+    arXiv:2511.15789                                                                   Suess, K. A., Bezanson, R., Spilker, J. S., et al. 2017, ApJ, 846, L14
+Foreman-Mackey, D., Hogg, D. W., Lang, D., & Goodman, J. 2013, Publications            Suess, K. A., Williams, C. C., Robertson, B., et al. 2023, ApJ, 956, L42
+    of the Astronomical Society of the Pacific, 125, 306                               Sun, Y., Ji, Z., D’Eugenio, F., et al. 2026, arXiv e-prints, arXiv:2604.18522
+French, K. D., Smercina, A., Rowlands, K., et al. 2023, ApJ, 942, 25                   Suzuki, T. L., Glazebrook, K., Schreiber, C., et al. 2022, ApJ, 936, 61
+French, K. D., Yang, Y., Zabludoff, A., et al. 2015, ApJ, 801, 1                       Taylor, E., Carnall, A. C., Maltby, D., et al. 2026, arXiv e-prints,
+French, K. D., Zabludoff, A. I., Yoon, I., et al. 2018, ApJ, 861, 123
+                                                                                          arXiv:2601.02269
+Fudamoto, Y., Inoue, A. K., Bouwens, R., et al. 2025, arXiv e-prints,
+                                                                                       Tazzari, M. 2017, mtazzari/uvplot
+    arXiv:2504.03831
+                                                                                       Umehata, H., Kubo, M., & Nakanishi, K. 2025, ApJ, 985, L8
+Fujimoto, S., Silverman, J. D., Bethermin, M., et al. 2020, ApJ, 900, 1
+                                                                                       Umehata, H., Kubo, M., Smail, I., et al. 2026, ApJ, 997, 79
+Gobat, R., Daddi, E., Magdis, G., et al. 2018, Nature Astronomy, 2, 239
+Heintz, K. E., Brammer, G. B., Watson, D., et al. 2025a, A&A, 693, A60                 Utomo, D., Kriek, M., Labbé, I., Conroy, C., & Fumagalli, M. 2014, ApJ, 783,
+Heintz, K. E., De Cia, A., Thöne, C. C., et al. 2023, A&A, 679, A91                       L30
+Heintz, K. E., Watson, D., Oesch, P. A., Narayanan, D., & Madden, S. C. 2021,          Valentino, F., Brammer, G., Gould, K. M. L., et al. 2023, ApJ, 947, 20
+    ApJ, 922, 147                                                                      Valentino, F., Heintz, K. E., Brammer, G., et al. 2025, A&A, 699, A358
+Heintz, K. E., Watson, D., Valentino, F., et al. 2025b, arXiv e-prints,                Vallini, L., Gallerani, S., Ferrara, A., Pallottini, A., & Yue, B. 2015, ApJ, 813, 36
+    arXiv:2510.07936                                                                   Vizgan, D., Greve, T. R., Olsen, K. P., et al. 2022a, ApJ, 929, 92
+Herrera-Camus, R., González-López, J., Förster Schreiber, N., et al. 2025, A&A,        Vizgan, D., Heintz, K. E., Greve, T. R., et al. 2022b, ApJ, 939, L1
+    699, A80                                                                           Wang, F., Champagne, J. B., Huang, J., et al. 2026, arXiv e-prints,
+Hirashita, H., Ferrara, A., Dayal, P., & Ouchi, M. 2014, MNRAS, 443, 1704                 arXiv:2602.04979
+Hunter, T. R., Indebetouw, R., Brogan, C. L., et al. 2023, PASP, 135, 074501           Weibel, A., de Graaff, A., Setton, D. J., et al. 2025, ApJ, 983, 11
+Ito, K., Valentino, F., Brammer, G., et al. 2025, arXiv e-prints, arXiv:2506.22642     Whitaker, K. E. & Bezanson, R. 2026, arXiv e-prints, arXiv:2606.12156
+Izumi, T., Onoue, M., Matsuoka, Y., et al. 2019, PASJ, 71, 111                         Whitaker, K. E., Narayanan, D., Williams, C. C., et al. 2021a, ApJ, 922, L30
+Izumi, T., Onoue, M., Shirakata, H., et al. 2018, PASJ, 70, 36                         Whitaker, K. E., Williams, C. C., Mowla, L., et al. 2021b, Nature, 597, 485
+Ji, Z., Williams, C. C., Behroozi, P., et al. 2026, arXiv e-prints, arXiv:2604.05022   Williams, C. C., Spilker, J. S., Whitaker, K. E., et al. 2021, ApJ, 908, 54
+Ji, Z., Williams, C. C., Rieke, G. H., et al. 2024, arXiv:2409.17233                   Witstok, J., Jones, G. C., Maiolino, R., Smit, R., & Schneider, R. 2023, MNRAS,
+Johnson, B. D., Leja, J., Conroy, C., & Speagle, J. S. 2021, ApJS, 254, 22                523, 3119
+Kennicutt, R. C. & Evans, N. J. 2012, ARA&A, 50, 531                                   Wolfire, M. G., Vallini, L., & Chevance, M. 2022, ARA&A, 60, 247
+Kimmig, L. C., Remus, R.-S., Seidel, B., et al. 2025, ApJ, 979, 15                     Woodrum, C., Williams, C. C., Rieke, M., et al. 2022, ApJ, 940, 39
+Kriek, M. & Conroy, C. 2013, ApJ, 775, L16                                             Wu, P.-F. 2025, ApJ, 978, 131
+Kubo, M., Umehata, H., Matsuda, Y., et al. 2021, ApJ, 919, 6                           Xie, L., De Lucia, G., Fontanot, F., et al. 2024, ApJ, 966, L2
+Kubo, M., Umehata, H., Matsuda, Y., et al. 2022, ApJ, 935, 89                          Zanella, A., Belli, S., Valentino, F. M., & Bolamperti, A. 2026, A&A, 709, A14
+Kubo, M., Yamada, T., Ichikawa, T., et al. 2016, MNRAS, 455, 3333                      Zanella, A., Daddi, E., Magdis, G., et al. 2018, MNRAS, 481, 1976
+Kurinchi-Vendhan, S., Farcy, M., Hirschmann, M., & Valentino, F. 2024, MN-             Zanella, A., Valentino, F., Gallazzi, A., et al. 2023, MNRAS, 524, 923
+    RAS, 534, 3974                                                                     Zhang, Y., de Graaff, A., Setton, D. J., et al. 2026, ApJ, 997, 252
+Lagos, C. d. P., Bravo, M., Tobar, R., et al. 2024, MNRAS, 531, 3551                   Zhu, P., Ito, K., Valentino, F., et al. 2026, arXiv e-prints, arXiv:2602.17767
+Lagos, C. d. P., Valentino, F., Wright, R. J., et al. 2025, MNRAS, 536, 2324
+Le Fèvre, O., Béthermin, M., Faisst, A., et al. 2020, A&A, 643, A1
+Lee, M. M., Steidel, C. C., Brammer, G., et al. 2024, MNRAS, 527, 9529
+Leja, J., Carnall, A. C., Johnson, B. D., Conroy, C., & Speagle, J. S. 2019a, ApJ,
+    876, 3
+Leja, J., Johnson, B. D., Conroy, C., et al. 2019b, ApJ, 877, 140
+Liu, D., Schinnerer, E., Groves, B., et al. 2019, ApJ, 887, 235
+Lorenzon, G., Donevski, D., Man, A. W. S., et al. 2025, ApJ, 995, L63
+Madden, S. C., Cormier, D., Hony, S., et al. 2020, A&A, 643, A141
+Magdis, G. E., Gobat, R., Valentino, F., et al. 2021, A&A, 647, A33
+Man, A. & Belli, S. 2018, Nature Astronomy, 2, 695
+Martí-Vidal, I., Vlemmings, W. H. T., Muller, S., & Casey, S. 2014, A&A, 563,
+    A136
+McMullin, J. P., Waters, B., Schiebel, D., Young, W., & Golap, K. 2007, in As-
+    tronomical Data Analysis Software and Systems XVI, Vol. 376, 127
+Merlin, E., Fortuni, F., Calabró, A., et al. 2025, The Open Journal of Astro-
+    physics, 8, E170
+Michałowski, M. J., Gall, C., Hjorth, J., et al. 2024, ApJ, 964, 129
+Michałowski, M. J., Hjorth, J., Gall, C., et al. 2019, A&A, 632, A43
+Nanayakkara, T., Glazebrook, K., Jacobs, C., et al. 2024, Scientific Reports, 14,
+    3724
+Newman, A. B., Belli, S., Ellis, R. S., & Patel, S. G. 2018, ApJ, 862, 125
+Newman, A. B., Gu, M., Belli, S., et al. 2025, arXiv e-prints, arXiv:2503.17478
+Park, M., Conroy, C., Johnson, B. D., et al. 2025, ApJ, 994, 165
+Pérez-González, P. G., D’Eugenio, F., Rodríguez del Pino, B., et al. 2025, Nature
+    Astronomy, 9, 1240
+Popping, G. & Péroux, C. 2022, MNRAS, 513, 1531
+Popping, G., Shivaei, I., Sanders, R. L., et al. 2023, A&A, 670, A138
+
+                                                                                                                                        Article number, page 11 of 12
+                                                    A&A proofs: manuscript no. cii_rubies_z7
+
+     Table 2: Physical properties of RUBIES-UDS-QG-z7.
+
+    Quantity                              low-Z           high-Z
+    log(M⋆ /M⊙ )†                      10.23+0.04
+                                             −0.04     10.19+0.04
+                                                              −0.04
+    AV [mag]†                               +0.08
+                                        0.31−0.08       0.25+0.09
+                                                             −0.07
+    t50 [Gyr]†                          0.20+0.07
+                                            −0.02       0.16 +0.03
+                                                             −0.02
+                                            +0.01
+    t90 [Gyr]†                          0.12−0.01       0.07+0.01
+                                                             −0.01
+    log(Z/Z⊙ )†                        −0.94+0.05
+                                             −0.04      0.07 +0.08
+                                                             −0.11
+                                            +0.83            +1.55
+    SFR10 [M⊙ yr−1 ]†                   0.64−0.60       1.08−0.98
+    SFR100 [M⊙ yr−1 ]†                 0.84+20.16
+                                            −0.78      48.89+21.12
+                                                             −13.04
+    SFRLines [M⊙ yr−1 ]†                          < 6.6
+    log(MHI /M⊙ ) ([C II], H21)        10.34+0.19
+                                             −0.17     9.46+0.18
+                                                            −0.17
+    log(Mmol /M⊙ ) ([C II], Z18)               9.53+0.32
+                                                   −0.31
+    log(Mgas /M⊙ ) (dust, P23)          < 10.44         < 9.13
+     fHI (H21)                        128.6−51.8 % 18.6+8.0
+                                            +58.5
+                                                           −7.6 %
+                                           +15.0          +16.5
+     fmol (Z18)                       20.1−14.5 % 22.0−15.9 %
+     fgas (dust, P23)                   < 163%           < 9%
+    τdep (MHI , SFR10 ) [Gyr]           > 8.77          > 0.62
+    τdep (MHI , SFR100 ) [Gyr]          > 0.36          > 0.05
+    τdep (Mmol , SFR10 ) [Gyr]          > 1.37          > 0.73
+    τdep (Mmol , SFR100 ) [Gyr]         > 0.06          > 0.05
+                      Extended [C II] emission
+    log(MHI /M⊙ ) ([C II], H21)         10.66+0.22
+                                             −0.20     9.82+0.20
+                                                           −0.20
+    log(Mmol /M⊙ ) ([C II], Z18)               9.85+0.34
+                                                   −0.33
+
+Notes. † Properties derived from the spectrophotometric modeling in
+Weibel et al. (2025) and reported here for convenience. SFR10 and
+SFR100 are the star formation rates averaged over the last 10 and 100
+Myr, respectively. t50 and t90 are the lookback times by which 50% and
+90% of the stellar mass had already formed. Gas mass estimates are ob-
+tained from [C II] (H I, H21: Heintz et al. 2021; molecular, Z18: Zanella
+et al. 2018) and dust (P23: Popping et al. 2023). The upper limits are at
+3σ.
+
+
+
+
+Article number, page 12 of 12
+

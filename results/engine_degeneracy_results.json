@@ -1,0 +1,249 @@
+{
+  "description": "Engine degeneracy test: AGN vs Stellar Core + G_eff",
+  "metric": "Delta(F150W-F444W) = Balmer jump strength relative to N_H=0",
+  "columns": [
+    "N_H",
+    "delta_AGN",
+    "delta_Stellar"
+  ],
+  "N_H=1.00e+19": {
+    "delta_AGN": -0.003,
+    "delta_Stellar": 0.036
+  },
+  "N_H=1.17e+19": {
+    "delta_AGN": -0.001,
+    "delta_Stellar": 0.043
+  },
+  "N_H=1.37e+19": {
+    "delta_AGN": 0.001,
+    "delta_Stellar": 0.05
+  },
+  "N_H=1.60e+19": {
+    "delta_AGN": 0.004,
+    "delta_Stellar": 0.058
+  },
+  "N_H=1.87e+19": {
+    "delta_AGN": 0.008,
+    "delta_Stellar": 0.068
+  },
+  "N_H=2.18e+19": {
+    "delta_AGN": 0.012,
+    "delta_Stellar": 0.08
+  },
+  "N_H=2.55e+19": {
+    "delta_AGN": 0.018,
+    "delta_Stellar": 0.093
+  },
+  "N_H=2.98e+19": {
+    "delta_AGN": 0.025,
+    "delta_Stellar": 0.109
+  },
+  "N_H=3.49e+19": {
+    "delta_AGN": 0.033,
+    "delta_Stellar": 0.127
+  },
+  "N_H=4.08e+19": {
+    "delta_AGN": 0.043,
+    "delta_Stellar": 0.149
+  },
+  "N_H=4.76e+19": {
+    "delta_AGN": 0.054,
+    "delta_Stellar": 0.174
+  },
+  "N_H=5.57e+19": {
+    "delta_AGN": 0.067,
+    "delta_Stellar": 0.203
+  },
+  "N_H=6.51e+19": {
+    "delta_AGN": 0.082,
+    "delta_Stellar": 0.238
+  },
+  "N_H=7.61e+19": {
+    "delta_AGN": 0.1,
+    "delta_Stellar": 0.278
+  },
+  "N_H=8.90e+19": {
+    "delta_AGN": 0.121,
+    "delta_Stellar": 0.325
+  },
+  "N_H=1.04e+20": {
+    "delta_AGN": 0.145,
+    "delta_Stellar": 0.38
+  },
+  "N_H=1.22e+20": {
+    "delta_AGN": 0.173,
+    "delta_Stellar": 0.444
+  },
+  "N_H=1.42e+20": {
+    "delta_AGN": 0.206,
+    "delta_Stellar": 0.519
+  },
+  "N_H=1.66e+20": {
+    "delta_AGN": 0.245,
+    "delta_Stellar": 0.606
+  },
+  "N_H=1.94e+20": {
+    "delta_AGN": 0.29,
+    "delta_Stellar": 0.708
+  },
+  "N_H=2.27e+20": {
+    "delta_AGN": 0.343,
+    "delta_Stellar": 0.828
+  },
+  "N_H=2.65e+20": {
+    "delta_AGN": 0.405,
+    "delta_Stellar": 0.968
+  },
+  "N_H=3.10e+20": {
+    "delta_AGN": 0.476,
+    "delta_Stellar": 1.131
+  },
+  "N_H=3.63e+20": {
+    "delta_AGN": 0.56,
+    "delta_Stellar": 1.322
+  },
+  "N_H=4.24e+20": {
+    "delta_AGN": 0.658,
+    "delta_Stellar": 1.545
+  },
+  "N_H=4.95e+20": {
+    "delta_AGN": 0.771,
+    "delta_Stellar": 1.805
+  },
+  "N_H=5.79e+20": {
+    "delta_AGN": 0.903,
+    "delta_Stellar": 2.109
+  },
+  "N_H=6.77e+20": {
+    "delta_AGN": 1.056,
+    "delta_Stellar": 2.462
+  },
+  "N_H=7.91e+20": {
+    "delta_AGN": 1.233,
+    "delta_Stellar": 2.874
+  },
+  "N_H=9.25e+20": {
+    "delta_AGN": 1.437,
+    "delta_Stellar": 3.351
+  },
+  "N_H=1.08e+21": {
+    "delta_AGN": 1.67,
+    "delta_Stellar": 3.901
+  },
+  "N_H=1.26e+21": {
+    "delta_AGN": 1.935,
+    "delta_Stellar": 4.525
+  },
+  "N_H=1.48e+21": {
+    "delta_AGN": 2.232,
+    "delta_Stellar": 5.212
+  },
+  "N_H=1.73e+21": {
+    "delta_AGN": 2.555,
+    "delta_Stellar": 5.915
+  },
+  "N_H=2.02e+21": {
+    "delta_AGN": 2.895,
+    "delta_Stellar": 6.53
+  },
+  "N_H=2.36e+21": {
+    "delta_AGN": 3.231,
+    "delta_Stellar": 6.935
+  },
+  "N_H=2.76e+21": {
+    "delta_AGN": 3.53,
+    "delta_Stellar": 7.118
+  },
+  "N_H=3.22e+21": {
+    "delta_AGN": 3.762,
+    "delta_Stellar": 7.175
+  },
+  "N_H=3.77e+21": {
+    "delta_AGN": 3.913,
+    "delta_Stellar": 7.187
+  },
+  "N_H=4.41e+21": {
+    "delta_AGN": 3.993,
+    "delta_Stellar": 7.189
+  },
+  "N_H=5.15e+21": {
+    "delta_AGN": 4.027,
+    "delta_Stellar": 7.189
+  },
+  "N_H=6.02e+21": {
+    "delta_AGN": 4.039,
+    "delta_Stellar": 7.188
+  },
+  "N_H=7.04e+21": {
+    "delta_AGN": 4.042,
+    "delta_Stellar": 7.188
+  },
+  "N_H=8.23e+21": {
+    "delta_AGN": 4.042,
+    "delta_Stellar": 7.187
+  },
+  "N_H=9.62e+21": {
+    "delta_AGN": 4.041,
+    "delta_Stellar": 7.186
+  },
+  "N_H=1.12e+22": {
+    "delta_AGN": 4.039,
+    "delta_Stellar": 7.185
+  },
+  "N_H=1.31e+22": {
+    "delta_AGN": 4.038,
+    "delta_Stellar": 7.184
+  },
+  "N_H=1.54e+22": {
+    "delta_AGN": 4.037,
+    "delta_Stellar": 7.182
+  },
+  "N_H=1.80e+22": {
+    "delta_AGN": 4.035,
+    "delta_Stellar": 7.181
+  },
+  "N_H=2.10e+22": {
+    "delta_AGN": 4.032,
+    "delta_Stellar": 7.179
+  },
+  "N_H=2.45e+22": {
+    "delta_AGN": 4.03,
+    "delta_Stellar": 7.176
+  },
+  "N_H=2.87e+22": {
+    "delta_AGN": 4.027,
+    "delta_Stellar": 7.174
+  },
+  "N_H=3.35e+22": {
+    "delta_AGN": 4.023,
+    "delta_Stellar": 7.17
+  },
+  "N_H=3.92e+22": {
+    "delta_AGN": 4.019,
+    "delta_Stellar": 7.167
+  },
+  "N_H=4.58e+22": {
+    "delta_AGN": 4.015,
+    "delta_Stellar": 7.162
+  },
+  "N_H=5.36e+22": {
+    "delta_AGN": 4.009,
+    "delta_Stellar": 7.157
+  },
+  "N_H=6.26e+22": {
+    "delta_AGN": 4.002,
+    "delta_Stellar": 7.151
+  },
+  "N_H=7.32e+22": {
+    "delta_AGN": 3.995,
+    "delta_Stellar": 7.143
+  },
+  "N_H=8.55e+22": {
+    "delta_AGN": 3.986,
+    "delta_Stellar": 7.135
+  },
+  "N_H=1.00e+23": {
+    "delta_AGN": 3.976,
+    "delta_Stellar": 7.125
+  }
+}

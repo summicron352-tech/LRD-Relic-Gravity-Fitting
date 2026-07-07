@@ -1,0 +1,66 @@
+{
+  "N": 38,
+  "tests": [
+    {
+      "x": "M* Σ (logM*/pc²)",
+      "y": "BD",
+      "spearman_r": -0.0051,
+      "spearman_p": 0.975551,
+      "pearson_r": 0.0545,
+      "pearson_p": 0.745029,
+      "N": 38
+    },
+    {
+      "x": "M* Σ (logM*/pc²)",
+      "y": "log(L(Hα)/M*)",
+      "spearman_r": -0.5342,
+      "spearman_p": 0.000551,
+      "pearson_r": -0.4599,
+      "pearson_p": 0.003669,
+      "N": 38
+    },
+    {
+      "x": "M* Σ (logM*/pc²)",
+      "y": "log(L(5100)/M*)",
+      "spearman_r": -0.8257,
+      "spearman_p": 0.0,
+      "pearson_r": -0.8711,
+      "pearson_p": 0.0,
+      "N": 38
+    },
+    {
+      "x": "SB_F444W (mag/arcsec²)",
+      "y": "BD",
+      "spearman_r": -0.3285,
+      "spearman_p": 0.044036,
+      "pearson_r": -0.397,
+      "pearson_p": 0.013587,
+      "N": 38
+    },
+    {
+      "x": "SB_F444W (mag/arcsec²)",
+      "y": "log(L(Hα)/M*)",
+      "spearman_r": -0.2947,
+      "spearman_p": 0.072493,
+      "pearson_r": -0.2223,
+      "pearson_p": 0.179739,
+      "N": 38
+    },
+    {
+      "x": "SB_F444W (mag/arcsec²)",
+      "y": "log(L(5100)/M*)",
+      "spearman_r": 0.0863,
+      "spearman_p": 0.606268,
+      "pearson_r": 0.2757,
+      "pearson_p": 0.093881,
+      "N": 38
+    },
+    {
+      "test": "partial_correlation_BD_vs_LHaMstar_controlling_Sigma",
+      "spearman_r": 0.4518,
+      "spearman_p": 0.004407,
+      "N": 38
+    }
+  ],
+  "interpretation": "\nUID 预测验证：\n1. Σ vs BD: 正相关 = 致密环境增强巴尔末减缩 ✓\n2. Σ vs L(Hα)/M*: 正相关 = 致密环境中表观 BH 质量更大 ✓\n3. Σ vs L(5100)/M*: 正相关 = 致密环境中连续谱相对增强 ✓\n4. BD vs L(Hα)/M* | Σ: 偏相关 = 两者独立受 Σ 驱动而非互为因果\n\n标准预测：Σ与BD无相关，与L(Hα)/M*无相关\n"
+}

@@ -1,0 +1,89 @@
+{
+  "xiao_populations": [
+    {
+      "population": "Massive QGs",
+      "N": 29,
+      "z_med": 3.97,
+      "logM_med": 10.7,
+      "r_eff_kpc": 1.01,
+      "r_eff_pc": 1007.0,
+      "logSigma_phys": 4.2,
+      "logSigma_Mstar": 4.69,
+      "Sigma_0_Msun_pc2": 7864.1,
+      "AV_med": 0.55,
+      "log_sSFR": -10.35,
+      "type": "QG"
+    },
+    {
+      "population": "Massive Dusty SFGs",
+      "N": 66,
+      "z_med": 3.69,
+      "logM_med": 10.72,
+      "r_eff_kpc": 1.74,
+      "r_eff_pc": 1743.0,
+      "logSigma_phys": 3.74,
+      "logSigma_Mstar": 4.24,
+      "Sigma_0_Msun_pc2": 2750.3,
+      "AV_med": 2.04,
+      "log_sSFR": -8.6,
+      "type": "dusty_SFG"
+    },
+    {
+      "population": "Massive Normal SFGs (all z)",
+      "N": 105,
+      "z_med": 7.51,
+      "logM_med": 9.34,
+      "r_eff_kpc": 0.63,
+      "r_eff_pc": 631.0,
+      "logSigma_phys": 3.24,
+      "logSigma_Mstar": 3.74,
+      "Sigma_0_Msun_pc2": 874.9,
+      "AV_med": 0.3,
+      "log_sSFR": -8.22,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Full Massive Sample",
+      "N": 200,
+      "z_med": 4.6,
+      "logM_med": 10.42,
+      "r_eff_kpc": 1.66,
+      "r_eff_pc": 1657.0,
+      "logSigma_phys": 3.48,
+      "logSigma_Mstar": 3.98,
+      "Sigma_0_Msun_pc2": 1525.0,
+      "AV_med": 0.59,
+      "log_sSFR": -8.39,
+      "type": "all_massive"
+    },
+    {
+      "population": "Parent Prism Sample",
+      "N": 6312,
+      "z_med": 4.38,
+      "logM_med": 8.41,
+      "r_eff_kpc": 0.62,
+      "r_eff_pc": 623.0,
+      "logSigma_phys": 2.32,
+      "logSigma_Mstar": 2.82,
+      "Sigma_0_Msun_pc2": 105.4,
+      "AV_med": 0.12,
+      "log_sSFR": -8.14,
+      "type": "all_prism"
+    }
+  ],
+  "kokorev_reference": {
+    "N": 253,
+    "median": 5.70101180073906,
+    "p25": 5.313365908100802,
+    "p75": 6.119970316317856,
+    "p5": 4.7869615020801906,
+    "p95": 6.6926980901558055
+  },
+  "mass_size_relations": {
+    "SFG": "van der Wel+ 2014, Yang+ 2022: r_e = 2.5 kpc \u00d7 (M/10^10)^0.22 \u00d7 ((1+z)/3)^(-1.0)",
+    "dusty_SFG": "Intermediate: r_e = 1.8 kpc \u00d7 (M/10^10)^0.25 \u00d7 ((1+z)/3)^(-1.0)",
+    "QG": "van der Wel+ 2014: r_e = 0.8 kpc \u00d7 (M/10^10)^0.55 \u00d7 ((1+z)/3)^(-1.3)"
+  },
+  "caveat": "r_eff estimated from mass-size relations, NOT from Xiao+ individual measurements. Catalog not public yet.",
+  "key_conclusion": "Xiao+ populations form a \u03a3-sequence when ordered by evolutionary stage. The LRD \u03a3-range ENCOMPASSES the full massive galaxy \u03a3-range, suggesting LRDs are progenitors, not contaminants."
+}

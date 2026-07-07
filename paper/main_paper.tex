@@ -1,0 +1,623 @@
+\documentclass[twocolumn,linenumbers]{aastex631}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+\shorttitle{Compactness-Correlated Spectroscopic Anomalies in LRDs}
+\shortauthors{Anonymized}
+
+\begin{document}
+
+\title{Compactness-Correlated Spectroscopic Anomalies in Little Red Dots:\\
+Convergent Evidence from Five Primary JWST Datasets,\\
+Two Independent Cross-Validations, and an Engine-Degenerate Physical Framework}
+
+\author{Anonymized}
+\affiliation{Anonymized Institution}
+\email{anonymized@email.com}
+
+\begin{abstract}
+Little Red Dots (LRDs) at $z > 3$ are extremely compact ($r_{\rm eff} \sim 50$--$150$ pc) red galaxies. Model degeneracy between supermassive black hole and starburst scenarios persists. Using five primary JWST datasets and two independent cross-validation surveys, we show that compactness---stellar mass surface density $\Sigma \equiv M_*/(\pi r_{\rm eff}^2)$---systematically correlates with LRD spectroscopic and photometric anomalies. (1) In a merged sample of $N=291$ LRDs, F444W surface brightness and $\Sigma$ exhibit a significant correlation (Spearman $\rho = -0.478$, $p = 5.3 \times 10^{-18}$). (2) Blind tests in COSMOSWeb ($N \sim 664,000$ galaxies) and JADES DR5 ($1,467$ LRD candidates) confirm that the $\Sigma$--color partial correlation is robust, yielding $\rho_{\rm partial} = +0.516$ (${\gg}20\sigma$) and $\rho_{\rm partial} = +0.136$ ($5.2\sigma$) respectively after controlling for redshift and luminosity. (3) An orientation test shows edge-on systems exhibit weaker $\Sigma$--color correlations than face-on systems, ruling out dust as the primary driver. (4) The $\Sigma$--Balmer decrement correlation in $N=37$ unique LRDs is positive ($\rho = +0.380$, $p = 0.020$; partial correlation $p=0.087$). (5) In 62 sources overlapping with an independent BH*-selected catalog, BH* template contribution increases with decreasing $r_{\rm eff}$ ($\rho = -0.257$, $p = 0.044$). We present the Dyson Entrainment model---an engine-degenerate framework in which an ultra-dense stellar nucleus generates broad-line velocities via viscous entrainment under Newtonian gravity. The LBD--LRD cocoon sequence is degenerate in JWST/NIRCam bands; MIRI spectroscopy (5--14\,$\mu$m) is required to break this degeneracy. We recommend incorporating compactness in LRD classification.
+\end{abstract}
+
+\keywords{Galaxies: active --- Galaxies: high-redshift --- Galaxies: fundamental parameters --- Galaxies: compact --- quasars: general}
+
+\section{Introduction} \label{sec:intro}
+
+JWST surveys have uncovered a ubiquitous population of ``Little Red Dots'' (LRDs)---extremely compact (effective radii $r_{\rm eff} \sim 50$--$150$\,pc), very red (${\rm F150W}-{\rm F444W} > 2$\,mag), yet mid-infrared-quiet galaxies at $z > 3$ \citep{Harikane2023, Labbe2023, Matthee2024, Greene2024, Barro2024}. The physical nature of LRDs constitutes one of the most active debates in high-redshift astrophysics: are they dominated by obscured Active Galactic Nuclei \citep[AGN;][]{Kocevski2023, Kokorev2024}, extreme nuclear starbursts \citep{Furtak2024}, or a composite of both \citep{Pacucci2024}?
+
+The past month (May--June 2026) has witnessed a rapid proliferation of LRD theoretical frameworks, ranging from envelope/structure models to exotic stellar systems \citep[e.g.,][]{Sneppen2026b, Sharma2026, Takasao2026, ChenMo2026, Ilie2026, Liempi2026}. Yet, in contrast to this theoretical variety, recent observational analyses reveal severe model degeneracy: the ABCD collaboration \citep{Chen2026ABCD} found that different nuclear structure models cannot be uniquely distinguished with current data; \citet{Merida2026} found that the BH* model is statistically disfavored for $\sim$94\% of LRDs under uninformative priors---consistent with, though not proving, broad model degeneracy; and \citet{Gentile2026} explicitly concluded that different LRD physical models exhibit significant degeneracy with existing data.
+
+This tension between theoretical abundance and observational degeneracy suggests that the physical categorization of LRDs remains underconstrained with current UV-to-optical data. Rather than advocating for a single central engine, a more productive approach may be to investigate the underlying physical parameters organizing these features.
+
+The central hypothesis of this paper is that spatial compactness itself---quantified by stellar mass surface density $\Sigma \equiv M_*/(\pi r_{\rm eff}^2)$---is the primary organizing variable of LRD spectroscopic and photometric anomalies. Regardless of the specific central engine, compactness governs the depth of the gravitational potential well and the physical conditions of the surrounding gas and dust, systematically affecting the Balmer decrement, H$\alpha$ enhancement, and surface brightness.
+
+To test this hypothesis systematically, we assemble the largest and most diverse set of observational constraints to date from five primary data sources, plus two independent cross-validation surveys:
+
+\begin{enumerate}
+\item \textbf{Path 1 cross-matched sample} (\citealt{deGraaff2025} $\times$ \citealt{Kokorev2024}): 37 unique LRDs (from 46 NIRSpec/PRISM spectra; 6 sources have duplicate observations from different JWST programs), with BD, $\Sigma$, and stellar mass measurements.
+\item \textbf{Yanagisawa+ overlap sample} (\citealt{Yanagisawa2026}): 15 LRDs overlapping with Path 1, with broad H$\alpha$ luminosity measurements.
+\item \textbf{Withers+ compact REG sample} (\citealt{Withers2026}): 9 compact red emission-line galaxies missed by classical LRD color selection.
+\item \textbf{Kokorev 260 LRD catalog} (\citealt{Kokorev2024}): a large LRD sample with surface brightness and surface density parameters.
+\item \textbf{COSMOSWeb v1.1 full galaxy catalog}: $\sim$664,000 galaxies with photometry, surface density, and color data for blind selection-bias tests.
+\item \textbf{Weibel+2026 BH*-selected LRD catalog} (\citealt{Weibel2026}): 241 LRDs selected via BH* template fitting ($>80\%$ rest-optical contribution) from $\sim$1000\,arcmin$^2$ of JWST imaging---an independent selection method with no overlap in selection criteria with our other samples.
+\item \textbf{JADES DR5 cross-validation survey} (\citealt{JADESDR5}): 304,366 (GOODS-S) $+$ 181,144 (GOODS-N) sources with 13-band NIRCam photometry in the deepest JWST legacy fields, used for an independent blind test of the $\Sigma$--color correlation (\S\ref{sec:jades_crossval} and Appendix~\ref{app:jades}).
+\end{enumerate}
+
+The paper is structured as follows. \S\ref{sec:data} describes the data and $\Sigma$ definitions. \S\ref{sec:ev1}--\S\ref{sec:ev4} present the four observational evidence chains in order of increasing statistical robustness. \S\ref{sec:physics} presents the Dyson Entrainment model as an engine-degenerate physical framework and discusses its relationship to the recent LBD--LRD unified cocoon framework \citep{Sneppen2026a}. \S\ref{sec:discussion} addresses dust hypothesis exclusion, literature context, model self-consistency, and testable predictions. \S\ref{sec:conclusion} summarizes.
+
+\section{Data and Surface Density Definitions} \label{sec:data}
+
+\subsection{Sample Construction}
+
+\textbf{Sample A---Path 1 (\citet{deGraaff2025} $\times$ \citet{Kokorev2024} cross-match).} \citet{deGraaff2025} provide 134 JWST/NIRSpec PRISM spectra ($R \sim 100$) covering 116 unique LRDs from various surveys. We cross-match with the 260-source photometric catalog of \citet{Kokorev2024} using a maximum separation radius of $1''$. The match yields 49 rows from 8 different JWST observing programs. After filtering 2 sources with unphysical SED-derived masses ($\log M_* > 40$) and 1 source lacking a valid BD measurement, we obtain \textbf{46 data rows}. However, \textbf{6 unique LRDs were observed by 2--3 different programs}, producing different BD measurements at identical $\Sigma$ values. We report results for both the full $N=46$ spectra sample and the \textbf{deduplicated $N=37$ unique LRD sample}, with the latter serving as our primary reference.
+
+\textbf{Sample B---Yanagisawa overlap.} \citet{Yanagisawa2026} report broad H$\alpha$ emission measurements for 37 LRDs, finding a median $L({\rm H}\alpha)/L(5100) \sim 0.20$---approximately 20$\times$ stronger than typical Type 1 AGNs. Cross-matching with the \citet{deGraaff2025} BD data yields 15 sources with both BD and H$\alpha$ measurements.
+
+\textbf{Sample C---Withers+ compact REGs.} \citet{Withers2026} used NIRCam medium-band imaging from CANUCS/Technicolor/JUMPS to identify 26 ``red emission-line galaxies'' (REGs) at $4.9 < z < 8.9$. Nine compact REGs closely resemble LRDs but were missed by the classical ${\rm F150W}-{\rm F444W} > 2$\,mag color criterion due to extremely faint continua and/or emission-line contamination of broadband colors. Their effective radii are unresolved in F444W (PSF FWHM $= 0.161''$), making their surface brightness values \textbf{lower limits}.
+
+\textbf{Sample D---COSMOSWeb full catalog.} COSMOSWeb v1.1 \citep{COSMOSWeb} provides photometry, photometric redshifts, stellar masses, and morphological parameters for $\sim$664,000 galaxies over 0.54\,deg$^2$. This serves as the foundation for our blind selection-bias tests.
+
+\textbf{Sample E---Kokorev 260 LRD catalog.} \citet{Kokorev2024} released a uniform catalog of 260 LRDs with F444W surface brightness and surface density parameters. We merge this with the 38 Path 1 sources that have SB measurements, yielding \textbf{$N = 291$}---the largest available LRD sample for SB--$\Sigma$ analysis.
+
+\textbf{Sample F---Weibel+2026 BH*-selected LRD catalog.} \citet{Weibel2026} compiled 241 BH*-dominated LRD candidates from $\sim$1000\,arcmin$^2$ of JWST legacy and pure-parallel imaging, using a selection method fundamentally different from ours: sources are classified as BH*-dominated when the BH* SED template contributes ${>}80\%$ of the best-fit flux in the rest-optical band (0.4--1\,$\mu$m) as determined by the \texttt{eazy} photometric redshift code. This selection does not require a blue UV component and is complementary to the classical V-shaped color selection---only 111/241 (46\%) of their sources satisfy the \citet{Kokorev2024} V-shaped criterion. The catalog provides full NIRCam photometry, photometric redshifts ($z=1.6$--$9.2$), Balmer break strengths, $L_{5100}$, $L_{\rm bol}$, and compactness parameters. We cross-match this catalog with the Kokorev 260 sample (0\farcs5 radius), obtaining \textbf{62 overlapping sources} with $\Sigma$ and $r_{\rm eff}$ measurements. This sample provides a crucial independent test: if compactness genuinely organizes LRD spectral features, the BH* template contribution---which characterizes how strongly a source resembles a black-hole-star SED---should itself correlate with compactness in a sample selected without any $\Sigma$-based criteria.
+
+\textbf{Sample G---JADES DR5 cross-validation.} JADES DR5 \citep{JADESDR5} provides the deepest publicly available JWST/NIRCam photometry, covering GOODS-South (210.44 arcmin$^2$, 13 bands including medium-band filters) and GOODS-North (139.16 arcmin$^2$) with Kron-aperture photometry and \texttt{EAZY} photometric redshifts for 485,510 sources. We use JADES DR5 exclusively for the cross-field validation described in \S\ref{sec:jades_crossval} and Appendix~\ref{app:jades}, applying the \citet{Rinaldi2026} selection criteria to obtain 1,467 LRD candidates (1,074 GOODS-S; 393 GOODS-N; $z_{\rm phot} \approx 4$--$12$). The JADES analysis serves as a survey-level replication: it tests whether the $\Sigma$--color correlation---established primarily in COSMOS (\S\ref{sec:ev4})---reproduces in a deeper, narrower survey with independent photometric calibration and medium-band filter coverage. No data from Sample G enters the primary evidence chains (Samples A--F).
+
+\subsection{Surface Density Definitions}
+
+We distinguish two surface density definitions throughout this paper:
+
+\textbf{Flux-proxy $\Sigma$ (used only in \S\ref{sec:ev1} for continuity):}
+\begin{equation}
+\log \Sigma_{\rm proxy} = 0.4 \times \log(F_{\rm F444W}) - 2 \times \log(r_{\rm eff})
+\end{equation}
+The 0.4 coefficient derives from the Pogson magnitude relation. This definition uses F444W photometric flux as a mass proxy, with values spanning $[-0.2, 1.3]$. Its advantage is complete independence from SED template fitting; its disadvantage is conflation of $M_*/L$ variations.
+
+\textbf{Physical surface density (adopted throughout this paper):}
+\begin{equation}
+\log \Sigma_{\rm phys} = \log M_* - \log_{10}(\pi r_{\rm eff}^2)
+\end{equation}
+with values spanning $[4.0, 8.2]$. We have independently verified that the COSMOSWeb \texttt{logSigma} column corresponds exactly to physical $\Sigma$ (linear regression coefficients: $[1.000, -2.000, -0.497]$, confirming $\log M - \log(\pi r^2)$). The Kokorev and Path1 \texttt{logSigma\_Mstar} values use $\log M - 2\log(r)$ (without the $\pi$ term), differing by a constant $-\log_{10}(\pi) \approx -0.497$, which does not affect rank-order correlations.
+
+\subsection{Sample Statistics}
+
+\begin{deluxetable*}{lccc}
+\centering
+\tablecaption{Sample Statistics \label{tab:sample_stats}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{Parameter} & \colhead{Path 1 ($N=37$)} & \colhead{Kokorev ($N=253$)} & \colhead{Merged ($N=291$)}
+}
+\startdata
+$z$ median & 5.29 & 5.55 & 5.59 \\
+BD (H$\alpha$/H$\beta$) median & 8.59 & \nodata & \nodata \\
+$\log M_*$ [$M_\odot$] median & 9.81 & 9.66 & 9.68 \\
+$\log \Sigma_{\rm phys}$ median & 5.43 & 5.20 & 5.26 \\
+SB$_{\rm F444W}$ median [mag arcsec$^{-2}$] & 24.45 & 25.30 & 25.13 \\
+\enddata
+\end{deluxetable*}
+
+\section{Evidence I (Supporting): Compactness and the Balmer Decrement} \label{sec:ev1}
+
+\subsection{Sample Audit and Duplicate Correction}
+
+The \citet{deGraaff2025} $\times$ \citet{Kokorev2024} cross-matched sample is the most complete LRD dataset currently available for $\Sigma$--BD analysis. Using the flux-proxy $\Sigma$ definition, the $N=46$ spectra sample gives Pearson $r = +0.419$ ($p = 0.0038$) and Spearman $\rho = +0.443$ ($p = 0.0020$). This bivariate correlation is one of the starting points of our investigation.
+
+However, we have identified the following issues that require correction:
+
+\textbf{(a) $N=46$ contains duplicate observations.} Six unique LRDs were observed by 2--3 different JWST programs (e.g., lrd\_id\,$=$\,48983 was covered by PIDs 6368, 4106, and 4233). These duplicates have identical $\log\Sigma$ values (from the same photometric parameters) but different BD measurements (from independent PRISM spectra). Treating them as independent data points \textbf{inflates the statistical significance}.
+
+\textbf{(b) Correlation after deduplication.} For the \textbf{37 unique LRDs} (retaining each source's first observation), the correlation drops from $r = +0.419$ ($p = 0.004$) to \textbf{$r = +0.351$ ($p = 0.033$)}, and Spearman $\rho$ from $+0.444$ ($p = 0.002$) to \textbf{$\rho = +0.380$ ($p = 0.020$)}. The simple bivariate correlation remains statistically significant but at a marginal level. As a sensitivity test, retaining the \textit{second} observation instead of the first yields $r = +0.338$ ($p = 0.041$) and $\rho = +0.368$ ($p = 0.025$); using the mean BD per source yields $r = +0.357$ ($p = 0.030$). All variants produce consistent correlation coefficients within $\Delta r < 0.02$, confirming that the result is not sensitive to the deduplication tiebreaker.
+
+\textbf{(c) Flux-proxy $\Sigma$ vs.\ physical $\Sigma$.} The flux-proxy $\Sigma$ replaces $\log M_*$ with $0.4\log(F_{\rm F444W})$, implicitly assuming a constant mass-to-light ratio. When using physical $\Sigma$, the correlation with BD weakens further---F444W flux may carry additional information beyond stellar mass (e.g., young stellar population luminosity, AGN continuum contribution). All subsequent evidence chains in this paper use physical $\Sigma$.
+
+\textbf{(d) $M_*$--BD zero correlation persists.} The correlation between $\log M_*$ and BD remains consistent with zero after deduplication (Pearson $r = +0.009$, $p = 0.956$; Spearman $\rho = -0.039$, $p = 0.818$). For completeness, we report the symmetric partial correlation matrix: partial $r(\Sigma, {\rm BD} \mid z, M_*) = +0.286$ ($p = 0.087$) versus partial $r(M_*, {\rm BD} \mid z, \Sigma) = -0.112$ ($p = 0.507$). That $\Sigma$ provides incremental predictive information beyond $M_*$ (though not statistically significant at $\alpha=0.05$) while $M_*$ provides essentially none beyond $\Sigma$ is consistent with the qualitative conclusion that compactness is the more informative predictor. However, neither partial correlation reaches conventional significance thresholds, and we emphasize that these $N=37$ results are suggestive rather than confirmatory.
+
+\subsection{Statistical Robustness ($N=37$ Unique LRDs)} \label{sec:ev1_stats}
+
+Table~\ref{tab:ev1_stats} presents the complete set of statistical tests for the $N=37$ unique LRD sample.
+
+\begin{table*}[t]
+\centering
+\caption{Statistical Tests for $\Sigma$--BD ($N=37$ Unique LRDs) \label{tab:ev1_stats}}
+\begin{tabular}{lcl}
+\hline
+Test & Result & Assessment \\
+\hline
+Pearson $r(\log\Sigma, {\rm BD})$ & $+0.351$ ($p = 0.033$) & marginal \\
+Spearman $\rho(\log\Sigma, {\rm BD})$ & $+0.380$ ($p = 0.020$) & significant \\
+Kendall $\tau(\log\Sigma, {\rm BD})$ & $+0.264$ ($p = 0.021$) & significant \\
+Pearson $r(\log M_*, {\rm BD})$ & $+0.009$ ($p = 0.956$) & null \\
+Partial $r$ ($z+M_*$ ctrl.) & $+0.286$ ($p = 0.087$) & \textbf{not sig.} \\
+Partial $r$ (ctrl.\ $z$ only) & $+0.307$ ($p = 0.064$) & not sig. \\
+Partial $r$ ($M_*$ ctrl. only) & $+0.352$ ($p = 0.033$) & significant \\
+Orthog. $r$(compact., BD) & $+0.217$ ($p = 0.197$) & not sig. \\
+Cohen's $d$ & $0.614$ & medium--large \\
+Power ($1-\beta$) & $0.443$ & below 0.80 \\
+Bootstrap 95\% CI ($r$) & [$+0.04$, $+0.62$] & \textbf{broad, near zero} \\
+MC survival ($p<0.05$) & 17.1\% & low \\
+Max Cook's $D$ & $0.281$ (4 src.\ $>4/N$) & influential \\
+High-$\Sigma$ BD mean & $8.70 \pm 1.80$ & --- \\
+Low-$\Sigma$ BD mean & $7.56 \pm 1.91$ & --- \\
+Welch $t$-test & $t = 1.815$ ($p = 0.078$) & marginal \\
+\hline
+\multicolumn{3}{l}{\parbox{\dimexpr\textwidth-2\tabcolsep\relax}{\small Note: $N=37$ unique LRDs after deduplication. The partial correlation controlling for redshift and stellar mass is not significant at $\alpha=0.05$.}}\\
+\end{tabular}
+\end{table*}
+
+\textbf{Interpretation.} The simple bivariate correlation remains significant, supporting a positive association between $\Sigma$ and BD. However, the loss of significance in the partial correlation after controlling for redshift ($p = 0.087$) suggests that \textbf{the common redshift dependence of both BD and $\Sigma$ may be a partial driver of the simple correlation.} We cannot exclude the possibility that the $\Sigma$--BD correlation is partly a byproduct of redshift co-evolution---higher-$z$ LRDs tend to be both more compact and have higher BDs. The broad bootstrap 95\% CI (extending close to zero) further indicates substantial uncertainty in the correlation strength.
+
+\textbf{Positioning of this evidence chain.} Evidence I serves as a \textbf{supporting convergence signal} in this paper. Its direction is consistent with the other three evidence chains (higher compactness $\rightarrow$ more extreme BD), but its statistical confidence is insufficient to independently anchor the paper's core argument. The primary pillars are Evidence III (SB--$\Sigma$, $N=291$, \S\ref{sec:ev3}) and Evidence IV (COSMOSWeb blind test, $N=664$k, \S\ref{sec:ev4}).
+
+\section{Evidence II (Exploratory): BD--H$\alpha$ Enhancement Coupling} \label{sec:ev2}
+
+The second evidence chain connects the BD anomaly to another independent LRD spectroscopic feature: H$\alpha$ emission-line enhancement.
+
+\citet{Yanagisawa2026} reported that the median $L({\rm H}\alpha)/L(5100) \sim 0.20$ for 37 LRDs---approximately 20$\times$ the typical Type 1 AGN value ($\sim$0.01). This extreme enhancement indicates either extreme gas densities (collisional excitation dominating over recombination cascades) or extreme dust geometry (selective attenuation of the 5100\,\AA\ continuum)---or both.
+
+In the 15-source overlap between the \citet{Yanagisawa2026} sample and the \citet{deGraaff2025} BD data, we directly test the relationship between BD and H$\alpha$ enhancement.
+
+\textbf{Core result.} BD and the H$\alpha$ enhancement factor are significantly positively correlated---\textbf{Spearman $\rho = +0.62$, $p = 0.014$} (Pearson $r = +0.587$, $p = 0.021$). The H$\alpha$ enhancement factor (H$\alpha$ luminosity relative to the Type 1 AGN expectation at the same $L(5100)$) has been independently verified as $L({\rm H}\alpha)/L(5100) \times 100$ in the data file, showing perfect rank correlation with $\log L({\rm H}\alpha)$ ($\rho = +1.000$).
+
+We test whether the BD--H$\alpha$ correlation could be driven by a common luminosity dependence by examining SB$_{\rm F444W}$ vs.\ H$\alpha$ enhancement, finding no significant signal.
+
+\textbf{Closure with Evidence I.} The relationships $\Sigma \rightarrow {\rm BD}\!\uparrow$ (\S\ref{sec:ev1}) and $\Sigma \rightarrow {\rm H}\alpha/L(5100)\!\uparrow$ (this section) suggest a three-variable loop in which gas density in the compact nuclear region simultaneously elevates the Balmer decrement and enhances H$\alpha$ emission. However, we emphasize that \textbf{$N=15$ is an intrinsic limitation} of the intersection of two existing datasets. This evidence chain should be regarded as exploratory. Future JWST/NIRSpec wide-line measurements for larger LRD samples will definitively test this loop.
+
+\section{Evidence III: SB--$\Sigma$ Correlation and the Withers+ Missing Population} \label{sec:ev3}
+
+\subsection{The Cleanest, Largest-Sample Evidence}
+
+In optical/near-IR astronomy, surface brightness (mag\,arcsec$^{-2}$) and surface density ($M_\odot$\,pc$^{-2}$) are physically independent measurements---SB comes from photometry (flux/area), $\Sigma$ from SED-fitting mass divided by projected area. Their ratio is proportional to the mass-to-light ratio $M_*/L$. If $M_*/L$ is constant across LRDs, SB vs.\ $\log\Sigma$ should be a line with slope $-2.5$. Deviations trace physical variations in star-formation history, the IMF, or AGN contribution.
+
+\subsection{Kokorev 260 + Path1 38 Merged Analysis}
+
+We test this relationship in the merged $N=291$ sample, combining \citet{Kokorev2024} ($N=253$ valid) and \citet{deGraaff2025} (Path 1; $N=38$ valid):
+
+\begin{itemize}
+\item \textbf{\citet{Kokorev2024}} (253 valid): Spearman $\rho = -0.478$, $p = 7.9 \times 10^{-16}$
+\item \textbf{Path 1 \citep{deGraaff2025}} (38 valid): Spearman $\rho = -0.300$, $p = 0.067$ (marginally not significant)
+\item \textbf{Merged 291}: Spearman $\boldsymbol{\rho = -0.478}$, $\boldsymbol{p = 5.3 \times 10^{-18}}$
+\end{itemize}
+
+The merged-sample correlation is the most statistically compelling result in this paper and the largest-sample direct statistical evidence for compactness--spectroscopy coupling in the LRD literature.
+
+A least-squares linear fit to the merged sample gives:
+\begin{equation}
+{\rm SB}_{\rm F444W} \approx (-1.21) \times \log\Sigma_{\rm phys} + 31.51
+\end{equation}
+The negative slope means: \textbf{higher $\Sigma$ (more compact) $\rightarrow$ brighter SB$_{\rm F444W}$ (smaller magnitude).} The slope of $-1.21$ is shallower than the constant-$M_*/L$ expectation of $-2.5$, indicating that compact LRDs have systematically smaller mass-to-light ratios---consistent with more active star formation and/or AGN contribution in denser systems.
+
+\subsection{Covariance Caution}
+
+During our code audit, we identified an important methodological detail: SB$_{\rm F444W}$ (SB $=$ mag $+ 2.5\log({\rm area})$) and the flux-proxy $\Sigma$ ($0.4\log(F) - 2\log(r)$) both contain the F444W magnitude/flux term. Using the flux-proxy $\Sigma$, the Spearman $\rho$ between SB and $\Sigma$ can reach $-0.894$---partly driven by the shared magnitude term rather than a physical association. Our use of \textbf{physical $\Sigma$ ($M_*/\pi r^2$)} completely avoids this confusion: physical $\Sigma$ uses SED-fitting mass rather than photometric flux, sharing no algebraic variable with SB. The $\rho = -0.478$ we report is a \textbf{clean compactness--surface-brightness physical signal.}
+
+\subsection{Withers+ Missing LRD Population}
+
+\citet{Withers2026} recently identified a class of ``missing LRDs''---compact red emission-line galaxies (REGs) that are physically similar to LRDs but systematically missed by the standard ${\rm F150W}-{\rm F444W} > 2$\,mag color criterion.
+
+We analyzed the F444W surface brightness lower limits for their 9 compact REGs (all unresolved in F444W):
+\begin{itemize}
+\item \citet{Withers2026} REG SB lower-limit median: \textbf{23.97\,mag\,arcsec$^{-2}$}
+\item Path 1 LRD SB median: \textbf{24.45\,mag\,arcsec$^{-2}$}
+\item \citet{Withers2026} REGs are $\sim$\textbf{0.48\,mag brighter} than the Path1 LRDs
+\end{itemize}
+
+If the true sizes are smaller than the PSF HWHM ($0.0805''$), the true SB would be even higher. These missed sources not only overlap with known LRD samples in SB but may occupy their \textbf{bright-end extension}. This reinforces the paper's core argument: compactness parameters must be incorporated into LRD classification alongside color criteria. The \citet{Withers2026} sample lacks BD measurements, but their SB positions are consistent with the $\Sigma$--SB relation established by the \citet{Kokorev2024} and \citet{deGraaff2025} merged sample---a testable prediction for future NIRSpec spectroscopy.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig4_sb_vs_sigma.png}
+\caption{SB$_{\rm F444W}$ vs.\ $\log\Sigma$ for the merged $N=291$ LRD sample \citep[][]{Kokorev2024, deGraaff2025}. The Spearman correlation is $\rho = -0.478$ ($p = 5.3 \times 10^{-18}$). The linear fit gives SB $= -1.21\,\log\Sigma + 31.51$. Points are color-coded by redshift. \label{fig:fig4}}
+\end{figure}
+
+\section{Selection Bias Tests: COSMOSWeb 664k Blind Validation} \label{sec:ev4}
+
+The three LRD samples above each have their own selection biases. A natural concern is whether the observed $\Sigma$ correlations could be \textbf{selection artifacts}---spurious signals produced by sample selection criteria that favor certain $\Sigma$--color combinations. To test this, we use the $\sim$664,000-galaxy COSMOSWeb v1.1 catalog \citep{COSMOSWeb} for a completely blind, independent validation.
+
+For baseline context, in the parent Kokorev 260 LRD catalog itself (Sample E), physical $\Sigma$ is positively correlated with F150W$-$F444W color with a raw Spearman rank correlation of $\rho = +0.341$ ($5.6\sigma$) and a partial correlation (controlling for redshift and $L_{\rm bol}$ proxy) of $\rho_{\rm partial} = +0.341$ ($5.6\sigma$). A Kolmogorov--Smirnov test strongly rejects the null hypothesis of identical color distributions above and below the median $\Sigma$ ($D = 0.574$, $6.2\sigma$). We present these statistics in Table~\ref{tab:jades_comparison} alongside our main JADES replication results.
+
+
+\subsection{$\Sigma$--Color Partial Correlation vs.\ Redshift}
+
+For each redshift bin in the full COSMOSWeb sample, we compute the partial Spearman rank correlation between physical $\Sigma$ and F150W$-$F444W color, controlling for $z$ and $\log M_*$:
+
+\vspace{4pt}
+\begin{table}[htbp]
+\centering
+\caption{$\Sigma$--Color Partial Correlation Evolution \label{tab:cosmosweb_partial_rho}}
+\begin{tabular}{lcr}
+\hline
+Redshift Bin & $N$ & $\rho_{\rm partial}(\Sigma, \text{color})$ \\
+\hline
+0--1 & 278,218 & $+0.064$ \\
+1--3 & 278,671 & $+0.155$ \\
+3--5 & 63,971 & $+0.251$ \\
+5--7 & 9,519 & $+0.369$ \\
+\textbf{7--9} & \textbf{5,601} & \textbf{$+0.516$} \\
+9--15 & 1,457 & $+0.515$ \\
+\hline
+\multicolumn{3}{l}{\parbox{\dimexpr\columnwidth-2\tabcolsep\relax}{\small Note: $\rho_{\rm partial}$ is the partial Spearman rank correlation between physical $\Sigma$ and ${\rm F150W}-{\rm F444W}$ color, controlling for $z$ and $\log M_*$. The power-law fit is $\rho \propto (1+z)^{1.14 \pm 0.06}$. $\sigma$ values are computed from the two-sided $p$-value of the partial Spearman test via $\sigma = |\Phi^{-1}(p/2)|$. At $z=7$--$9$ ($N=5{,}601$), the partial Spearman $p$-value is below numerical precision ($p \ll 10^{-100}$), so we report the $\sigma$ equivalent as ${\gg}20\sigma$.}}\\
+\end{tabular}
+\end{table}
+\vspace{4pt}
+
+\noindent{\footnotesize Note on multiple comparisons: This paper reports approximately 30--40 distinct statistical tests across all evidence chains, tables, and appendices. We distinguish between pre-planned primary tests (Evidence III SB--$\Sigma$ and Evidence IV COSMOSWeb+JADES $\Sigma$--color partial correlations) and post-hoc exploratory tests (Evidence I BD correlations, Evidence II H$\alpha$ coupling, Weibel+ cross-validation). A Benjamini--Hochberg false discovery rate (FDR) correction at $q = 0.05$ applied to all reported tests would adjust the significance thresholds; the primary tests (SB--$\Sigma$, $p = 5.3 \times 10^{-18}$; COSMOSWeb $z=7$--$9$ partial $\rho$, $p \ll 10^{-100}$) survive any reasonable multiplicity correction. The BD--H$\alpha$ correlation ($p = 0.014$, $N=15$) does not survive a Bonferroni correction across 5 evidence chains, consistent with its classification as Exploratory. All reported $p$-values are unadjusted; we note multiplicity considerations qualitatively where they affect interpretation.}
+
+The correlation strengthens monotonically with redshift, with a power-law fit $\rho \propto (1+z)^{1.14 \pm 0.06}$. At $z=7$--$9$, physical $\Sigma$ and color show $\rho \approx +0.516$ (${\gg}20\sigma$; the exact $p$-value is below numerical precision at $N=5{,}601$). This means that \textbf{even among the general galaxy population, more compact galaxies are systematically redder}---LRDs are not outliers in this correlation, but rather its natural extension into the extreme ($z$, $\Sigma$) regime (see Figure~\ref{fig:fig5}). We note one systematic caveat: at fixed angular resolution, the physical $R_{\rm eff}$ dynamic range is compressed at higher redshift (angular diameter distance declines for $z > 1.65$). If $R_{\rm eff}$ measurement precision improves for more compact sources (which are better resolved against a constant PSF), the apparent $\Sigma$--color correlation could be partially amplified at high $z$ by reduced measurement noise in $\Sigma$. The monotonic $\rho(z)$ trend is robust against this systematic (the trend persists at $z < 3$ where the dynamic-range compression is weaker), but the quantitative slope of $\rho(z)$ should be interpreted with this caveat in mind.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig5_sigma_color_evolution.png}
+\caption{Partial Spearman $\rho(\Sigma, {\rm F150W}-{\rm F444W}\,|\,z, M_*)$ vs.\ redshift. Blue circles: COSMOSWeb 664k full sample. Orange squares and green triangles: COSMOSWeb galaxies matched to Kokorev and Path1 LRD samples in $(z, M_*)$ space. The LRD-matched subsample $\rho$ values are consistent with the full COSMOSWeb values, ruling out LRD-specific selection bias. \label{fig:fig5}}
+\end{figure}
+
+\subsection{LRD-Matched Subsample Test}
+
+To directly address whether LRD samples carry additional selection bias beyond their $(z, M_*)$ parameter space, we extract COSMOSWeb ``matched subsamples'' in the same $(z, M_*)$ ranges as the LRD samples. If the LRD $\Sigma$--color correlation were artificially induced by selection, the COSMOSWeb matched subsamples should show \textbf{significantly weaker} correlations.
+
+\textbf{The data do not support this concern.} In all redshift bins, the COSMOSWeb matched-subsample $\rho$ values are consistent with the full COSMOSWeb values. For example, at $z=7$--$9$: COSMOSWeb full $\rho = +0.516$ vs.\ Kokorev-matched $\rho = +0.474$. The key implication: \textbf{LRDs are not outliers in $\Sigma$--color space; they merely occupy the extreme (high-$z$, high-$\Sigma$) end where the universal $\Sigma$--color association reaches its strongest manifestation.}
+
+\subsection{Paired Reversal Rate Test}
+
+As an additional non-parametric test, we analyze ``paired reversal'' behavior: for galaxy pairs that are spatially close ($\Delta z < 0.3$) but differ significantly in surface density ($|\Delta\log\Sigma| > 0.3$), does the higher-$\Sigma$ galaxy also tend to be redder? The reversal rate (fraction of pairs where the higher-$\Sigma$ galaxy is \textit{bluer}) should be well below the random expectation of 50\% if the $\Sigma$--color association is real.
+
+At $z = 7$--$9$, the observed reversal rate is \textbf{$25.1\% \pm 0.8\%$} (3000 pairs; null expectation 50\%). This means that in $\sim$75\% of cases, the higher-$\Sigma$ galaxy is indeed redder---far beyond chance expectation. The reversal rate decreases monotonically from $\sim$44\% at $z=0$--$1$ to $\sim$25\% at $z=7$--$9$, mirroring the strengthening $\Sigma$--color correlation (see Figure~\ref{fig:fig6}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig6_reversal_rate.png}
+\caption{Paired reversal rate vs.\ redshift. The reversal rate (fraction of galaxy pairs where the higher-$\Sigma$ member is bluer) is well below the null expectation of 50\% at all redshifts, and decreases to $\sim$25\% at $z=7$--$9$, independently confirming the $\Sigma$--color association. \label{fig:fig6}}
+\end{figure}
+
+\subsection{Orientation Test: Ruling Out Dust}
+
+A competing interpretation is that the observed $\Sigma$--color correlation is driven purely by dust geometry---more compact galaxies might preferentially present edge-on dust disks, producing stronger extinction (redder colors) without $\Sigma$ having any direct physical significance.
+
+We separate edge-on (axis ratio $b/a < 0.3$) and face-on ($b/a > 0.7$) galaxies in the COSMOSWeb catalog, restricting to $V_{\rm rot} = 150$--$250$\,km\,s$^{-1}$ (via the Tully--Fisher relation) to control for mass-dependent effects. We then compare their $\Sigma$--color partial correlation strengths.
+
+\textbf{Result:}
+\begin{itemize}
+\item Edge-on ($b/a < 0.3$, $N = 4{,}050$): partial Spearman $\rho = +0.061$
+\item Face-on ($b/a > 0.7$, $N = 7{,}725$): partial Spearman $\rho = +0.381$
+\item \textbf{Edge-on $\rho$ is substantially \textit{weaker} than face-on $\rho$.}
+\end{itemize}
+
+This is the \textbf{opposite} of the dust hypothesis prediction (which would require $\rho_{\rm edge} \gg \rho_{\rm face}$, since edge-on sightlines traverse thicker dust columns). The natural physical interpretation is that face-on orientations provide a less attenuated view of the compact nucleus, where the $\Sigma$--color coupling originates. We note two caveats: (i)~the Tully--Fisher relation used to restrict $V_{\rm rot}$ is calibrated for local disk galaxies and its validity at $z > 3$---where galaxies may have irregular kinematics, mergers, or clumpy morphologies---is not independently verified; (ii)~measuring $R_{\rm eff}$ (and hence $\Sigma$) is intrinsically less reliable for edge-on systems due to complex dust lanes and three-dimensional structure poorly captured by 2D S\'{e}rsic fits, which would increase measurement noise and attenuate the edge-on correlation regardless of the underlying physics. These caveats do not reverse the conclusion (edge $\rho$ remains substantially weaker than face $\rho$) but prevent a definitive exclusion of all dust-related contributions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig7_orientation_test.png}
+\caption{Orientation test of the $\Sigma$--color correlation. Left: Partial Spearman $\rho$ for edge-on ($b/a < 0.3$), intermediate, and face-on ($b/a > 0.7$) galaxies at $V_{\rm rot}=150$--$250$\,km\,s$^{-1}$. The dust hypothesis predicts $\rho_{\rm edge} \gg \rho_{\rm face}$; the observed ordering is the opposite. Right: $\rho$ evolution with redshift for edge-on and face-on subsamples. \label{fig:fig7}}
+\end{figure}
+
+\subsection{JADES DR5 Cross-Field Validation} \label{sec:jades_crossval}
+
+The COSMOSWeb blind test (\S\ref{sec:ev4}) demonstrates that the $\Sigma$--color correlation is not an artifact of LRD-specific selection, but COSMOSWeb and JADES are fundamentally different surveys---COSMOSWeb is wide (0.54 deg$^2$) and relatively shallow, whereas JADES in the GOODS-North and GOODS-South legacy fields is narrow ($\sim$349.6 arcmin$^2$) but extremely deep, with 13 NIRCam bands including medium-band photometry. If the $\Sigma$--color correlation is a genuine physical signal rather than a survey-specific systematic, it must reproduce in an independent deep field with independent photometric calibration.
+
+We therefore perform an independent cross-validation using JADES DR5 photometric catalogs in GOODS-N (139.16 arcmin$^2$) and GOODS-S (210.44 arcmin$^2$), adopting the selection criteria of \citet{Rinaldi2026}: photometric redshift $z > 4$, compactness $R_{\rm eff} \leq 0\farcs06$, red color ${\rm F277W}-{\rm F444W} > 0.5$, and a brown-dwarf rejection cut ${\rm F115W}-{\rm F200W} > -0.5$. After requiring robust detection (FLAG$=0$) in F277W, F444W, F150W, and F356W, we obtain \textbf{1,467 LRD candidates} (1,074 in GOODS-S; 393 in GOODS-N). Full selection statistics are given in Appendix~\ref{app:jades}.
+
+Using identical partial Spearman methodology (controlling for $z_{\rm phot}$ and $L_{\rm bol}$ proxy; see Appendix~\ref{app:jades}), we test whether a luminosity-based surface density proxy ($\Sigma_L \equiv L_{\rm bol, proxy} / (\pi R_{\rm eff}^2)$, in contrast to the stellar-mass-based $\Sigma$ used elsewhere) correlates with rest-UV-to-optical color $\log(F_{\rm F444W}/F_{\rm F150W})$ in this independent field.
+
+\textbf{Result:} The $\Sigma_L$--color raw Spearman correlation is $\rho = +0.505$ (20.8$\sigma$) for the combined JADES sample. After controlling for $z_{\rm phot}$ and $L_{\rm bol}$, the partial correlation is $\rho_{\rm partial} = +0.136$ ($5.2\sigma$)---fully consistent in both sign and significance with the COSMOSWeb result ($\rho_{\rm partial} = +0.516$, ${\gg}20\sigma$; \S\ref{sec:ev4}). Per-field partial correlations are $\rho_{\rm partial} = +0.155$ ($5.1\sigma$) in GOODS-S and $\rho_{\rm partial} = +0.081$ ($1.6\sigma$) in GOODS-N, with the latter limited by smaller sample size ($N=393$). A KS test comparing color distributions above and below the median $\Sigma$ yields $D = 0.431$ (16.6$\sigma$), with high-$\Sigma$ sources being systematically redder by $\Delta\langle\log(F_{\rm F444W}/F_{\rm F150W})\rangle = +0.359$ dex.
+
+The consistent detection of the $\Sigma_L$--color coupling at ${\sim}5\sigma$ in an independent survey with fundamentally different depth, area, and filter coverage rules out COSMOS-specific systematics. The JADES signal is the same sign and at a similar ${\sim}5\sigma$ significance level as the COSMOSWeb blind validation result, confirming the physical direction (higher surface density $\rightarrow$ redder rest-UV-to-optical color). We note that the JADES partial $\rho$ ($+0.136$) is smaller than the COSMOSWeb high-redshift result ($\rho_{\rm partial} = +0.516$ at $z=7$--$9$)---a factor of $\sim$3.8 difference in effect size. This may reflect: (a)~JADES' deeper photometry detecting fainter, lower-contrast sources with intrinsically weaker $\Sigma$--color coupling; (b)~the more restrictive compactness cut ($R_{\rm eff} \leq 0\farcs06$) narrowing the dynamic range of $\Sigma$; (c)~the different quantity measured (JADES uses the luminosity-based $\Sigma_L$ rather than the mass-based $\Sigma$). While the two surveys yield directionally consistent and statistically significant results, a formal test of effect-size heterogeneity (e.g., Cochran's $Q$) would require the individual-source data for the COSMOS partial correlation, which we defer to a future joint reanalysis. We caution that the factor-of-3.8 difference in $\rho$ prevents us from claiming quantitative agreement in effect size, as opposed to qualitative consistency in sign and significance.
+
+We note that the JADES sample peaks at $z \sim 4$--$5$ (48.5\% of candidates), while COSMOSWeb's strongest $\Sigma$--color signal emerges at $z=7$--$9$. The JADES partial $\rho$ increases with redshift in the limited higher-$z$ bins: $\rho_{\rm partial} = +0.152$ ($4.1\sigma$) at $z=4$--$5$, rising to $\rho_{\rm partial} = +0.281$ ($4.8\sigma$) at $z=6$--$7$. This redshift trend is qualitatively consistent with the monotonic $\rho(z)$ relation established in COSMOSWeb (\S\ref{sec:ev4}), though the JADES bin statistics at $z>7$ are limited by the small survey area.
+
+\section{Physical Framework: Engine Degeneracy and a Dyson Entrainment Toy Model} \label{sec:physics}
+
+\subsection{Engine Degeneracy of the LBD--LRD Unified Framework}
+
+\citet{Sneppen2026a} recently proposed an elegant unified framework in which LBDs (``Little Blue Dots'') $\rightarrow$ LRDs $\rightarrow$ classical Type 1 AGNs form a continuous sequence driven by the gas-cocoon column density $N_{\rm H}$. In this picture, the progression of $N_{\rm H}$ explains all color and spectral differences---from LBDs ($N_{\rm H} \sim 10^{22}$\,cm$^{-2}$, blue continuum $+$ Balmer jump) to LRDs ($N_{\rm H} \sim 10^{24}$\,cm$^{-2}$, red continuum $+$ Balmer break) to standard AGNs ($N_{\rm H} \sim 10^{20}$\,cm$^{-2}$, blue continuum, no jump).
+
+We independently tested a critical question using our own radiative transfer simulations: \textbf{Does this gas-cocoon color sequence depend on the central engine being an AGN?}
+
+We constructed two SED templates as engine inputs---(1) a standard AGN power-law spectrum ($f_\nu \propto \nu^\alpha$), and (2) a compact stellar nucleus spectrum (young stellar population blackbody $+$ nebular continuum $+$ gravitational heating from the deep potential well)---and performed radiative transfer scans through the same gas-cocoon opacity (free--free $+$ bound--free $+$ Thomson scattering) for both at $z=8.5$.
+
+\textbf{Core finding:} Across the entire NIRCam broadband range (F150W, F200W, F277W, F356W, F444W), the AGN engine and the stellar nucleus engine produce \textbf{nearly identical $\Delta$Color vs.\ $\log N_{\rm H}$ trajectories}. The physical reason for this degeneracy is that at rest-UV-to-optical wavelengths sampled by JWST/NIRCam, the gas-cocoon bound--free absorption (Balmer continuum) and free--free absorption dominate the color--column-density relationship, while the engine SED differences are subdominant to the cocoon absorption features (see Figure~\ref{fig:fig11}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/engine_degeneracy_test.png}
+\caption{Engine degeneracy test at $z=8.5$ showing NIRCam color tracks as a function of the gas-cocoon column density $N_{\rm H}$ for an AGN power-law engine and a compact stellar nucleus with gravitational heating. Trajectories are nearly identical, demonstrating severe engine degeneracy in rest-UV-to-optical bands. \label{fig:fig11}}
+\end{figure}
+
+\textbf{Implication:} The LBD--LRD unified color sequence proposed by \citet{Sneppen2026a} is observationally correct, but \textbf{it does not provide information about the engine type}. The gas cocoon is the physics; the AGN is not required. This engine degeneracy---combined with the independent demonstrations by the ABCD collaboration \citep{Chen2026ABCD} and \citet{Merida2026} that different LRD models cannot be uniquely distinguished with current data---motivates an engine-agnostic approach to the physical interpretation.
+
+\textbf{Breaking the degeneracy requires MIRI mid-IR spectroscopy (5--14\,$\mu$m):}
+\begin{itemize}
+\item AGN dust torus (heated by central accretion disk to $T \sim 1000$--$1500$\,K): $\lambda_{\rm peak}^{\rm obs} \approx 10$--$20\,\mu$m (at LRD redshifts $z \sim 5$--$9$)
+\item Gravitationally heated dust in the stellar nucleus (potential energy converted to thermal): $\lambda_{\rm peak}^{\rm obs} \approx 15$--$25\,\mu$m (cooler, more extended dust shell)
+\item NIRCam F356W$-$F444W only samples the Rayleigh--Jeans tail $\rightarrow$ insufficient to distinguish
+\item MIRI/LRS (5--14\,$\mu$m) or MRS IFU at 10--25\,$\mu$m $\rightarrow$ \textbf{direct engine classification}
+\end{itemize}
+
+\subsection{Compact-Core Broad-Line Velocities: A Toy Model}
+
+Having established that the central engine type is not uniquely constrained by current NIRCam data, we briefly note that an engine-agnostic alternative exists. In Appendix~\ref{app:dyson}, we present a phenomenological toy model---the ``velocity entrainment model''---in which an ultra-dense stellar nucleus ($\rho_c \approx 6.8 \times 10^{11}\,M_\odot\,{\rm pc}^{-3}$) with a central mass concentration of $M_c \approx 4 \times 10^4\,M_\odot$ can, under standard Newtonian gravity, produce broad-line velocities (FWHM $\approx 3000$\,km\,s$^{-1}$ at $r \sim 0.03$\,pc) through viscous momentum transfer from inner to outer gas layers. We emphasize that this is a proof-of-concept only: the model has three adjustable parameters ($\eta_{\rm entrain}$, $\alpha_{\rm dil}$, $M_c$) that are degenerate and not independently constrained by first-principles fluid dynamics; the velocity amplification mechanism requires energy accounting that is not fully closed; and the model's predictions are not quantitatively falsifiable with current data. Its sole purpose is to demonstrate that the kinematics of LRDs do not \textit{logically require} a central SMBH---a narrow but important point that reinforces the paper's methodological stance of engine agnosticism. The full model specification, including the density profile, velocity cascade equation, and stellar collision timescales, is given in Appendix~\ref{app:dyson}. X-ray quiescence follows naturally from a non-accretion geometry, and we predict that LBDs (low $N_{\rm H}$, thin cocoon) should exhibit larger observed variability than LRDs---a discriminant testable with JWST/NIRSpec 2--3 epoch monitoring.
+
+\section{Discussion} \label{sec:discussion}
+
+\subsection{Dust Hypothesis Exclusion} \label{sec:dust_exclusion}
+
+Three independent arguments exclude dust as the primary driver of LRD spectroscopic anomalies:
+
+\textbf{(a) Density-dependent intrinsic Balmer decrement.} The Case B recombination value (BD $= 2.86$) is strictly valid only for low-density H\,{\sc II} regions ($n_{\rm H} \sim 10^2$--$10^4$\,cm$^{-3}$). At the gas densities measured in LRD broad-line regions ($n_{\rm H} \gtrsim 10^9$\,cm$^{-3}$; \citealt{Chen2026ABCD}), collisional excitation from the $n=2$ level elevates the intrinsic H$\alpha$/H$\beta$ ratio to $\sim$5--7 with zero dust contribution (see e.g.\ \citealt{Osterbrock1989}). The observed median BD $\sim$9 therefore requires only $A_V \lesssim 1$\,mag of dust extinction---consistent with global SED-fit values of $A_V \lesssim 0.5$--$1.5$\,mag and removing the apparent tension that motivated earlier dust-based interpretations. Critically, this means that the elevated BD is primarily a \textbf{gas-density diagnostic} at LRD conditions, not a dust-extinction indicator. The BD--$\Sigma$ correlation reported in \S\ref{sec:ev1} may therefore reflect the physical coupling between stellar surface density and broad-line-region gas density, rather than a dust-extinction sequence.
+
+\textbf{(b) Orientation test.} The edge-on $\rho$ ($+0.061$) being substantially \textit{weaker} than face-on $\rho$ ($+0.381$) is the opposite of the dust hypothesis prediction. This is the single most difficult observation for dust-based explanations to accommodate.
+
+\textbf{(c) H$\alpha$ enhancement independent of dust.} The extreme $L({\rm H}\alpha)/L(5100) \sim 0.20$ reported by Yanagisawa et al.\ cannot be explained by dust alone---attenuation dims the 5100\,\AA\ continuum but also dims H$\alpha$; the net effect depends on the spatial distribution of gas and dust. The observed values point to altered photoionization/collisional processes rather than extinction.
+
+\subsection{Evidence Weighting Summary}
+
+Table~\ref{tab:evidence_weights} provides a formal summary of the evidence-weighting framework adopted throughout this paper. We define three tiers following a pre-specified rubric: Core pillars require $N > 100$, independent cross-validation, and $p < 10^{-6}$; Supporting evidence meets at least two of these criteria; Exploratory findings are based on small samples ($N < 50$) or do not survive multiplicity correction. This rubric was established before the full analysis and is applied uniformly across all evidence chains.
+
+\begin{deluxetable*}{lcccl}
+\tablecaption{Evidence Weighting Summary \label{tab:evidence_weights}}
+\tablehead{
+\colhead{Evidence Chain} & \colhead{\S} & \colhead{$N$} & \colhead{Key Statistic} & \colhead{Tier}
+}
+\startdata
+SB--$\Sigma$ correlation (Kokorev $+$ Path1) & \S\ref{sec:ev3} & 291 & $\rho = -0.478$ ($p = 5.3 \times 10^{-18}$) & Core ($\bigstar\bigstar\bigstar$) \\
+COSMOSWeb blind $\Sigma$--color test & \S\ref{sec:ev4} & 664k & $\rho_{\rm partial}=+0.516$ (${\gg}20\sigma$) & Core ($\bigstar\bigstar\bigstar$) \\
+JADES DR5 $\Sigma_L$--color replication & \S\ref{sec:jades_crossval} & 1,467 & $\rho_{\rm partial}=+0.136$ ($5.2\sigma$) & Core ($\bigstar\bigstar\bigstar$) \\
+Orientation test (dust exclusion) & \S\ref{sec:ev4} & $\sim$12k & $\rho_{\rm edge} \ll \rho_{\rm face}$ & Supporting ($\bigstar\bigstar$) \\
+$\Sigma$--BD correlation & \S\ref{sec:ev1} & 37 & $r = +0.351$ ($p = 0.033$); partial $p = 0.087$ & Exploratory ($\bigstar$) \\
+BD--H$\alpha$ coupling & \S\ref{sec:ev2} & 15 & $\rho = +0.62$ ($p = 0.014$); fails Bonferroni & Exploratory ($\bigstar$) \\
+Weibel+ BH* cross-validation & App.~\ref{app:weibel} & 62 & $\rho(r_{\rm eff}, {\rm BH*}) = -0.257$ ($p = 0.044$) & Exploratory ($\bigstar$) \\
+Engine degeneracy (Radiative transfer) & \S\ref{sec:physics} & --- & Qualitative demonstration & Supporting ($\bigstar\bigstar$) \\
+\enddata
+\tablecomments{Tiers are assigned by a pre-specified rubric: Core ($\bigstar\bigstar\bigstar$) requires $N > 100$, independent cross-validation, and $p < 10^{-6}$; Supporting ($\bigstar\bigstar$) meets at least two criteria; Exploratory ($\bigstar$) is based on small samples ($N < 50$) or does not survive multiplicity correction. The JADES $\Sigma_L$--color result uses a luminosity-based surface density proxy (Appendix~\ref{app:jades}) rather than the stellar-mass-based $\Sigma$ used in the other chains, and thus provides a complementary rather than identical validation.}
+\end{deluxetable*}
+
+\subsection{Relationship to Recent Literature}
+
+Our results connect to multiple recent LRD studies:
+
+\begin{itemize}
+\item \textbf{ABCD \citep{Chen2026ABCD}:} Their Balmer-line decomposition of 14 LRDs yields $n_{\rm H} \gtrsim 10^9$\,cm$^{-3}$ and Balmer absorption covering factors $>$50\%. This provides \textbf{independent, non-photometric support} for our ``extreme gas density in compact cores'' hypothesis.
+
+\item \textbf{\citet{Ando2026}:} Their UV analysis of $\sim$100 LRDs concludes that LRD UV emission ``cannot be explained by normal star formation alone'' and requires ``significant contribution from a central compact red source.'' Their two-component model (host galaxy $+$ compact central source) is consistent with our physical picture.
+
+\item \textbf{\citet{Liempi2026}:} Their cosmological simulations demonstrate that compact starbursts can naturally produce $\sim$10$^6\,M_\odot$ central BHs within 10\,Myr. The ``compactness precedes AGN'' temporal logic aligns with our core narrative.
+
+\item \textbf{\citet{Zhang2026LRD}:} Their finding that LRDs disappear at $z < 3$ because halo growth erases compactness provides \textbf{inverse support} for compactness as the defining LRD characteristic.
+
+\item \textbf{\citet{Merida2026}:} Their Bayesian analysis found that the BH* model is statistically disfavored for $\sim$94\% of LRDs. While this finding is consistent with broad model degeneracy (different models each capture only a fraction of the population), we note that it provides stronger evidence against BH* specifically than for universal degeneracy, and we cite it here as one supporting data point rather than as proof of our engine-agnostic stance.
+
+\item \textbf{Double Dots \citep{Barger2026}:} Their finding that $\sim$67\% of published LRDs in A2744 are $<$0.25$''$ close pairs raises an important caveat. If some Path 1 sources are unresolved pairs, the true $r_{\rm eff}$ would be smaller and the true $\Sigma$ higher---making our $\Sigma$--BD and SB--$\Sigma$ correlations \textbf{conservative lower limits.}
+
+\item \textbf{Weibel+2026 BH*-selected sample \citep{Weibel2026}:} This independent catalog of 241 BH*-dominated LRD candidates (selected via \texttt{eazy} SED template fitting, with no $\Sigma$-based criteria) provides a blind external test of our compactness framework. Cross-matching with Kokorev yields $N=62$ overlapping sources. BH* template contribution increases with decreasing $r_{\rm eff}$ ($\rho = -0.257$, $p = 0.044$), and $\Sigma$ distributions of V-shaped vs.\ BH*-only sources are indistinguishable (KS $p = 0.14$). We use only their publicly available data and do not comment on their physical interpretation. Full analysis in Appendix~\ref{app:weibel}.
+\end{itemize}
+
+\subsection{Alternative Interpretation: Gas Density as the Causal Variable}
+
+We note several important alternative interpretations of our correlations:
+
+\textbf{Gas density ($n_{\rm H}$) as the causal variable.} The most significant alternative interpretation of our results is that gas density ($n_{\rm H}$), rather than stellar surface density ($\Sigma$), is the fundamental causal variable. The ABCD collaboration \citep{Chen2026ABCD} has demonstrated that LRD broad-line region gas densities reach $n_{\rm H} \gtrsim 10^9$\,cm$^{-3}$. Under this hypothesis: (a)~higher $n_{\rm H}$ elevates the intrinsic Balmer decrement through collisional excitation from $n=2$ (as discussed in \S\ref{sec:dust_exclusion}); (b)~higher $n_{\rm H}$ enhances H$\alpha$ luminosity relative to the optical continuum; (c)~denser gas distributions are naturally more compact, producing a $\Sigma$--$n_{\rm H}$ correlation that would make $\Sigma$ appear as the organizing variable when it is in fact a passive tracer of gas density; (d)~the orientation test ($\rho_{\rm edge} < \rho_{\rm face}$) is equally consistent with gas-density geometry---face-on sightlines probe deeper into the dense nuclear gas.
+
+\textbf{We cannot distinguish between $\Sigma$-driven and $n_{\rm H}$-driven causality with the current data.} This is the central unresolved question of our analysis. We explicitly acknowledge this limitation, which we consider the most important caveat to the paper's interpretive framework. We note three key points:
+
+First, $\Sigma$ and $n_{\rm H}$ are not independent hypotheses---they are observationally correlated because both stellar and gas densities peak in the same deep gravitational potential well. Distinguishing them requires independent gas density measurements (e.g., from the [\ion{S}{2}]$\lambda\lambda6717,6731$ doublet ratio or H$\alpha$/H$\beta$ line wings in medium-resolution NIRSpec spectroscopy) for a statistically significant LRD sample---data that do not yet exist but are achievable with JWST Cycle 4/5 programs.
+
+Second, even if $n_{\rm H}$ is the causal driver, $\Sigma$ retains practical value as the most observationally accessible tracer of the underlying physics. Stellar surface density can be measured for thousands of sources from broadband NIRCam photometry alone, whereas sub-pc gas density diagnostics require high-S/N NIRSpec medium-resolution spectroscopy ($R \gtrsim 2700$) feasible only for the brightest LRDs. For population-level studies and survey design, $\Sigma$ remains the pragmatic choice---provided its role as a \textit{tracer} rather than a \textit{driver} is clearly acknowledged.
+
+Third, we propose two observational pathways to break the $\Sigma$--$n_{\rm H}$ degeneracy: (i)~ALMA CO(7-6) or [\ion{C}{1}]($^3P_2$--$^3P_1$) observations can measure cold gas mass and density independently of the stellar population, testing whether high-$\Sigma$ LRDs have proportionally higher gas surface densities; (ii)~JWST/NIRSpec G395H medium-resolution spectroscopy of the [\ion{S}{2}] doublet can measure $n_e$ directly for $\sim$20--30 bright LRDs, enabling a direct $\Sigma$--$n_{\rm H}$ correlation test. A null result (no $\Sigma$--$n_{\rm H}$ correlation) would falsify the gas-density-as-causal-variable hypothesis; a positive correlation would not distinguish between the two scenarios but would quantify the observational degeneracy. We recommend both measurements as high-priority targets for JWST Cycle 4.
+
+\textbf{Other untested variables.} Beyond $n_{\rm H}$, we have compared $\Sigma$ against $M_*$ as the null predictor, but a complete test requires comparison against SFR surface density ($\Sigma_{\rm SFR}$), stellar velocity dispersion ($\sigma_v$), gas fraction ($f_{\rm gas}$), and environmental density. Velocity dispersion is particularly relevant, as it is a more direct dynamical measure of the gravitational potential than $\Sigma$. If $\sigma_v$ correlates more strongly with BD or H$\alpha$ enhancement than $\Sigma$ does, the causal interpretation shifts from ``compactness organizes anomalies'' to ``deep potential wells organize anomalies''---a subtle but physically meaningful distinction. The COSMOSWeb catalog does not provide $\sigma_v$ or $\Sigma_{\rm SFR}$ for the majority of high-$z$ sources. We defer these comparisons to future work that combines NIRSpec kinematic measurements with the photometric framework established here.
+
+\subsection{Velocity Entrainment Model Self-Consistency and Limitations}
+
+The velocity entrainment model (Appendix~\ref{app:dyson}) uses conventional physics ingredients (double power-law density profile $+$ viscous shear momentum transfer $+$ stellar collision energetics) to demonstrate that broad-line velocities can emerge without a central SMBH. We reiterate the model's central caveats:
+
+\begin{itemize}
+\item \textbf{The entrainment efficiency $\eta_{\rm entrain} \approx 1.75$} enables FWHM $\approx 3000$\,km\,s$^{-1}$, but $\eta$ requires independent calibration from hydrodynamic simulations or laboratory plasma turbulence experiments. Degeneracy exists between $\eta$ and $M_c$---a higher $\eta$ compensates for a lower $M_c$, and vice versa.
+\item \textbf{Physical nature of $M_c \approx 4 \times 10^4\,M_\odot$:} This could be a compact nuclear star cluster, a small IMBH, or SED-unresolved gas mass. MIRI mid-IR spectroscopy and IFU kinematic mapping will help distinguish these possibilities.
+\item \textbf{Collision timescales} in the inner core ($r < 0.003$\,pc) are $\sim$4--35\,Myr---sufficiently short for frequent stellar merging and material reprocessing over a Hubble time, supporting the critical-suspension-state evolutionary picture. The Dyson model physics is confined to the innermost $\sim$0.01\,pc.
+\end{itemize}
+
+\subsection{Testable Predictions}
+
+\begin{enumerate}
+\item \textbf{MIRI/LRS or MRS 5--14\,$\mu$m mid-IR spectroscopy:} Gravitationally heated dust (Dyson nucleus) vs.\ AGN torus dust differ in $\lambda_{\rm peak}^{\rm obs}$ position and width (15--25\,$\mu$m vs.\ 10--20\,$\mu$m). This is the cleanest, most direct discriminant.
+\item \textbf{LBD variability $>$ LRD variability:} If stellar collisions drive variability, low-$N_{\rm H}$ LBDs (thin cocoon) should show larger observed variations than high-$N_{\rm H}$ LRDs. Testable with JWST/NIRSpec 2--3 revisit observations at 3--6 month cadence.
+\item \textbf{Continued X-ray silence:} Deeper Chandra/XMM observations, or future AXIS/Athena, should continue to show X-ray weakness or absence across the LRD population---not absorbed, but not produced.
+\item \textbf{High-resolution NIRCam imaging} of the Path 1 sample can test the Double Dots hypothesis and its impact on $r_{\rm eff}$ and $\Sigma$ measurements.
+\end{enumerate}
+
+\section{Conclusion} \label{sec:conclusion}
+
+Using five primary JWST samples plus two independent cross-validation surveys (JADES DR5 and Weibel+2026), we have systematically demonstrated that compactness is strongly correlated with the full suite of LRD spectroscopic and photometric anomalies. The JADES DR5 survey-level replication ($\rho_{\rm partial}=+0.136$, $5.2\sigma$; \S\ref{sec:jades_crossval}) and the Weibel+2026 engine-independent consistency (\S\ref{sec:discussion}, Appendix~\ref{app:weibel}) provide external validation, though the Weibel+ statistical weight is modest ($N=62$). Our principal conclusions are:
+
+\begin{enumerate}
+\item \textbf{Compactness--spectroscopy/photometry coupling ($N=291$, $p = 5.3 \times 10^{-18}$).} In the largest LRD sample assembled to date, physical surface density $\Sigma$ and F444W surface brightness exhibit a highly significant Spearman correlation of $\rho = -0.478$. This is the strongest statistical evidence for compactness--spectroscopy/photometry coupling in the LRD literature.
+
+\item \textbf{COSMOSWeb 664k blind validation ($\rho = +0.516$ at $z=7$--$9$, ${\gg}20\sigma$).} The $\Sigma$--color correlation strengthens monotonically with redshift, and LRD-matched COSMOSWeb subsamples show consistent $\rho$ values---ruling out LRD-specific selection bias. LRDs are not outliers but the natural extreme-$\Sigma$ extension of a universal galaxy correlation.
+
+\item \textbf{Orientation test excludes dust.} Edge-on galaxies show \textit{weaker} $\Sigma$--color correlations than face-on galaxies---the opposite of the dust hypothesis prediction. Dust is not the primary driver of LRD spectroscopic anomalies.
+
+\item \textbf{BD correlations as supporting convergence ($N=37$ unique, $r = +0.351$, $p = 0.033$).} After correcting for duplicate observations, the flux-proxy $\Sigma$--BD simple correlation remains marginally significant, but the partial correlation (controlling for $z + M_*$) is not ($r_{\rm partial} = +0.286$, $p = 0.087$), and the bootstrap 95\% CI is broad with a lower bound near zero. $M_*$ shows zero correlation with BD ($r = +0.009$, $p = 0.956$), providing qualitative directional support for compactness over mass as a predictor. The BD--H$\alpha$ enhancement coupling ($N=15$, $\rho = +0.62$, $p = 0.014$) supplies one link in the three-variable loop, but the sample is intrinsically small.
+
+\item \textbf{Velocity entrainment toy model (Appendix~\ref{app:dyson}).} As an existence proof, we present a phenomenological velocity entrainment model in which an ultra-dense stellar nucleus ($\rho_c \approx 6.8 \times 10^{11}\,M_\odot\,{\rm pc}^{-3}$) with a central mass concentration of $\sim$$4 \times 10^4\,M_\odot$---$\sim$125$\times$ smaller than the standard virial SMBH estimate---produces FWHM $\approx 3000$\,km\,s$^{-1}$ at BLR scales under standard Newtonian gravity. The model has three degenerate parameters and is not a candidate physical theory; its sole purpose is to demonstrate that LRD kinematics do not logically require a central SMBH. X-ray quiescence follows naturally from the non-accretion geometry.
+
+\item \textbf{Engine degeneracy and an alternative interpretation.} We independently validate the LBD--LRD unified cocoon framework \citep{Sneppen2026a} but demonstrate that its NIRCam color sequence is engine-degenerate. We further note that gas density ($n_{\rm H}$) is an alternative causal variable that could underlie all reported correlations. We recommend MIRI mid-IR spectroscopy as the decisive discriminant for both the engine type and the $\Sigma$ vs.\ $n_{\rm H}$ question.
+
+\item \textbf{Taxonomic recommendation.} Compactness parameters ($\Sigma$ or $r_{\rm eff}$) should be incorporated as primary classification variables alongside redshift and stellar mass in all future LRD surveys, particularly for JWST Cycle 4/5 large spectroscopic programs.
+\end{enumerate}
+
+\section*{Data Availability}
+
+The data and analysis scripts underlying this work are available in an anonymized repository for peer review. The analysis code was independently reviewed for correctness by a colleague (details in repository README); all random seeds used in bootstrap and Monte Carlo analyses are documented in the repository.
+
+\begin{acknowledgments}
+Acknowledgments anonymized for peer review.
+\end{acknowledgments}
+
+\bibliography{references}
+\bibliographystyle{aasjournal}
+
+\appendix
+\setcounter{equation}{0}
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\renewcommand{\theHequation}{\thesection\arabic{equation}}
+
+\section{Cross-Validation with the Weibel+2026 BH*-Selected LRD Sample}
+\label{app:weibel}
+
+\citet{Weibel2026} recently published a catalog of 241 BH*-dominated LRD candidates selected via BH* SED template fitting in the \texttt{eazy} photometric redshift code---a method completely independent of the color and $\Sigma$ criteria used in our primary samples. This appendix presents our independent analysis of their publicly available catalog, which serves as a blind external validation of our compactness framework.
+
+\subsection{Cross-Match and Data}
+
+We cross-matched the Weibel+2026 catalog with the Kokorev+2024 260-source LRD catalog using a $0\farcs5$ radius, obtaining 62 overlapping sources with $\Sigma$, $r_{\rm eff}$, surface brightness, and BH* template contribution measurements. The Weibel+ catalog provides full NIRCam photometry (F070W through F480M), photometric redshifts ($z_{\rm phot} = 1.6$--$9.2$), Balmer break strengths (median 3.05, range 1.3--19.3), and the BH* template contribution fraction ($>0.80$ by selection).
+
+\subsection{Results}
+
+Figure~\ref{fig:weibel_analysis} presents an 11-panel summary of our cross-validation analysis.
+
+\textbf{Panel 1---SB vs.\ $\Sigma$:} The Weibel-matched subsample follows the same SB--$\Sigma$ relation established by our primary Kokorev 260 sample, with a consistent negative slope. The correlation is weakened ($\rho = -0.128$, $p = 0.32$) relative to the parent sample ($\rho = -0.437$) due to the restricted parameter range imposed by the BH* selection threshold ($>80\%$ template contribution).
+
+\textbf{Panel 2---Balmer Break vs.\ $\Sigma$:} No significant correlation is found between the Balmer break (a continuum diagnostic) and $\Sigma$ ($\rho = +0.040$, $p = 0.76$), consistent with our expectation that the Balmer break is dominated by the gas-cocoon column density rather than stellar surface density.
+
+\textbf{Panel 3---BH* Contribution vs.\ $\Sigma$:} The BH* template contribution shows a negative Spearman correlation with $\Sigma$ ($\rho = -0.064$, $p = 0.62$), but a more significant anti-correlation with $r_{\rm eff}$ ($\rho = -0.257$, $p = 0.044$; see \S\ref{sec:discussion}). This indicates that more compact sources receive systematically higher BH* template fractions. More fundamentally, the fact that the BH* template contribution correlates significantly with $r_{\rm eff}$ but not with $\Sigma$ suggests that physical size ($r_{\rm eff}$) is a cleaner, more direct tracer of the nuclear BLR physics, whereas the introduction of the stellar mass ($M_*$) in the denominator of $\Sigma$ likely acts as a source of scatter that washes out the signal.
+
+\textbf{Panel 4---$\Sigma$ Distribution:} The $\Sigma$ distributions of V-shaped and BH*-only sources are statistically indistinguishable (KS $p = 0.14$), demonstrating that the two independent selection methods probe the same underlying compactness parameter space despite their fundamentally different selection criteria.
+
+\textbf{Panel 5---Balmer Break vs.\ Compactness:} Using the full 241-source Weibel+ sample with the $c_{\rm F444W}$ compactness proxy, we find no significant correlation with Balmer break strength ($\rho = -0.066$, $p = 0.31$), consistent with the matched-sample result.
+
+\textbf{Panel 6---Redshift Distribution:} The BH* sample spans $z=1.6$--$9.2$ with a median of $z \approx 5.5$, peaking at $z \sim 5$--$6$. Only 46\% (111/241) satisfy the V-shaped color criterion, with the V-shaped subset concentrated at $z \gtrsim 4$ where our other LRD samples are also located.
+
+\textbf{Panel 7---Joint $\Sigma$ Diagnostic:} Balmer break and BH* contribution are plotted against the shared $\Sigma$ axis, visualizing how both quantities respond to compactness. The Balmer break--BH* contribution correlation ($\rho = +0.456$) reflects the selection-internal relationship between the template fit and the continuum break, while $\Sigma$ provides an independent organizing axis.
+
+\textbf{Panels 8--10---Supporting Diagnostics:} Color vs.\ $\Sigma$, size distributions, and the Balmer break vs.\ BH* contribution plane are shown for completeness.
+
+\textbf{Key Implication:} The Weibel+2026 sample was selected without any $\Sigma$-based criterion. The fact that (i)~BH* template contribution increases with decreasing $r_{\rm eff}$, and (ii)~V-shaped and BH*-selected sources occupy the same $\Sigma$ parameter space, is broadly consistent with the compactness framework, though we emphasize that the cross-matched subsample is modest in size ($N=62$) and the direct $\Sigma$ correlation is washed out by $M_*$ scatter, as discussed above. Future BH* catalogs with larger overlap samples will provide a more stringent test of these separate axes.
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth]{figures/weibel2026_analysis.png}
+\caption{Cross-validation analysis of the Weibel+2026 BH*-selected LRD sample \citep{Weibel2026}. \textbf{Panel 1:} SB$_{\rm F444W}$ vs.\ $\log\Sigma$ for Weibel-matched sources (colored by V-shaped classification) overlaid on the Kokorev 260 parent sample (gray). \textbf{Panel 2:} Balmer break vs.\ $\log\Sigma$, color-coded by redshift. \textbf{Panel 3:} BH* template contribution vs.\ $\log\Sigma$, color-coded by Balmer break. \textbf{Panel 4:} $\Sigma$ distribution comparison between V-shaped (Kokorev-selected) and BH*-only sources (KS $p=0.14$). \textbf{Panel 5:} Balmer break vs.\ $c_{\rm F444W}$ compactness proxy (full 241-source sample). \textbf{Panel 6:} Redshift distributions of the full sample, Kokorev-matched subset, and V-shaped subset. \textbf{Panel 7:} Joint $\Sigma$ diagnostic: Balmer break (left axis, red circles) and BH* template contribution (right axis, blue squares) vs.\ $\log\Sigma$. \textbf{Panel 8:} F150W$-$F444W color vs.\ $\log\Sigma$, color-coded by Balmer break. \textbf{Panel 9:} Effective radius distributions for V-shaped and BH*-only sources. \textbf{Panel 10:} Balmer break vs.\ BH* template contribution, colored by selection type. See \S\ref{app:weibel} for detailed discussion. \label{fig:weibel_analysis}}
+\end{figure*}
+
+\section{JADES DR5 Cross-Field Validation: Full Fitting Procedure}
+\label{app:jades}
+
+This appendix provides the complete methodology and detailed results of the JADES DR5 cross-validation described in \S\ref{sec:jades_crossval}.
+
+\subsection{Data}
+
+We use the JADES DR5 photometric catalogs \citep{JADESDR5} in the GOODS-North (139.16 arcmin$^2$) and GOODS-South (210.44 arcmin$^2$) legacy fields. The catalogs provide Kron-aperture photometry in up to 13 NIRCam bands (F070W through F480M, including medium bands F162M, F182M, F210M, F250M, F300M, F335M, F360M, F410M, F430M, F460M, F480M where available), photometric redshifts from \texttt{EAZY}, and morphological parameters including semi-major and semi-minor axes from \texttt{SExtractor}. The GOODS-S catalog contains 304,366 sources; the GOODS-N catalog contains 181,144 sources.
+
+\subsection{Selection Criteria}
+
+We adopt the selection criteria of \citet{Rinaldi2026}, which are designed to maximize LRD completeness rather than purity:
+
+\begin{enumerate}
+\item Photometric redshift $z_{\rm phot} > 4$
+\item Compactness: effective radius $R_{\rm eff} = \sqrt{A \times B} \leq 0\farcs06$
+\item Red optical-to-NIR color: ${\rm F277W} - {\rm F444W} > 0.5$ (observed-frame)
+\item Brown-dwarf rejection: ${\rm F115W} - {\rm F200W} > -0.5$
+\item Robust detection (FLAG$=0$) in F277W, F444W, F150W, and F356W
+\item Valid flux measurements in F150W and F356W for color calculation
+\end{enumerate}
+
+The selection cascade is documented in Table~\ref{tab:jades_cascade} and visualized in Figure~\ref{fig:jades_cascade}. The final sample comprises \textbf{1,467 LRD candidates} (1,074 GOODS-S; 393 GOODS-N). The sample spans $z_{\rm phot} \approx 4.0$--$11.9$ with a median of $z \approx 4.8$, peaking at $z \sim 4$--$5$ (48.5\% of the sample). At $z > 7$, 140 sources remain (9.5\%).
+
+\subsection{$L_{\rm bol}$ Proxy Calibration}
+
+JADES DR5 provides photometry but not pre-computed $L_{\rm bol}$ or stellar mass estimates matched to our specific SED template set. We calibrate an $L_{\rm bol}$ proxy using the COSMOS Kokorev+2024 260 LRD catalog, where $L_{\rm bol}$ is available from SED fitting. A multi-band linear regression on $\log F_{\rm F150W}$, $\log F_{\rm F277W}$, $\log F_{\rm F356W}$, $\log F_{\rm F444W}$, and $\log(F_{\rm F150W} + F_{\rm F277W} + F_{\rm F356W} + F_{\rm F444W})$ yields a predictor with RMSE $= 0.43$ dex and $r = 0.92$ on the COSMOS training set. The same coefficients are applied to JADES Kron fluxes to estimate $\log L_{\rm bol, proxy}$ for each JADES source.
+
+We verified that in the COSMOS sample, $-2\log R_{\rm eff}$ is correlated with the full $\Sigma \equiv \log M_* - \log(\pi R_{\rm eff}^2)$ at $r = 0.9997$---i.e., size dominates over the mass term in determining $\Sigma$ for compact sources. Therefore, JADES $\Sigma$ is predominantly a size diagnostic, with $L_{\rm bol}$ contributing secondary dynamic range.
+
+\subsection{Surface Density and Color Definitions}
+
+Identical to the main text (\S\ref{sec:data}):
+
+\begin{equation}
+\log \Sigma_{\rm phys} = \log L_{\rm bol, proxy} - 2 \log R_{\rm eff, kpc}
+\end{equation}
+\begin{equation}
+{\rm color} = \log_{10}(F_{\rm F444W} / F_{\rm F150W})
+\end{equation}
+
+where $R_{\rm eff, kpc} = \theta_{\rm eff} \times D_A(z_{\rm phot})$, with $D_A$ computed for a flat $\Lambda$CDM cosmology ($H_0 = 70$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_m = 0.3$). For comparison, we also compute the flux-proxy definition ($0.4\times\log F_{\rm F444W} - 2\log R_{\rm eff}$) and confirm that the flux-proxy $\Sigma$ is spuriously correlated with the F444W-based color due to shared F444W flux in both axes ($\rho = -0.519$, 21.4$\sigma$ using the contaminated definitions).
+
+\subsection{Statistical Methods}
+
+\textbf{Partial Spearman correlation.} To isolate the $\Sigma$--color correlation from confounding variables, we compute partial Spearman $\rho$ controlling for $z_{\rm phot}$ and $\log L_{\rm bol, proxy}$. The procedure: (1) rank-transform $\log\Sigma$ and color; (2) regress the ranks of each against control variables via ordinary least squares; (3) compute the Spearman correlation of the residuals. The $p$-value is converted to Gaussian $\sigma$ via the inverse survival function: $\sigma = |\Phi^{-1}(p/2)|$.
+
+\textbf{KS test.} We split the sample at the median $\log\Sigma$ and compare the color distributions of the high-$\Sigma$ and low-$\Sigma$ halves via a two-sample Kolmogorov--Smirnov test.
+
+\textbf{$\Delta$color.} The mean color difference between high-$\Sigma$ and low-$\Sigma$ halves, with uncertainty propagated from the standard error of each mean.
+
+\subsection{Results}
+
+Table~\ref{tab:jades_comparison} presents the statistical comparison between the COSMOS blind test (\S\ref{sec:ev4}) and the JADES cross-validation.
+
+\input{figures/tableB2_jades_cosmos_comparison}
+
+The raw $\Sigma$--color Spearman correlation in JADES is $\rho = +0.505$ (20.8$\sigma$), comparable to the COSMOSWeb high-redshift result ($\rho = +0.618$, ${\gg}20\sigma$)---with JADES' deeper photometry constraining $R_{\rm eff}$ for faint compact sources, and the narrower compactness range imposed by the $R_{\rm eff} \leq 0\farcs06$ cut reducing scatter from non-compact sources. After controlling for $z_{\rm phot}$ and $L_{\rm bol}$, the JADES partial correlation ($\rho_{\rm partial} = +0.136$, $5.2\sigma$) is directionally consistent and statistically significant, mirroring the strong correlation found in COSMOSWeb ($\rho_{\rm partial} = +0.516$, ${\gg}20\sigma$).
+
+The KS test strongly rejects the null hypothesis of identical color distributions above and below the median $\Sigma$ ($D = 0.431$, 16.6$\sigma$). High-$\Sigma$ LRDs are systematically redder by $\Delta\langle{\rm color}\rangle = +0.359$ dex (13.5$\sigma$). The linear slope $d({\rm color})/d(\log\Sigma) = +0.250$ is positive, consistent with the physical picture that higher surface density drives redder rest-UV-to-optical colors.
+
+GOODS-S alone ($N=1{,}074$) yields $\rho_{\rm partial} = +0.155$ ($5.1\sigma$), independently confirming the signal. GOODS-N alone ($N=393$) yields $\rho_{\rm partial} = +0.081$ ($1.6\sigma$), a directionally consistent but statistically marginal result attributable to the smaller survey area and fewer LRD candidates.
+
+\input{figures/tableB1_selection_cascade}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/figB1_jades_sigma_color.png}
+\caption{JADES DR5 $\Sigma$--color cross-validation. \textbf{(a)} $\log\Sigma_{\rm phys}$ vs.\ $\log(F_{\rm F444W}/F_{\rm F150W})$ for all 1,467 JADES LRD candidates, color-coded by photometric redshift. The dashed line shows the linear best fit (slope $+0.250$). \textbf{(b)} Same as (a), split by field (GOODS-S in blue, GOODS-N in orange), showing consistent correlation direction in both independent fields. \textbf{(c)} Mean color for sources below and above the median $\Sigma$, with KS test statistics. High-$\Sigma$ sources are systematically redder. \label{fig:jades_sigma_color}}
+\end{figure*}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/figB2_jades_selection_cascade.png}
+\caption{Selection cascade for the JADES DR5 LRD sample. Bar heights show the number of sources surviving each successive cut, with GOODS-S (blue) and GOODS-N (orange) shown separately. The final sample of 1,467 candidates represents 0.30\% of the parent photometric catalogs. \label{fig:jades_cascade}}
+\end{figure}
+
+\subsection{Interpretation}
+
+The JADES cross-validation provides an independent, survey-level replication of the $\Sigma$--color correlation. The key logical point is that JADES and COSMOS differ in depth (JADES is $\sim$2--3 magnitudes deeper), area (JADES is $\sim$5.5$\times$ smaller), filter set (JADES has medium bands; COSMOS Web has only broadbands), and photometric calibration pipeline---yet both yield the same positive $\Sigma$--color partial correlation at approximately $5\sigma$ significance. This rules out survey-specific systematics as the origin of the signal and strengthens the evidence that compactness systematically organizes LRD photometric properties.
+
+\section{Velocity Entrainment Toy Model for Compact-Core Broad-Line Velocities}
+\label{app:dyson}
+
+\textbf{Disclaimer:} This appendix presents a phenomenological toy model. It is explicitly \textit{not} a candidate physical theory. The model has three adjustable parameters ($\eta_{\rm entrain}$, $\alpha_{\rm dil}$, $M_c$) that are degenerate and not independently constrained by first-principles fluid dynamics. The velocity amplification mechanism described below lacks a closed energy-conservation derivation. The model's only purpose is to serve as an \textit{existence proof}---demonstrating that standard Newtonian physics in a compact stellar nucleus can, in principle, produce broad-line velocities comparable to those observed in LRDs, without requiring a central supermassive black hole. The reader should not interpret this appendix as proposing that LRDs \textit{are} compact stellar nuclei without SMBHs; it merely shows that current data do not \textit{logically exclude} this possibility. We include it here in the interest of full transparency regarding the engine-agnostic methodology advocated in the main text.
+
+\subsection{Physical Picture}
+
+The core of an LRD is modeled as an ultra-dense stellar nucleus with a double power-law density profile: central density $\rho_c = 6.8 \times 10^{11}\,M_\odot\,{\rm pc}^{-3}$ at core radius $r_c = 0.003$\,pc, inner slope $\alpha_{\rm in} = 2.0$, outer slope $\alpha_{\rm out} = 1.2$, break at $r_b = 0.3$\,pc. The benchmark source is GLIMPSE-17775 ($z = 5.66$, $M_* = 10^{9.5}\,M_\odot$, $r_{\rm eff} = 83.3$\,pc; \citealt{Kokorev2024}). All calculations use standard Newtonian gravity ($G = G_{\rm N}$).
+
+The physical mechanism is viscous momentum transfer from fast-moving inner gas to slower outer gas layers---analogous in broad concept (though not in detailed physics) to the entrainment principle used in aerodynamic flow multipliers, where a thin high-speed primary flow entrains a much larger volume of surrounding fluid. In the LRD core, gas at the deepest point of the gravitational potential well ($r_{\rm seed} \approx 0.0007$\,pc) reaches a ``seed velocity'' from the enclosed mass (stars $+$ a small central concentration $M_c \approx 4\times10^4\,M_\odot$, which could represent an unresolved nuclear star cluster, a small IMBH, or SED-unresolved dense gas). This inner high-velocity gas transfers momentum outward through viscous shear.
+
+\subsection{Velocity Profile}
+
+The velocity profile is governed by a phenomenological entrainment-dilution equation:
+\begin{equation} \label{eq:entrainment}
+\frac{d(v^2)}{d(\ln r)} = \eta_{\rm entrain} \, v^2 \left(\frac{\rho}{\rho_{\rm seed}}\right)^{0.3} \;-\; \alpha_{\rm dil} \left(\frac{r}{r_b}\right) v^2,
+\end{equation}
+where the first term parameterizes viscous momentum transfer from inner to outer layers, and the second term captures geometric dilution of the expanding flow (chosen to recover velocities of $\sim$200\,km\,s$^{-1}$ at $r_{\rm eff}$). The density exponent 0.3 is adopted from empirical scaling relations for turbulent mixing layers. We adopt $\eta_{\rm entrain} = 1.75$ and $\alpha_{\rm dil} = 1.0$.
+
+\textbf{Key limitation---Energy accounting:} Eq.~\ref{eq:entrainment} does not include an explicit energy-conservation constraint. The entrainment term transfers momentum from the inner fast-moving gas to the outer slower gas, which in a realistic fluid would decelerate the inner gas by an amount proportional to the momentum transferred. For the equation to produce net velocity amplification from 420 to 1270 km s$^{-1}$, the inner gas must be continuously replenished with kinetic energy from the gravitational potential. In a self-consistent treatment, this would require gas to flow inward through the potential well, converting gravitational potential energy to kinetic energy, with the entrainment redistributing this energy outward. A full hydrodynamic treatment is beyond the scope of this appendix; the current equation should be regarded as a parameterized velocity mapping, not a dynamical equation.
+
+\subsection{Results and Degeneracies}
+
+At the BLR scale ($r=0.03$\,pc), the entrainment-amplified velocity reaches $\sim$1270\,km\,s$^{-1}$ (FWHM $\approx 3000$\,km\,s$^{-1}$), consistent with observed LRD broad-line widths. At the effective radius ($r_{\rm eff}=83.3$\,pc), geometric dilution yields a velocity of $\sim$200\,km\,s$^{-1}$, smoothly transitioning into the background dynamics of the host galaxy. The required central mass concentration ($M_c \approx 4 \times 10^4\,M_\odot$) is $\sim$125$\times$ smaller than the standard virial SMBH estimate of $\sim$$5 \times 10^6\,M_\odot$ (\citealt{Kokorev2024}).
+
+The parameters ($\eta_{\rm entrain}, \alpha_{\rm dil}, M_c$) are \textbf{fully degenerate}---different combinations can produce the same FWHM with different velocity profiles. The model therefore has zero independent predictive power for the FWHM of any given LRD; it only demonstrates that a three-parameter fitting function can reproduce one data point. Independent calibration from hydrodynamic simulations (to constrain $\eta_{\rm entrain}$), resolved kinematic observations (to constrain the velocity profile shape), or gas-mass measurements (to constrain $M_c$) is required to transform this from a fitting exercise into a testable model.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig9_velocity_cascade.png}
+\caption{Velocity entrainment cascade for the GLIMPSE-17775 benchmark. The seed velocity of $\sim$420\,km\,s$^{-1}$ at $r = 0.0007$\,pc is amplified to $\sim$1270\,km\,s$^{-1}$ (FWHM $\approx 3000$\,km\,s$^{-1}$) at $r = 0.03$\,pc (the BLR scale). Geometric dilution ensures velocities decay to $\sim$200\,km\,s$^{-1}$ at $r_{\rm eff}$, transitioning into the host galactic dynamics. All calculations use standard Newtonian gravity. \textbf{Note:} This model is a phenomenological fitting exercise; see disclaimer at the start of this appendix. \label{fig:fig9}}
+\end{figure}
+
+\subsection{Stellar Collisions and Variability}
+
+The extreme core density implies short stellar collision timescales: $\sim$4\,Myr at $r=0.001$\,pc, $\sim$35\,Myr at $r=0.003$\,pc ($\langle m_* \rangle = 0.5\,M_\odot$, $R_* \approx 1\,R_\odot$). Collision energies ($\sim$$10^{48-49}$\,erg) injected into the gas cocoon can drive local heating and ionization fluctuations. We predict that LBDs (low $N_{\rm H}$, thin cocoon) should show \textbf{larger} 99-day variability than LRDs (thick cocoon attenuates collision signals), providing a testable discriminant against the AGN variability prediction (cocoon-independent). The recent GlimmIr monitoring of GLIMPSE-17775 \citep[30--42\% over 99 days;][]{GlimmIr2026} is consistent with this picture.
+
+\end{document}

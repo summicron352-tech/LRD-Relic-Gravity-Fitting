@@ -1,0 +1,14 @@
+{
+  "N": 15,
+  "n_with_kokorev": 8,
+  "Ha_enhancement_range": [
+    1.2278986878172662e+42,
+    1.0495389474313785e+44
+  ],
+  "Ha_enhancement_median": 8.428585092066322e+42,
+  "BD_range": [
+    3.919352610751379,
+    16.0970869376235
+  ],
+  "interpretation": "\nYanagisawa+ 发现 LRD 的宽 Hα 比标准 Type 1 AGN 强 ~40 倍。\n如果 UID 对: 增强因子应随 Σ 增大而增大（G_eff 增强 → 同 M_BH 下 Hα 更亮）。\n与 deGraaff BD 联动: 高 BD 源应有更大的增强因子。\n注意: 15源中有 Kokorev Σ 的仅有限，大样本统计需要下载 DJA 合光谱。\n"
+}

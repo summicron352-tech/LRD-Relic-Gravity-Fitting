@@ -1,50 +1,62 @@
-# LRD Relic Gravity Fitting — MNRAS Submission
+# Three-Way Convergence in Little Red Dots
 
-## A Redshift-Dependent Spectral Distortion in 260 Little Red Dots:
-## Constraints on Compactness Evolution at Cosmic Dawn
+**Compactness-Correlated Spectroscopic Anomalies in Little Red Dots: Convergent Evidence from Six JWST Samples and an Engine-Degenerate Physical Framework**
 
-**Status:** Submitted to MNRAS (2026-04-15)  
-**Authors:** Xin Tan (Independent Researcher, IAIP)  
-**arXiv:** [to be added]  
-**GitHub Repository:** https://github.com/summicron352-tech/LRD-Relic-Gravity-Fitting/
+Code, data, and figures accompanying the paper.
 
----
+## Repository Structure
 
-### Quick Links
-- 📄 [Paper PDF](paper/LRDs_Paper_Draft_v2.pdf)
-- 📊 [Statistical Over-Constraint Figure](figures/Figure_StatisticalOverConstraint.png) *(new)*
-- 📝 [Cover Letter (MNRAS)](submission/CoverLetter_MNRAS.pdf)
-
-### Directory Structure
 ```
-├── paper/          # LaTeX source, BibTeX, compiled PDF, FITS table
-├── figures/        # All publication-quality figures (PNG/PDF)
-├── data/
-│   ├── csv/        # All analysis results & input catalogs
-│   └── fits/       # Source catalog in FITS format
-├── code/           # Python scripts for reproducibility
-└── submission/     # Cover letter
+.
+├── code/                   # All Python analysis scripts
+│   ├── lrd_dyson_gradient_model.py      # Dyson dense cluster gradient model
+│   ├── test_engine_degeneracy.py        # Engine degeneracy radiative transfer
+│   ├── glimmir_variability_model.py     # Variability collision model
+│   ├── dyson_no_imbh_explore.py         # Pure cluster core (no IMBH)
+│   ├── dyson_parameter_scan.py          # Dyson parameter space scan
+│   ├── cosmos_lrd_crossmatch.py         # COSMOSWeb LRD cross-matching
+│   ├── generate_paper_figures.py        # Paper figure generation
+│   ├── diagnose_sigma_definitions.py    # Sigma definition validation
+│   ├── lrd_batch_geff_validation.py     # G_eff batch validation
+│   ├── bird_stress_test.py              # BiRD Dyson stress test
+│   ├── bird_stress_test_v2.py           # BiRD epsilon_g parameter scan
+│   ├── loiacono_5sources_dyson.py       # 5-source Loiacono Dyson analysis
+│   ├── loiacono_eps_threshold.py        # Epsilon_g threshold analysis
+│   ├── weibel2026_analysis.py           # Weibel+ BH* analysis
+│   ├── withers_analysis.py              # Withers+ REG analysis
+│   ├── xiao_massive_sigma_estimate.py   # Xiao+ massive galaxy Sigma
+│   └── nikopoulos_crossmatch.py         # Nikopoulos+ cross-match
+│
+├── data/                   # Processed data tables
+│   ├── path1_merged_38sources.csv       # Path 1 cross-matched sample
+│   ├── kokorev_260_sb.csv              # Kokorev 260 LRD catalog
+│   ├── yanagisawa_overlap_15sources.csv # Yanagisawa overlap (15 sources)
+│   ├── withers_9_regs.csv              # Withers+ 9 REGs
+│   ├── lord_compactness.json           # LRD compactness catalog
+│   ├── deGraaff2025_lrds.fits         # de Graaff+ LRD catalog
+│   └── cosmos_lrd_crossmatch.json      # COSMOSWeb cross-match
+│
+├── figures/                # Key paper figures
+├── results/                # Analysis results (JSON)
+├── paper/                  # Manuscript and references
+│   ├── main_paper.tex
+│   ├── main_paper.pdf
+│   └── references.bib
+├── references/             # Reference papers
+└── 三路汇聚论文大纲.md       # Paper outline (Chinese)
 ```
 
-### Key Findings
-1. **83.5% of LRDs favor or accept** the gravitational redshift model ($z_{\rm dist}=0.17$) over dust attenuation
-2. **Single mechanism explains six independent puzzles**: V-shaped SED, MIR silence, X-ray darkness, low dust mass, FWHM paradox, [N II] weakness
-3. **Statistical over-constraint**: $P_{\rm joint}=1.8\times10^{-6}$ → predicts ~0 sources out of 260; observed **217** ($>100\sigma$)
+## Key Results
 
-### Reproducibility
-All fitting codes are provided in `code/`. The main analysis pipeline:
-```bash
-python3 agn_three_comp_final.py          # AGN 3-component SED fitting
-python3 gen_figure_overconstraint.py      # Statistical over-constraint figure
-python3 triple_scan_classification.py     # Triple-scan classification
-```
+- **N=291 SB-Σ correlation**: ρ = −0.478, p = 5.3 × 10⁻¹⁸ — largest LRD compactness-spectroscopic sample
+- **COSMOSWeb 664k blind verification**: Σ-color partial correlation ρ = +0.516 at z = 7–9 (>5.6σ)
+- **Engine degeneracy**: Dense stellar cluster cores produce identical NIRCam color sequences to AGN engines
+- **Dyson gradient model**: Viscous velocity cascade naturally produces observed FWHM without SMBH
 
-Input data: `data/csv/Kokorev_LRDs_Full.csv` (260 LRDs from Kokorev et al. 2024)
+## Citation
 
-### Citation
-If you use this work, please cite:
-> Tan, X.\ 2026, MNRAS, submitted  
-> *A Redshift-Dependent Spectral Distortion in 260 Little Red Dots: Constraints on Compactness Evolution at Cosmic Dawn*
+If you use this code or data, please cite the accompanying paper.
 
-### License
-This repository is released under the MIT License.
+## License
+
+MIT License

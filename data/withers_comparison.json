@@ -1,0 +1,58 @@
+{
+  "date": "2026-06-09",
+  "paper": "Withers+ 2026 (arXiv:2606.06585)",
+  "withers_compact_regs": {
+    "N": 9,
+    "z_range": [
+      5.15,
+      8.63
+    ],
+    "F444W_mag_range": [
+      27.5,
+      28.7
+    ],
+    "SB_F444W_min_median": 23.971854083574677,
+    "SB_F444W_min_range": [
+      23.271854083574677,
+      24.471854083574677
+    ],
+    "logSigma_Mstar_min_median": 2.78,
+    "note": "所有 SB 值均为下限（源在 F444W 中未分辨，PSF FWHM=0.161\"）"
+  },
+  "apjl_crossmatch": {
+    "N": 38,
+    "r_eff_pc_range": [
+      51.93081889094175,
+      196.7753709572188
+    ],
+    "F444W_mag_range": [
+      30.90109695389904,
+      35.00493290238836
+    ],
+    "SB_F444W_median": 24.517589663646667,
+    "SB_F444W_range": [
+      22.10759932533878,
+      28.237692268263825
+    ],
+    "BD_range": [
+      3.533950760470007,
+      13.118478224146935
+    ]
+  },
+  "kokorev_full": {
+    "N": 260,
+    "SB_F444W_median": 25.321640121251352,
+    "SB_F444W_range": [
+      19.251396430001744,
+      28.23846870804051
+    ]
+  },
+  "key_finding": {
+    "apjl_SB_median": 24.517589663646667,
+    "withers_SB_min_median": 23.971854083574677,
+    "delta_mag": 0.545735580071991,
+    "interpretation": "Withers+ 致密REG SB下限（中位 24.0）比 ApJL 样本中位数（24.5）亮 0.5 mag。真实值更亮。",
+    "caveat": "Withers+ 缺乏 BD 数据，完整 Σ-BD 验证需等待光谱观测",
+    "prediction": "如果致密REG是LRD，其BD应落在 Σ-BD 相关线的高端延伸"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "description": "Casey+2026 dust census cross-validated with COSMOSWeb \u03a3",
+  "hypothesis": "Dust underestimation may be gravity redshift misinterpretation",
+  "N_casey_bins": 112,
+  "N_valid_matches": 99,
+  "casey_key_findings": {
+    "dust_underest_median": 39.31909858790611,
+    "dust_underest_range": [
+      0.4806653147705681,
+      100.0
+    ],
+    "funobs_median": 0.02480592578649521,
+    "AV_SED_median": 0.859883576631546
+  },
+  "cross_validation": {
+    "rho_Sigma_vs_dust_underest": 0.8540748839435632,
+    "p_Sigma_vs_dust_underest": 2.746669471734606e-29,
+    "rho_Sigma_vs_funobs": -0.871713048855906,
+    "p_Sigma_vs_funobs": 8.244052839530266e-32,
+    "rho_Sigma_vs_AV_SED": 0.8109833024118739,
+    "p_Sigma_vs_AV_SED": 2.601820504733402e-24,
+    "rho_reff_vs_dust_underest": -0.10792831105762253,
+    "p_reff_vs_dust_underest": 0.287625790170386,
+    "partial_rho_ctrl_z": 0.8502033786303111,
+    "partial_rho_ctrl_Mstar": 0.3813528530111659
+  },
+  "z_evolution": [
+    {
+      "z": 1.0,
+      "z_lo": 0.5,
+      "z_hi": 1.5,
+      "N_bins": 20,
+      "dust_underest_med": 28.941906268845234,
+      "dust_underest_mean": 36.44428110698634,
+      "funobs_med": 0.033810773864388466,
+      "AV_med": 0.9372376799583435,
+      "Sigma_med": 1.2802737511977507,
+      "Sigma_mean": 1.3941252467440286,
+      "N_cosmos": 285799
+    },
+    {
+      "z": 2.0,
+      "z_lo": 1.5,
+      "z_hi": 2.5,
+      "N_bins": 20,
+      "dust_underest_med": 49.304999501319514,
+      "dust_underest_mean": 52.75506724290881,
+      "funobs_med": 0.02203039126470685,
+      "AV_med": 0.8705742359161377,
+      "Sigma_med": 1.742488449184271,
+      "Sigma_mean": 1.8247687405387054,
+      "N_cosmos": 150034
+    },
+    {
+      "z": 3.0,
+      "z_lo": 2.5,
+      "z_hi": 3.5,
+      "N_bins": 18,
+      "dust_underest_med": 69.48512264554492,
+      "dust_underest_mean": 56.91577603801531,
+      "funobs_med": 0.014391569886356592,
+      "AV_med": 0.8848800361156464,
+      "Sigma_med": 2.133044175918104,
+      "Sigma_mean": 2.2034207484260415,
+      "N_cosmos": 52138
+    },
+    {
+      "z": 4.0,
+      "z_lo": 3.5,
+      "z_hi": 4.5,
+      "N_bins": 16,
+      "dust_underest_med": 100.0,
+      "dust_underest_mean": 67.33216861361628,
+      "funobs_med": 0.0052244741236791015,
+      "AV_med": 1.0342015027999878,
+      "Sigma_med": 2.3513048870801847,
+      "Sigma_mean": 2.3805467723529805,
+      "N_cosmos": 28723
+    },
+    {
+      "z": 5.0,
+      "z_lo": 4.5,
+      "z_hi": 5.5,
+      "N_bins": 15,
+      "dust_underest_med": 100.0,
+      "dust_underest_mean": 65.40969730926021,
+      "funobs_med": 0.0018518620636314154,
+      "AV_med": 0.7701594233512878,
+      "Sigma_med": 2.588765968103188,
+      "Sigma_mean": 2.6517043601331634,
+      "N_cosmos": 16625
+    },
+    {
+      "z": 6.25,
+      "z_lo": 5.5,
+      "z_hi": 7,
+      "N_bins": 14,
+      "dust_underest_med": 100.0,
+      "dust_underest_mean": 63.906924762256914,
+      "funobs_med": 0.002394343726336956,
+      "AV_med": 0.7596085667610168,
+      "Sigma_med": 2.748351238684125,
+      "Sigma_mean": 2.8392224695487758,
+      "N_cosmos": 6794
+    }
+  ],
+  "interpretation": {
+    "traditional": "Dust attenuation is systematically underestimated (small grains, clumpy geometry)",
+    "our_alternative": "Gravitational redshift from compactness is misattributed as dust reddening",
+    "discriminant": "MIRI spectroscopy + IFU kinematics can separate continuum shift vs wavelength-dependent extinction",
+    "note": "Casey+ data is binned stacks (112 bins), not individual galaxies \u2192 real single-source \u03c1 likely stronger"
+  }
+}

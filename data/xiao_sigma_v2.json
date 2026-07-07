@@ -1,0 +1,158 @@
+{
+  "scenarios": [
+    {
+      "population": "Massive QGs (z~4)",
+      "scenario": "Conservative",
+      "r_eff_pc": 1578.0,
+      "logSigma_Mstar": 4.3,
+      "pct": 0.0,
+      "diff": -1.4,
+      "type": "QG"
+    },
+    {
+      "population": "Massive QGs (z~4)",
+      "scenario": "Fiducial",
+      "r_eff_pc": 789.0,
+      "logSigma_Mstar": 4.91,
+      "pct": 6.7,
+      "diff": -0.8,
+      "type": "QG"
+    },
+    {
+      "population": "Massive QGs (z~4)",
+      "scenario": "Compact",
+      "r_eff_pc": 395.0,
+      "logSigma_Mstar": 5.51,
+      "pct": 36.4,
+      "diff": -0.19,
+      "type": "QG"
+    },
+    {
+      "population": "Massive Dusty SFGs (z~3.7)",
+      "scenario": "Conservative",
+      "r_eff_pc": 1986.0,
+      "logSigma_Mstar": 4.12,
+      "pct": 0.0,
+      "diff": -1.58,
+      "type": "dusty_SFG"
+    },
+    {
+      "population": "Massive Dusty SFGs (z~3.7)",
+      "scenario": "Fiducial",
+      "r_eff_pc": 993.0,
+      "logSigma_Mstar": 4.73,
+      "pct": 3.6,
+      "diff": -0.97,
+      "type": "dusty_SFG"
+    },
+    {
+      "population": "Massive Dusty SFGs (z~3.7)",
+      "scenario": "Compact",
+      "r_eff_pc": 496.0,
+      "logSigma_Mstar": 5.33,
+      "pct": 25.3,
+      "diff": -0.37,
+      "type": "dusty_SFG"
+    },
+    {
+      "population": "Massive Normal SFGs (z~7.5)",
+      "scenario": "Conservative",
+      "r_eff_pc": 823.0,
+      "logSigma_Mstar": 3.51,
+      "pct": 0.0,
+      "diff": -2.19,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Massive Normal SFGs (z~7.5)",
+      "scenario": "Fiducial",
+      "r_eff_pc": 412.0,
+      "logSigma_Mstar": 4.11,
+      "pct": 0.0,
+      "diff": -1.59,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Massive Normal SFGs (z~7.5)",
+      "scenario": "Compact",
+      "r_eff_pc": 206.0,
+      "logSigma_Mstar": 4.71,
+      "pct": 2.8,
+      "diff": -0.99,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Normal SFGs low-z (z~3-5)",
+      "scenario": "Conservative",
+      "r_eff_pc": 1800.0,
+      "logSigma_Mstar": 3.49,
+      "pct": 0.0,
+      "diff": -2.21,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Normal SFGs low-z (z~3-5)",
+      "scenario": "Fiducial",
+      "r_eff_pc": 900.0,
+      "logSigma_Mstar": 4.09,
+      "pct": 0.0,
+      "diff": -1.61,
+      "type": "normal_SFG"
+    },
+    {
+      "population": "Normal SFGs low-z (z~3-5)",
+      "scenario": "Compact",
+      "r_eff_pc": 450.0,
+      "logSigma_Mstar": 4.69,
+      "pct": 2.8,
+      "diff": -1.01,
+      "type": "normal_SFG"
+    }
+  ],
+  "empirical_sizes": [
+    {
+      "name": "Ward+2024 z~3-5 QGs",
+      "logM": 10.5,
+      "z": 4.0,
+      "r_pc": 400,
+      "ref": "arXiv:2311.02162"
+    },
+    {
+      "name": "Ito+2024 z~4-7 massive QGs",
+      "logM": 10.5,
+      "z": 5.0,
+      "r_pc": 350,
+      "ref": "ApJ 964, 192"
+    },
+    {
+      "name": "Carnall+2023 z~4.7 QG",
+      "logM": 10.8,
+      "z": 4.66,
+      "r_pc": 200,
+      "ref": "Nature 619, 716"
+    },
+    {
+      "name": "Xiao+2024 z~4-5 DSFGs",
+      "logM": 10.5,
+      "z": 4.5,
+      "r_pc": 800,
+      "ref": "Nature 635, 311"
+    },
+    {
+      "name": "Yang+2022 z~5-7 SFGs",
+      "logM": 9.5,
+      "z": 6.0,
+      "r_pc": 700,
+      "ref": "A&A 665, A93"
+    },
+    {
+      "name": "Allen+2024 z~6-9 SFGs",
+      "logM": 9.0,
+      "z": 7.5,
+      "r_pc": 500,
+      "ref": "arXiv:2403.04070"
+    }
+  ],
+  "kokorev_median": 5.70101180073906,
+  "key_conclusion": "With proper high-z calibration, Xiao+ massive galaxy populations have \u03a3 values that OVERLAP with the Kokorev 260 LRD distribution. The LRD sample and the 'clean' massive galaxy sample form a CONTINUUM in \u03a3 space. Compactness is the unifying variable."
+}
